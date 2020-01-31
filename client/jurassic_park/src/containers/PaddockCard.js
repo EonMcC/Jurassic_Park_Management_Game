@@ -8,10 +8,10 @@ class PaddockCard extends Component {
   }
   render() { 
     return ( 
-      <>
+      <div className="paddock-card">
         <p>I'm a PaddockCard</p>
         <DinoList />
-      </>
+      </div>
      );
   }
 }
