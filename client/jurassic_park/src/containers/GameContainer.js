@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InfoBox from '../components/InfoBox';
+import PaddockCard from './PaddockCard';
 import Timer from '../components/Timer';
 
 class GameContainer extends Component {
@@ -11,7 +12,8 @@ class GameContainer extends Component {
     return ( 
       <>
         <h1>I'm a Header</h1> 
-        <InfoBox />
+        <PaddockCard />
+        <InfoBox />   
       </>
      );
   }
