@@ -1,12 +1,11 @@
 import React from 'react';
-import InfoBox from './components/InfoBox';
+import GameContainer from './containers/GameContainer';
 import './App.css';
 
 function App() {
   return (
     <div>
-     <h1>Jurassic Park with 1 R and 2 S</h1> 
-     <InfoBox />
+      <GameContainer />
     </div>
   );
 }
