@@ -29,7 +29,7 @@ public class Game {
 //        return new ArrayList<Paddock>(this.paddocks);
 //    }
 //
-//    public void addPaddock(Paddock paddock){
+//    public void buyPaddock(Paddock paddock){
 //        this.paddocks.add(paddock);
 //    }
 }

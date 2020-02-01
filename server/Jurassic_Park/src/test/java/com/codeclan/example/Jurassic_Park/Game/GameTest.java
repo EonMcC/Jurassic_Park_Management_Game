@@ -2,6 +2,7 @@ package com.codeclan.example.Jurassic_Park.Game;
 
 import com.codeclan.example.Jurassic_Park.Models.Bank;
 import com.codeclan.example.Jurassic_Park.Models.Game;
+import com.codeclan.example.Jurassic_Park.Types.FoodType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -34,6 +35,13 @@ public class GameTest {
     public void canCalculateIfGameIsStillOn(){
        assertEquals("Game On", game.calculateResult());
     }
+//
+//    @Test
+//    public void canFeedDino(){
+//        game.feedDino(dinosaur, FoodType.COW);
+//        assertEquals(10, game.getPaddock(paddock).getDino(dinosaur).getHungerLevel());
+//    }
+
 //    @Test
 //    public void paddockListStartsEmpty(){
 //        assertEquals(0, game.getPaddocks().size());
@@ -41,7 +49,7 @@ public class GameTest {
 //
 //    @Test
 //    public void canAddAPaddockToAGame(){
-//        game.addPaddock(paddock);
+//        game.buyPaddock(paddock);
 //        assertEquals(1, game.getPaddocks().size());
 //    }
 
