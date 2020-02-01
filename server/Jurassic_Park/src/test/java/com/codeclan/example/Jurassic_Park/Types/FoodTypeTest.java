@@ -1,6 +1,5 @@
-package Types;
+package com.codeclan.example.Jurassic_Park.Types;
 
-import com.codeclan.example.Jurassic_Park.Types.FoodType;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
