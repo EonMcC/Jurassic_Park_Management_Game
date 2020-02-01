@@ -1,4 +1,9 @@
 package com.codeclan.example.Jurassic_Park.repository.games;
 
-public interface GameRepository {
+import com.codeclan.example.Jurassic_Park.Models.Game;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+@RepositoryRestResource
+public interface GameRepository extends JpaRepository<Game, Long>{
 }
