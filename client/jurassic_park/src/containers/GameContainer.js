@@ -7,8 +7,15 @@ class GameContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      //dinos: [],
-      //paddocks: []
+      dinos: [
+        {foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenueIncrease: 1},
+        {foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenueIncrease: 1}
+      ],
+      paddocks: [
+        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
+        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
+
+      ]
      }
   }
 
@@ -39,7 +46,7 @@ class GameContainer extends Component {
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1> 
-        <PaddockCardList />    
+        <PaddockCardList paddocks={this.state.paddocks} dinos={this.state.dinos}/>    
         <h2>€25,000 </h2>
         <InfoBox />   
       </>

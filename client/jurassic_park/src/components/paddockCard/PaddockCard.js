@@ -25,12 +25,10 @@ class PaddockCard extends Component {
 
   render() { 
     return ( 
-      <div>
-        
-        <div className="paddock-card" onClick={this.handleClick}>
-        
+      <div>      
+        <div className="paddock-card" onClick={this.handleClick}>      
         <p>Paddock Name</p>
-        <DinoList />
+        <DinoList dinos={this.props.dinos}/>
         <button className="close-button" onClick={this.handleClickClose}>X</button>
       </div>
       </div>

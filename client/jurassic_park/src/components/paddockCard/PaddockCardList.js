@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import PaddockCard from './PaddockCard';
 
-class PaddockCardList extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {  }
-  }
-  render() { 
-    return ( 
-      
-      <PaddockCard />
-     );
-  }
+const PaddockCardList = ({paddocks, dinos}) => {
+
+  const allPaddocks = paddocks.map((paddock) => {
+    return (
+      <PaddockCard dinos={dinos}/>
+    )
+  })
+
+  return (
+    <>
+      {allPaddocks}
+    </>
+  )
 }
  
-export default PaddockCard;
+export default PaddockCardList;
