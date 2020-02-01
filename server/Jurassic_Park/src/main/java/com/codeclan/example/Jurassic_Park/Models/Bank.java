@@ -1,7 +1,16 @@
 package com.codeclan.example.Jurassic_Park.Models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="banks")
 public class Bank {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="balance")
     private int balance;
 
     public Bank(int balance) {
@@ -10,6 +19,14 @@ public class Bank {
 
     public Bank(){
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getBalance(){
