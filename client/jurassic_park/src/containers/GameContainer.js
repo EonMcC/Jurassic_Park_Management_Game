@@ -14,7 +14,6 @@ class GameContainer extends Component {
       paddocks: [
         {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
         {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
-
       ]
      }
   }

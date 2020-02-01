@@ -23,12 +23,18 @@ class PaddockCard extends Component {
     elementToChange.style = "border: 2px; background-color: blue; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
   }
 
+  handleClickAddDino(e) {
+    e.stopPropagation();
+    //post new dino
+  }
+
   render() { 
     return ( 
       <div>      
         <div className="paddock-card" onClick={this.handleClick}>      
         <p>Paddock Name</p>
         <DinoList dinos={this.props.dinos}/>
+        <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
         <button className="close-button" onClick={this.handleClickClose}>X</button>
       </div>
       </div>
