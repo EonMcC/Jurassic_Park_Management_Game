@@ -16,4 +16,9 @@ public class FoodTypeTest {
     public void canGetFoodReplenishValue(){
         assertEquals(2, FoodType.COW.getReplenLevel());
     }
+
+    @Test
+    public void canGetFoodDietaryType(){
+        assertEquals('c', FoodType.COW.getType());
+    }
 }

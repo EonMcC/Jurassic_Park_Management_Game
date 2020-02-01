@@ -28,6 +28,6 @@ public enum FoodType {
     }
 
     public int getType(){
-        return this.getType();
+        return this.type;
     }
 }
