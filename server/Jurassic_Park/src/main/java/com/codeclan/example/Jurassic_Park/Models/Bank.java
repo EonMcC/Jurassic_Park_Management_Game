@@ -3,7 +3,7 @@ package com.codeclan.example.Jurassic_Park.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="banks")
+@Table(name= "com/codeclan/example/Jurassic_Park/repository")
 public class Bank {
 
     @Id
