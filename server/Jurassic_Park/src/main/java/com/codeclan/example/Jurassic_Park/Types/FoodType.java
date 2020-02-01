@@ -13,7 +13,7 @@ public enum FoodType {
     private int replenLevel;
     private char type;
 
-    FoodType(int value, int replenlevel, char type){
+    FoodType(int value, int replenLevel, char type){
         this.value = value;
         this.replenLevel = replenLevel;
         this.type = type;
