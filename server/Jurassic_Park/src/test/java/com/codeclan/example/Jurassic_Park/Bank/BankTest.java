@@ -26,4 +26,10 @@ public class BankTest {
         assertEquals(1700, bank.getBalance());
     }
 
+    @Test
+    public void canSubtractFromBalance(){
+        bank.setBalance(-200);
+        assertEquals(1300, bank.getBalance());
+    }
+
 }
