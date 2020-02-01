@@ -20,4 +20,10 @@ public class BankTest {
         assertEquals(1500, bank.getBalance());
     }
 
+    @Test
+    public void canAddToBalance(){
+        bank.setBalance(200);
+        assertEquals(1700, bank.getBalance());
+    }
+
 }

@@ -24,5 +24,16 @@ public class GameTest {
         assertEquals(1000, amount);
     }
 
+//    @Test
+//    public void paddockListStartsEmpty(){
+//        assertEquals(0, game.getPaddocks().size());
+//    }
+//
+//    @Test
+//    public void canAddAPaddockToAGame(){
+//        game.addPaddock(paddock);
+//        assertEquals(1, game.getPaddocks().size());
+//    }
+
 
 }
