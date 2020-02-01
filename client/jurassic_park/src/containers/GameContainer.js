@@ -25,7 +25,14 @@ class GameContainer extends Component {
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
+
+      // setInterval(this.timerPost, 5000); 
     }
+
+    // timerPost() {
+    //   const request = new Request();
+    //   request.post(url, payload)
+    // }
 
   render() { 
     return ( 
