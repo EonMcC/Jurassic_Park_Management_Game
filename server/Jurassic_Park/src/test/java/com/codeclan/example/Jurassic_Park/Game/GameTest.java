@@ -15,8 +15,8 @@ public class GameTest {
 
     @Before
     public void setup(){
+        game = new Game();
         bank = new Bank(1000);
-        game = new Game(bank);
     }
 
     @Test

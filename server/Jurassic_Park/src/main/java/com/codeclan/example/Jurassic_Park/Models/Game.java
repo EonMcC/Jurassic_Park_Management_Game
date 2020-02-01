@@ -1,7 +1,20 @@
 package com.codeclan.example.Jurassic_Park.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="games")
 public class Game {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @JsonIgnoreProperties("games")
+    @OneToOne()
+    @JoinColumn(name = "bank_id", nullable =  false)
     private Bank bank;
 //    private ArrayList<Paddock> paddocks;
 
@@ -25,7 +38,17 @@ public class Game {
         return this.bank.getBalance() > 0 ? "Game On": "Game Over";
     }
 
-//    public ArrayList<Paddock> getPaddocks(){
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
+
+    //    public ArrayList<Paddock> getPaddocks(){
 //        return new ArrayList<Paddock>(this.paddocks);
 //    }
 //

@@ -1,5 +1,7 @@
 package com.codeclan.example.Jurassic_Park.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,8 +15,14 @@ public class Bank {
     @Column(name="balance")
     private int balance;
 
+    @JsonIgnoreProperties("banks")
+    @OneToOne(mappedBy = "bank")
+    private Game game;
+
+
     public Bank(int balance) {
         this.balance = balance;
+
     }
 
     public Bank(){
@@ -35,5 +43,14 @@ public class Bank {
 
     public void setBalance(int amount){
         this.balance += amount;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+
     }
 }
