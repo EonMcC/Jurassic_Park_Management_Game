@@ -24,6 +24,16 @@ public class GameTest {
         assertEquals(1000, amount);
     }
 
+    @Test
+    public void canCalculateGameIsOver(){
+        game.getBank().setBalance(-1000);
+        assertEquals("Game Over", game.calculateResult());
+    }
+
+    @Test
+    public void canCalculateIfGameIsStillOn(){
+       assertEquals("Game On", game.calculateResult());
+    }
 //    @Test
 //    public void paddockListStartsEmpty(){
 //        assertEquals(0, game.getPaddocks().size());

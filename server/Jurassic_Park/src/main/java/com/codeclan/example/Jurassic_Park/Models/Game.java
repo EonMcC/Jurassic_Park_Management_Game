@@ -21,6 +21,10 @@ public class Game {
         this.bank = bank;
     }
 
+    public String calculateResult() {
+        return this.bank.getBalance() > 0 ? "Game On": "Game Over";
+    }
+
 //    public ArrayList<Paddock> getPaddocks(){
 //        return new ArrayList<Paddock>(this.paddocks);
 //    }
