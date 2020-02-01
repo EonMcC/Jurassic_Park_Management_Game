@@ -5,7 +5,7 @@ const Dino = ({dino}) => {
     <div className="dino">
       <p>Food Level:{dino.foodLevel}</p>
       <p>Dietary Type: {dino.dietaryType}</p>
-      <p>Revenue: {dino.revenueIncrease}</p>
+      <p>Revenue: {dino.revenue}</p>
     </div>
   )
 }

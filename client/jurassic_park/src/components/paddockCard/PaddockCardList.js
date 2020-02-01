@@ -5,7 +5,7 @@ const PaddockCardList = ({paddocks, dinos}) => {
 
   const allPaddocks = paddocks.map((paddock) => {
     return (
-      <PaddockCard dinos={dinos}/>
+      <PaddockCard paddock={paddock} dinos={dinos}/>
     )
   })
 

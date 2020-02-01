@@ -8,12 +8,12 @@ class GameContainer extends Component {
     super(props);
     this.state = { 
       dinos: [
-        {foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenueIncrease: 1},
-        {foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenueIncrease: 1}
+        {foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
+        {foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
       ],
       paddocks: [
-        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
-        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
+        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
+        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
       ]
      }
   }
