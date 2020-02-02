@@ -51,7 +51,10 @@ class PaddockCard extends Component {
       <div>    
         <div className="paddock-card" onClick={this.handleClick}>      
         <p>{this.props.paddock.name}</p>
-        <DinoList dinos={this.dinosForPaddock(this.props.paddock.id)}/>
+        <DinoList 
+          dinos={this.dinosForPaddock(this.props.paddock.id)} 
+          onHandleSelectDino={this.props.onHandleSelectDino}
+          />
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>

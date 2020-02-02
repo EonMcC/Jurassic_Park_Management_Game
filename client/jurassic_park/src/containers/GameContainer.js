@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
+import FoodContainer from '../components/paddockCard/food/FoodContainer';
 import Timer from '../components/Timer';
 
 class GameContainer extends Component {
@@ -15,8 +16,14 @@ class GameContainer extends Component {
       paddocks: [
         {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
         {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
-      ]
+      ],
+      foods: [
+        {id: 1, name: "Shrubbery", replen: 3, cost: 1},
+        {id: 2, name: "Cow", replen: 3, cost: 1}
+      ],
+      selectedDino: null
      }
+     this.handleSelectDino = this.handleSelectDino.bind(this);
   }
 
   
@@ -43,6 +50,10 @@ class GameContainer extends Component {
     //   request.post(url, payload)
     // }
 
+    handleSelectDino(dino) {
+      this.setState({selectedDino: dino});
+    }
+
 
 
   render() { 
@@ -50,7 +61,11 @@ class GameContainer extends Component {
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1> 
-        <PaddockCardList paddocks={this.state.paddocks} dinos={this.state.dinos}/>    
+        <PaddockCardList 
+          paddocks={this.state.paddocks} 
+          dinos={this.state.dinos} 
+          onHandleSelectDino={this.handleSelectDino}
+          />    
         <h2>€25,000 </h2>
         <InfoBox />   
       </>
