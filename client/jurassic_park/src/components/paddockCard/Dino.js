@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Dino = ({dino}) => {
+
   return (
     <div className="dino">
       <p>Food Level:{dino.foodLevel}</p>
@@ -8,6 +9,7 @@ const Dino = ({dino}) => {
       <p>Revenue: {dino.revenue}</p>
     </div>
   )
+  
 }
 
 export default Dino;

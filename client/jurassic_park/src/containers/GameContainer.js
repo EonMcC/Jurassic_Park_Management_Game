@@ -8,15 +8,18 @@ class GameContainer extends Component {
     super(props);
     this.state = { 
       dinos: [
-        {foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
-        {foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
+        {paddockId: 1, foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
+        {paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
+        {paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
       ],
       paddocks: [
-        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
-        {dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
+        {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
+        {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
       ]
      }
   }
+
+  
 
   //request.get('/dinos')
     //.then((data) => {
@@ -39,6 +42,8 @@ class GameContainer extends Component {
     //   const request = new Request();
     //   request.post(url, payload)
     // }
+
+
 
   render() { 
     return ( 

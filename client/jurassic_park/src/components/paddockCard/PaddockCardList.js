@@ -3,9 +3,20 @@ import PaddockCard from './PaddockCard';
 
 const PaddockCardList = ({paddocks, dinos}) => {
 
+
+  // const getDinosForPaddock = (paddockId) => {
+  //   let foundDinos = dinos.map((dino) => {
+  //     if (dino.paddockId === paddockId) {
+  //       return dino;
+  //     }
+      
+  //   })
+  //   return foundDinos;
+  // }
+
   const allPaddocks = paddocks.map((paddock) => {
     return (
-      <PaddockCard paddock={paddock} dinos={dinos}/>
+      <PaddockCard id={paddock.id} paddock={paddock} dinos={dinos}/>
     )
   })
 

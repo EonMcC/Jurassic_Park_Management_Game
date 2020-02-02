@@ -9,19 +9,18 @@ class PaddockCard extends Component {
      }
     this.handleClick = this.handleClick.bind(this);
     this.handleClickClose = this.handleClickClose.bind(this);
+    this.dinosForPaddock = this.dinosForPaddock.bind(this);
   }
 
   handleClick(e) {
-    const elementToChange = document.querySelector('.paddock-card');
-    const secondElementToChange = document.querySelector('.close-button');
+    const elementToChange = e.target;
     elementToChange.style = "height: 100%; width: 100%; border-radius: 0; background-color: white;";
-    secondElementToChange.style = "opacity: 1; z-index: 5;"
   }
 
   handleClickClose(e) {
     e.stopPropagation();
-    const elementToChange = document.querySelector('.paddock-card');
-    elementToChange.style = "border: 2px; background-color: blue; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
+    const elementToChange = e.target.parentElement;
+    elementToChange.style = "border: 2px blue solid; background-color: blue; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
   }
 
   handleClickAddDino(e) {
@@ -37,12 +36,22 @@ class PaddockCard extends Component {
     this.setState({combinedPaddockRevenue: paddockRevenue + dinoRevenue});
   }
 
+  dinosForPaddock(paddockId) {
+    let currentPaddockDinos = [];
+    this.props.dinos.forEach(dino => {
+      if (dino.paddockId === paddockId) {
+        currentPaddockDinos.push(dino)
+      }
+    })
+    return currentPaddockDinos;
+  }
+
   render() { 
     return ( 
-      <div>      
+      <div>    
         <div className="paddock-card" onClick={this.handleClick}>      
-        <p>Paddock Name</p>
-        <DinoList dinos={this.props.dinos}/>
+        <p>{this.props.paddock.name}</p>
+        <DinoList dinos={this.dinosForPaddock(this.props.paddock.id)}/>
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
