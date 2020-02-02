@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
-import FoodContainer from '../components/paddockCard/food/FoodContainer';
+import FoodContainer from '../components/food/FoodContainer';
 import Timer from '../components/Timer';
 
 class GameContainer extends Component {
@@ -71,7 +71,7 @@ class GameContainer extends Component {
           />    
         <h2>€25,000 </h2>
         <InfoBox />
-         {this.state.showFoodContainer && <FoodContainer/>}
+         {this.state.showFoodContainer && <FoodContainer foods={this.state.foods}/>}
          
       </>
      );
