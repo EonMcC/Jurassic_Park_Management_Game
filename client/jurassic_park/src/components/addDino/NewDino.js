@@ -7,7 +7,19 @@ class NewDino extends Component {
   }
   render() { 
     return ( 
-      <h1>NewDino</h1>
+      <>
+        <h2>Iguanadon</h2>
+        <p>Herbivore</p>
+        <p>€1000</p>
+        <p>€50</p>
+        <button>Add this Dino!</button>
+        
+        <h2>T-Rex</h2>
+        <p>Carnivore</p>
+        <p>€2000</p>
+        <p>€100</p>
+        <button>Add this Dino!</button>
+      </>
      );
   }
 }
