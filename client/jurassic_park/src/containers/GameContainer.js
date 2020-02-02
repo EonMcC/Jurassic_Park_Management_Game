@@ -21,11 +21,13 @@ class GameContainer extends Component {
         {id: 1, name: "Shrubbery", replen: 3, cost: 1},
         {id: 2, name: "Cow", replen: 3, cost: 2}
       ],
+      selectedPaddock: null,
       selectedDino: null,
       selectedFood: null,
       showFoodContainer: false,
       bankBalance: 1
      }
+     this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);
      this.handleSelectFood = this.handleSelectFood.bind(this);
   }
@@ -54,6 +56,11 @@ class GameContainer extends Component {
     //   request.post(url, payload)
     // }
 
+        //handleSelectPaddock sets the state to equal the paddock that the user selected
+    handleSelectPaddock(paddock) {
+      this.setState({selectedPaddock: paddock});
+    }
+
     //handleSelectDino sets the state to equal the dino that the user selected
     //and opens the FoodContainer.
     handleSelectDino(dino) {
@@ -76,6 +83,7 @@ class GameContainer extends Component {
         <PaddockCardList 
           paddocks={this.state.paddocks} 
           dinos={this.state.dinos} 
+          onHandleSelectPaddock={this.handleSelectPaddock}
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           />    

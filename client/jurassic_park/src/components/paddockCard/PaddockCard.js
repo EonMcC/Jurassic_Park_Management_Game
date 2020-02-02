@@ -16,6 +16,7 @@ class PaddockCard extends Component {
   handleClick(e) {
     const elementToChange = e.target;
     elementToChange.style = "height: 100%; width: 100%; border-radius: 0; background-color: white;";
+    this.props.onHandleSelectPaddock(this.props.paddock);
   }
 
   handleClickClose(e) {
@@ -27,6 +28,7 @@ class PaddockCard extends Component {
   handleClickAddDino(e) {
     e.stopPropagation();
     //post new dino
+
   }
 
   dinosForPaddock(paddockId) {
