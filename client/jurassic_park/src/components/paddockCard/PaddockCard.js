@@ -5,11 +5,12 @@ class PaddockCard extends Component {
   constructor({props}) {
     super(props);
     this.state = { 
-      combinedPaddockRevenue: 0
+      
      }
     this.handleClick = this.handleClick.bind(this);
     this.handleClickClose = this.handleClickClose.bind(this);
     this.dinosForPaddock = this.dinosForPaddock.bind(this);
+    this.calculateTotalPaddockRevenue = this.calculateTotalPaddockRevenue.bind(this);
   }
 
   handleClick(e) {
@@ -28,14 +29,6 @@ class PaddockCard extends Component {
     //post new dino
   }
 
-  // calculateTotalPaddockRevenue
-  componentDidMount() {
-    let paddockRevenue = this.props.paddock.revenue;
-    let dinoRevenue = 0;
-    this.props.dinos.forEach(dino => dinoRevenue += dino.revenue); 
-    this.setState({combinedPaddockRevenue: paddockRevenue + dinoRevenue});
-  }
-
   dinosForPaddock(paddockId) {
     let currentPaddockDinos = [];
     this.props.dinos.forEach(dino => {
@@ -45,6 +38,15 @@ class PaddockCard extends Component {
     })
     return currentPaddockDinos;
   }
+
+    calculateTotalPaddockRevenue() {
+      let paddockRevenue = this.props.paddock.revenue;
+      let dinoRevenue = 0;
+      const dinosThisPaddock = this.dinosForPaddock(this.props.id);
+      dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenue); 
+      return paddockRevenue + dinoRevenue;
+    }
+
 
   render() { 
     return ( 
@@ -59,7 +61,7 @@ class PaddockCard extends Component {
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
-        <h6>Paddock Revenue: €{this.state.combinedPaddockRevenue} Dinosaurs & Paddock</h6>
+        <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
       </div>
       </div>
      );
