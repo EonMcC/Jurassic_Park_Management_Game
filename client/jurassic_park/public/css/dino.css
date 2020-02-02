@@ -1,3 +1,8 @@
 .dino {
   border: dotted red 2px;
 }
+
+.feed-dino-button {
+  width: 10%;
+  color: black;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
+import FoodContainer from '../components/food/FoodContainer';
 import Timer from '../components/Timer';
 
 class GameContainer extends Component {
@@ -15,8 +16,18 @@ class GameContainer extends Component {
       paddocks: [
         {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
         {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
-      ]
+      ],
+      foods: [
+        {id: 1, name: "Shrubbery", replen: 3, cost: 1},
+        {id: 2, name: "Cow", replen: 3, cost: 2}
+      ],
+      selectedDino: null,
+      selectedFood: null,
+      showFoodContainer: false,
+      bankBalance: 1
      }
+     this.handleSelectDino = this.handleSelectDino.bind(this);
+     this.handleSelectFood = this.handleSelectFood.bind(this);
   }
 
   
@@ -43,16 +54,39 @@ class GameContainer extends Component {
     //   request.post(url, payload)
     // }
 
+    //handleSelectDino sets the state to equal the dino that the user selected
+    //and opens the FoodContainer.
+    handleSelectDino(dino) {
+      this.setState({selectedDino: dino});
+      this.setState({showFoodContainer: true});
+    }
 
+    //handleSelectFood sets the state equal to the food that the user selects,
+    //closes the FoodContainer and sends the info to the database.
+    handleSelectFood(food) {
+      this.setState({selectedFood: food});
+      this.setState({showFoodContainer: false});
+    }
 
   render() { 
     return ( 
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1> 
-        <PaddockCardList paddocks={this.state.paddocks} dinos={this.state.dinos}/>    
-        <h2>€25,000 </h2>
-        <InfoBox />   
+        <PaddockCardList 
+          paddocks={this.state.paddocks} 
+          dinos={this.state.dinos} 
+          onHandleSelectDino={this.handleSelectDino}
+          bankBalance={this.state.bankBalance}
+          />    
+        <h2>€{this.state.bankBalance} </h2>
+        <InfoBox />
+         {this.state.showFoodContainer && <FoodContainer 
+                                            foods={this.state.foods}
+                                            onHandleSelectFood={this.handleSelectFood}
+                                            bankBalance={this.state.bankBalance}
+                                            />}
+         
       </>
      );
   }
