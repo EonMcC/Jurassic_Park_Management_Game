@@ -12,7 +12,6 @@ const Dino = ({dino, onHandleSelectDino}) => {
       <p>Food Level:{dino.foodLevel}</p>
       <p>Dietary Type: {dino.dietaryType}</p>
       <p>Revenue: {dino.revenue}</p>
-      
     </div>
   )
   

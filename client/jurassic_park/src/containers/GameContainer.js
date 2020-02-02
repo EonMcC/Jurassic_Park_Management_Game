@@ -21,7 +21,9 @@ class GameContainer extends Component {
         {id: 1, name: "Shrubbery", replen: 3, cost: 1},
         {id: 2, name: "Cow", replen: 3, cost: 1}
       ],
-      selectedDino: null
+      selectedDino: null,
+      selectedFood: null,
+      showFoodContainer: false
      }
      this.handleSelectDino = this.handleSelectDino.bind(this);
   }
@@ -50,11 +52,12 @@ class GameContainer extends Component {
     //   request.post(url, payload)
     // }
 
+    //handleSelectDino sets the state to equal the dino that the user selected
+    //and opens the FoodContainer.
     handleSelectDino(dino) {
       this.setState({selectedDino: dino});
+      this.setState({showFoodContainer: true})
     }
-
-
 
   render() { 
     return ( 
@@ -67,7 +70,9 @@ class GameContainer extends Component {
           onHandleSelectDino={this.handleSelectDino}
           />    
         <h2>€25,000 </h2>
-        <InfoBox />   
+        <InfoBox />
+         {this.state.showFoodContainer && <FoodContainer/>}
+         
       </>
      );
   }
