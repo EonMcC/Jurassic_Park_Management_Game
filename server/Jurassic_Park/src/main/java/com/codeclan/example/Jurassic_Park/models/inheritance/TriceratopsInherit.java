@@ -1,13 +1,14 @@
 package com.codeclan.example.Jurassic_Park.models.inheritance;
 
 import com.codeclan.example.Jurassic_Park.models.Paddock;
+import com.codeclan.example.Jurassic_Park.models.inheritance.Dinosaur;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "weerexes")
-public class WeeRex extends Dinosaur {
+@Table(name = "triceratops")
+public class TriceratopsInherit extends Dinosaur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +19,12 @@ public class WeeRex extends Dinosaur {
     @JoinColumn(name = "paddock_id", nullable = false)
     private Paddock paddock;
 
-    public WeeRex(int foodLevel, int buyValue, String dietaryType, int revenueIncrease, Paddock paddock) {
-        super(foodLevel, buyValue, dietaryType, revenueIncrease);
+    public TriceratopsInherit(int foodLevel, int buyValue, String foodType, int revenueIncrease, Paddock paddock) {
+        super(foodLevel, buyValue, foodType, revenueIncrease);
         this.paddock = paddock;
     }
 
-    public WeeRex() {
+    public TriceratopsInherit() {
     }
 
     public Long getId() {

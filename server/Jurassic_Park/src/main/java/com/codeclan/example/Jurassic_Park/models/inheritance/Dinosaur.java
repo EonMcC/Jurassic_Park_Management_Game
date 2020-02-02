@@ -1,11 +1,7 @@
 package com.codeclan.example.Jurassic_Park.models.inheritance;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
 
-//@Entity
-//@Table(name = "trexes")
 @Entity
 @Inheritance
 public abstract class Dinosaur {
@@ -26,18 +22,11 @@ public abstract class Dinosaur {
     @Column(name = "revenue_increase")
     private int revenueIncrease;
 
-//    @JsonIgnoreProperties("weeRexes")
-//    @ManyToOne
-//    @JoinColumn(name = "paddock_id", nullable = false)
-//    private Paddock paddock;
-
-//    , Paddock paddock
     public Dinosaur(int foodLevel, int buyValue, String dietaryType, int revenueIncrease) {
         this.foodLevel = foodLevel;
         this.buyValue = buyValue;
         this.dietaryType = dietaryType;
         this.revenueIncrease = revenueIncrease;
-//        this.paddock = paddock;
     }
 
     public Dinosaur() {
@@ -71,8 +60,8 @@ public abstract class Dinosaur {
         return dietaryType;
     }
 
-    public void setDietaryType(String dietaryType) {
-        this.dietaryType = dietaryType;
+    public void setDietaryType(String food) {
+        this.dietaryType = food;
     }
 
     public int getRevenueIncrease() {
@@ -83,11 +72,4 @@ public abstract class Dinosaur {
         this.revenueIncrease = revenueIncrease;
     }
 
-//    public Paddock getPaddock() {
-//        return paddock;
-//    }
-//
-//    public void setPaddock(Paddock paddock) {
-//        this.paddock = paddock;
-//    }
 }

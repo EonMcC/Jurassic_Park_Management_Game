@@ -5,8 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "trexes")
-public class TRex {
+@Table(name = "triceratops")
+public class Triceratops {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,12 +24,12 @@ public class TRex {
     @Column(name = "revenue_increase")
     private int revenueIncrease;
 
-    @JsonIgnoreProperties("tRexes")
+    @JsonIgnoreProperties("triceratops")
     @ManyToOne
     @JoinColumn(name = "paddock_id", nullable = false)
     private Paddock paddock;
 
-    public TRex(int foodLevel, int buyValue, String dietaryType, int revenueIncrease, Paddock paddock) {
+    public Triceratops(int foodLevel, int buyValue, String dietaryType, int revenueIncrease, Paddock paddock) {
         this.foodLevel = foodLevel;
         this.buyValue = buyValue;
         this.dietaryType = dietaryType;
@@ -37,7 +37,7 @@ public class TRex {
         this.paddock = paddock;
     }
 
-    public TRex() {
+    public Triceratops() {
     }
 
     public Long getId() {

@@ -1,6 +1,7 @@
 package com.codeclan.example.Jurassic_Park.models;
 
-import com.codeclan.example.Jurassic_Park.models.inheritance.WeeRex;
+import com.codeclan.example.Jurassic_Park.models.inheritance.TriceratopsInherit;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -26,10 +27,15 @@ public class Paddock {
 
     private boolean owned;
 
-//    @JsonIgnoreProperties("paddock")
+    @JsonIgnoreProperties("paddock")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
     private List<TRex> tRexes;
+
+    @JsonIgnoreProperties("paddock")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
+    private List<Triceratops> triceratops;
 
     public Paddock(int dinoCapacity, int noOfDinos, int costToBuy, int upKeepCost, boolean owned) {
         this.dinoCapacity = dinoCapacity;
@@ -38,6 +44,7 @@ public class Paddock {
         this.upKeepCost = upKeepCost;
         this.owned = owned;
         this.tRexes = new ArrayList<>();
+        this.triceratops = new ArrayList<>();
     }
 
     public Paddock () {
@@ -98,4 +105,8 @@ public class Paddock {
     public void setTRexes(List<TRex> trexes) {
         this.tRexes = trexes;
     }
+
+    public List<Triceratops> getTriceratops() { return this.triceratops; }
+
+    public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
 }
