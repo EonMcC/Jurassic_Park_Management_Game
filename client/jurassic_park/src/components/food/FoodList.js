@@ -15,6 +15,7 @@ class FoodList extends Component {
           key={food.id} 
           food={food}
           onHandleSelectFood={this.props.onHandleSelectFood} 
+          bankBalance={this.props.bankBalance}
           />
       );
     });

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Dino = ({dino, onHandleSelectDino}) => {
+const Dino = ({dino, onHandleSelectDino, bankBalance}) => {
 
   const handleSelect = (e) => {
     e.stopPropagation();

@@ -54,6 +54,7 @@ class PaddockCard extends Component {
         <DinoList 
           dinos={this.dinosForPaddock(this.props.paddock.id)} 
           onHandleSelectDino={this.props.onHandleSelectDino}
+          bankBalance={this.props.bankBalance}
           />
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
         <button className="close-button" onClick={this.handleClickClose}>X</button>

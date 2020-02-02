@@ -13,7 +13,9 @@ class FoodContainer extends Component {
         <h1>FoodContainer</h1>
         <FoodList 
           foods={this.props.foods}
-          onHandleSelectFood={this.props.onHandleSelectFood}/>
+          onHandleSelectFood={this.props.onHandleSelectFood}
+          bankBalance={this.props.bankBalance}
+          />
       </div>
      );
   }

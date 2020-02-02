@@ -1,7 +1,7 @@
 import React from 'react';
 import Dino from './Dino';
 
-const DinoList = ({dinos, onHandleSelectDino}) => {
+const DinoList = ({dinos, onHandleSelectDino, bankBalance}) => {
 
   const allDinos = dinos.map((dino) => {
     return (
@@ -9,6 +9,7 @@ const DinoList = ({dinos, onHandleSelectDino}) => {
       key={dino.id} 
       dino={dino} 
       onHandleSelectDino={onHandleSelectDino}
+      bankBalance={bankBalance}
       />
     )
   })
