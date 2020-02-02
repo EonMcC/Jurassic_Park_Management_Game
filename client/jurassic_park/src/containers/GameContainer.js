@@ -26,6 +26,7 @@ class GameContainer extends Component {
       showFoodContainer: false
      }
      this.handleSelectDino = this.handleSelectDino.bind(this);
+     this.handleSelectFood = this.handleSelectFood.bind(this);
   }
 
   
@@ -56,7 +57,14 @@ class GameContainer extends Component {
     //and opens the FoodContainer.
     handleSelectDino(dino) {
       this.setState({selectedDino: dino});
-      this.setState({showFoodContainer: true})
+      this.setState({showFoodContainer: true});
+    }
+
+    //handleSelectFood sets the state equal to the food that the user selects,
+    //closes the FoodContainer and sends the info to the database.
+    handleSelectFood(food) {
+      this.setState({selectedFood: food});
+      this.setState({showFoodContainer: false});
     }
 
   render() { 
@@ -71,7 +79,10 @@ class GameContainer extends Component {
           />    
         <h2>€25,000 </h2>
         <InfoBox />
-         {this.state.showFoodContainer && <FoodContainer foods={this.state.foods}/>}
+         {this.state.showFoodContainer && <FoodContainer 
+                                            foods={this.state.foods}
+                                            onHandleSelectFood={this.handleSelectFood}
+                                            />}
          
       </>
      );

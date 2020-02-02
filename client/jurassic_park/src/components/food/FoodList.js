@@ -11,7 +11,11 @@ class FoodList extends Component {
 
     const splitFoods = this.props.foods.map(food => {
       return (
-        <Food key={food.id} food={food} />
+        <Food 
+          key={food.id} 
+          food={food}
+          onHandleSelectFood={this.props.onHandleSelectFood} 
+          />
       );
     });
 
