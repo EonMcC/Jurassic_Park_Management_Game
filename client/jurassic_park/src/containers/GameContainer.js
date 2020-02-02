@@ -23,7 +23,8 @@ class GameContainer extends Component {
       ],
       selectedDino: null,
       selectedFood: null,
-      showFoodContainer: false
+      showFoodContainer: false,
+      bankBalance: 25000
      }
      this.handleSelectDino = this.handleSelectDino.bind(this);
      this.handleSelectFood = this.handleSelectFood.bind(this);
@@ -77,7 +78,7 @@ class GameContainer extends Component {
           dinos={this.state.dinos} 
           onHandleSelectDino={this.handleSelectDino}
           />    
-        <h2>€25,000 </h2>
+        <h2>€{this.state.bankBalance} </h2>
         <InfoBox />
          {this.state.showFoodContainer && <FoodContainer 
                                             foods={this.state.foods}
