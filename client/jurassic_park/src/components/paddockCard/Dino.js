@@ -1,11 +1,15 @@
 import React from 'react';
 
-const Dino = (props) => {
+const Dino = ({dino}) => {
+
   return (
-    <>
-      <p>I'm a Dinosaur</p>
-    </>
+    <div className="dino">
+      <p>Food Level:{dino.foodLevel}</p>
+      <p>Dietary Type: {dino.dietaryType}</p>
+      <p>Revenue: {dino.revenue}</p>
+    </div>
   )
+  
 }
 
 export default Dino;

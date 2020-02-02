@@ -7,10 +7,19 @@ class GameContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      //dinos: [],
-      //paddocks: []
+      dinos: [
+        {id: 1, paddockId: 1, foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
+        {id: 2, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
+        {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
+      ],
+      paddocks: [
+        {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
+        {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
+      ]
      }
   }
+
+  
 
   //request.get('/dinos')
     //.then((data) => {
@@ -34,12 +43,14 @@ class GameContainer extends Component {
     //   request.post(url, payload)
     // }
 
+
+
   render() { 
     return ( 
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1> 
-        <PaddockCardList />    
+        <PaddockCardList paddocks={this.state.paddocks} dinos={this.state.dinos}/>    
         <h2>€25,000 </h2>
         <InfoBox />   
       </>

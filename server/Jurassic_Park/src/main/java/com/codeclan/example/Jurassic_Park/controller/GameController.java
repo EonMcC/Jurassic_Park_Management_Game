@@ -1,7 +1,6 @@
 package com.codeclan.example.Jurassic_Park.controller;
 
-import com.codeclan.example.Jurassic_Park.models.Paddock;
-import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
+import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,14 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/paddocks")
-public class PaddockController {
+@RequestMapping("/games")
+public class GameController {
 
     @Autowired
-    PaddockRepository paddockRepository;
+    GameRepository gameRepository;
 
-//    @GetMapping
-//    public List<Paddock> getAllPaddocks() {
-//        return paddockRepository.findAll();
-//    }
+    @GetMapping(value = "/balance")
+    public int getBankBalance(){
+        return gameRepository.getBankBalance();
+    }
+
+
 }

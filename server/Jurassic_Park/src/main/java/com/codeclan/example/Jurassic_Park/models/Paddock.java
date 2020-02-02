@@ -30,12 +30,18 @@ public class Paddock {
     @JsonIgnoreProperties("paddock")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
-    private List<TRex> tRexes;
+    private List<TRex> trexes;
 
     @JsonIgnoreProperties("paddock")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
     private List<Triceratops> triceratops;
+
+//    @JsonIgnoreProperties("paddocks")
+//    @ManyToOne
+//    @JoinColumn(name = "game_id", nullable = false)
+//    private Game game;
+
 
     public Paddock(int dinoCapacity, int noOfDinos, int costToBuy, int upKeepCost, boolean owned) {
         this.dinoCapacity = dinoCapacity;
@@ -43,8 +49,9 @@ public class Paddock {
         this.costToBuy = costToBuy;
         this.upKeepCost = upKeepCost;
         this.owned = owned;
-        this.tRexes = new ArrayList<>();
+        this.trexes = new ArrayList<>();
         this.triceratops = new ArrayList<>();
+//        this.game = game;
     }
 
     public Paddock () {
@@ -99,14 +106,22 @@ public class Paddock {
     }
 
     public List<TRex> getTRexes() {
-        return this.tRexes;
+        return this.trexes;
     }
 
     public void setTRexes(List<TRex> trexes) {
-        this.tRexes = trexes;
+        this.trexes = trexes;
     }
 
     public List<Triceratops> getTriceratops() { return this.triceratops; }
 
     public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
+
+//    public Game getGame() {
+//        return game;
+//    }
+//
+//    public void setGame(Game game) {
+//        this.game = game;
+//    }
 }

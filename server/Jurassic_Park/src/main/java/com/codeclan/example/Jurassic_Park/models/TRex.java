@@ -24,7 +24,7 @@ public class TRex {
     @Column(name = "revenue_increase")
     private int revenueIncrease;
 
-    @JsonIgnoreProperties("tRexes")
+    @JsonIgnoreProperties("trexes")
     @ManyToOne
     @JoinColumn(name = "paddock_id", nullable = false)
     private Paddock paddock;

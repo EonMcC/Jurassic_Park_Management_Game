@@ -7,6 +7,13 @@ import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
 import com.codeclan.example.Jurassic_Park.repositories.TRexRepository;
 import com.codeclan.example.Jurassic_Park.repositories.TriceratopsRepository;
 import com.codeclan.example.Jurassic_Park.repositories.inheritance.TriceratopsInheritRepository;
+
+
+import com.codeclan.example.Jurassic_Park.models.Bank;
+import com.codeclan.example.Jurassic_Park.models.Game;
+import com.codeclan.example.Jurassic_Park.repository.banks.BankRepository;
+import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -27,10 +34,17 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     TriceratopsInheritRepository triceratopsInheritRepository;
 
+    @Autowired
+    BankRepository bankRepository;
+
+    @Autowired
+    GameRepository gameRepository;
+
 
     public DataLoader() {
 
     }
+
 
     public void run(ApplicationArguments args) {
         Paddock paddock = new Paddock(1, 2, 3, 4, false);
@@ -47,8 +61,12 @@ public class DataLoader implements ApplicationRunner {
 //      TriceratopsInherit triceratops = new TriceratopsInherit(10, 30, "Shrubbery", 3, paddock);
 //      triceratopsInheritRepository.save(triceratops);
 
+        Bank bank1 = new Bank(1000);
+        bankRepository.save(bank1);
+
+        Game game1 = new Game(bank1);
+        gameRepository.save(game1);
 
     }
-
 
 }
