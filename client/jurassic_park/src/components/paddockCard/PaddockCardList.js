@@ -16,7 +16,7 @@ const PaddockCardList = ({paddocks, dinos}) => {
 
   const allPaddocks = paddocks.map((paddock) => {
     return (
-      <PaddockCard id={paddock.id} paddock={paddock} dinos={dinos}/>
+      <PaddockCard key={paddock.id} id={paddock.id} paddock={paddock} dinos={dinos}/>
     )
   })
 

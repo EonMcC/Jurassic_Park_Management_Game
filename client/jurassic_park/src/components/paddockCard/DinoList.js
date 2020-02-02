@@ -5,7 +5,7 @@ const DinoList = ({dinos}) => {
 
   const allDinos = dinos.map((dino) => {
     return (
-      <Dino dino={dino}/>
+      <Dino key={dino.id} dino={dino}/>
     )
   })
   
