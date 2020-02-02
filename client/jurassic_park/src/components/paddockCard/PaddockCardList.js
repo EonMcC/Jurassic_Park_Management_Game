@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PaddockCard from './PaddockCard';
 
-const PaddockCardList = ({paddocks, dinos, onHandleSelectDino, bankBalance, onHandleSelectPaddock}) => {
+const PaddockCardList = ({paddocks, dinos, onHandleSelectDino, bankBalance, onHandleSelectPaddock, onHandleOpenNewDinoCard}) => {
 
 
   // const getDinosForPaddock = (paddockId) => {
@@ -24,6 +24,7 @@ const PaddockCardList = ({paddocks, dinos, onHandleSelectDino, bankBalance, onHa
         onHandleSelectDino={onHandleSelectDino}
         bankBalance={bankBalance}
         onHandleSelectPaddock={onHandleSelectPaddock}
+        onHandleOpenNewDinoCard={onHandleOpenNewDinoCard}
         />
     )
   })

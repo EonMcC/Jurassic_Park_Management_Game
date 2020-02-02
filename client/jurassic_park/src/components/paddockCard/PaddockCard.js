@@ -11,6 +11,7 @@ class PaddockCard extends Component {
     this.handleClickClose = this.handleClickClose.bind(this);
     this.dinosForPaddock = this.dinosForPaddock.bind(this);
     this.calculateTotalPaddockRevenue = this.calculateTotalPaddockRevenue.bind(this);
+    this.handleClickAddDino = this.handleClickAddDino.bind(this);
   }
 
   handleClick(e) {
@@ -28,7 +29,7 @@ class PaddockCard extends Component {
   handleClickAddDino(e) {
     e.stopPropagation();
     //post new dino
-    
+    this.props.onHandleOpenNewDinoCard();
   }
 
   dinosForPaddock(paddockId) {
