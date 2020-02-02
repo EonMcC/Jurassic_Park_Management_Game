@@ -28,7 +28,7 @@ class PaddockCard extends Component {
   handleClickAddDino(e) {
     e.stopPropagation();
     //post new dino
-
+    
   }
 
   dinosForPaddock(paddockId) {

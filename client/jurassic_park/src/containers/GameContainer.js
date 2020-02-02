@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
 import FoodContainer from '../components/food/FoodContainer';
-import Timer from '../components/Timer';
+import AddDinoContainer from '../components/addDino/AddDinoContainer';
+
 
 class GameContainer extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class GameContainer extends Component {
       selectedPaddock: null,
       selectedDino: null,
       selectedFood: null,
+      showAddDino: false,
       showFoodContainer: false,
       bankBalance: 1
      }
@@ -94,6 +96,7 @@ class GameContainer extends Component {
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
                                             />}
+        <AddDinoContainer />
          
       </>
      );
