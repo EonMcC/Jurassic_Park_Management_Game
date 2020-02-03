@@ -21,6 +21,7 @@ class GameContainer extends Component {
       showAddDino: false,
       showFoodContainer: false,
       bankBalance: 10
+
      }
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);

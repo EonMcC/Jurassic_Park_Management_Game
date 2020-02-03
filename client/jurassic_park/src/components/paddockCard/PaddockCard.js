@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DinoList from './DinoList';
+import BuyPaddockCard from './BuyPaddockCard';
 
 class PaddockCard extends Component {
   constructor({props}) {
@@ -53,7 +54,7 @@ class PaddockCard extends Component {
   render() { 
     return ( 
       <div>    
-        <div className="paddock-card" onClick={this.handleClick}>      
+        {this.props.paddock.owned && <div className="paddock-card" onClick={this.handleClick}>      
         <p>{this.props.paddock.name}</p>
         <DinoList 
           dinos={this.dinosForPaddock(this.props.paddock.id)} 
@@ -64,7 +65,18 @@ class PaddockCard extends Component {
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
         <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
-      </div>
+      </div>}
+
+      {!this.props.paddock.owned && <div className="paddock-card" onClick={this.handleClick}> 
+        <BuyPaddockCard
+          upKeepCost={this.props.paddock.upKeepCost}    
+          name={this.props.paddock.name}
+          costToBuy={this.props.paddock.costToBuy}
+          dinoCapacity={this.props.paddock.dinoCapacity}
+          id={this.props.paddock.id}
+          bankBalance={this.props.bankBalance}
+        />           
+      </div>}
       </div>
      );
   }
