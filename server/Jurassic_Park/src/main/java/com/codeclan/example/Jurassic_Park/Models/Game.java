@@ -1,8 +1,11 @@
-package com.codeclan.example.Jurassic_Park.Models;
+package com.codeclan.example.Jurassic_Park.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="games")
@@ -16,7 +19,11 @@ public class Game {
     @OneToOne()
     @JoinColumn(name = "bank_id", nullable =  false)
     private Bank bank;
-//    private ArrayList<Paddock> paddocks;
+
+//    @JsonIgnoreProperties("game")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY)
+//    private List<Paddock> paddocks;
 
     public Game(Bank bank){
         this.bank = bank;
@@ -46,12 +53,15 @@ public class Game {
         this.id = id;
     }
 
-
-
-    //    public ArrayList<Paddock> getPaddocks(){
-//        return new ArrayList<Paddock>(this.paddocks);
+//    public List<Paddock> getPaddocks() {
+//        return paddocks;
 //    }
 //
+//    public void setPaddocks(ArrayList<Paddock> paddocks) {
+//        this.paddocks = paddocks;
+//    }
+
+
 //    public void buyPaddock(Paddock paddock){
 //        this.paddocks.add(paddock);
 //    }

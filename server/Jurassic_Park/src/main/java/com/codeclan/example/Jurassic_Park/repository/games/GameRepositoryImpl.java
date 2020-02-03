@@ -1,7 +1,7 @@
 package com.codeclan.example.Jurassic_Park.repository.games;
 
-import com.codeclan.example.Jurassic_Park.Models.Bank;
-import com.codeclan.example.Jurassic_Park.Models.Game;
+import com.codeclan.example.Jurassic_Park.models.Bank;
+import com.codeclan.example.Jurassic_Park.models.Game;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
