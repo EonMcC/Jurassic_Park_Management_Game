@@ -47,11 +47,6 @@ class GameContainer extends Component {
       //this.setState({dinos: data})   ((((data.????))))
     //})
 
-  //request.get('/paddocks')
-    //.then((data) => {
-      //this.setState({paddocks: data})   ((((data.????))))
-    //})
-
     componentDidMount() {
       const request = new Request();
       const url = 'http://localhost:8080';
