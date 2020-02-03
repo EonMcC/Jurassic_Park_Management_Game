@@ -35,7 +35,7 @@ class PaddockCard extends Component {
   dinosForPaddock(paddockId) {
     let currentPaddockDinos = [];
     this.props.dinos.forEach(dino => {
-      if (dino.paddockId === paddockId) {
+      if (dino._embedded.paddock.id === paddockId) {
         currentPaddockDinos.push(dino)
       }
     })
