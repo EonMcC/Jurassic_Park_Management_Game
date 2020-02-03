@@ -20,4 +20,9 @@ public class FoodTest {
     public void canGetName(){
         assertEquals("Cow", food.getName());
     }
+
+    @Test
+    public void canGetValue(){
+        assertEquals(2, food.getValue());
+    }
 }
