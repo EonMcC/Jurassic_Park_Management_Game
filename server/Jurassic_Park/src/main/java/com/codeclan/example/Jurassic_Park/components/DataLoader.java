@@ -54,7 +54,7 @@ public class DataLoader implements ApplicationRunner {
         Game game1 = new Game(bank1);
         gameRepository.save(game1);
 
-        Paddock paddock = new Paddock(1, 2, 3, 4, false, game1);
+        Paddock paddock = new Paddock("West Paddock", 1, 3, 4, false, game1);
         paddockRepository.save(paddock);
 
         TRex tRex = new TRex(4, 5, "cow", 5, paddock);

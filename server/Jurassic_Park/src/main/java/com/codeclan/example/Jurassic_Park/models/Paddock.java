@@ -17,14 +17,19 @@ public class Paddock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="name")
+    private String name;
+
+    @Column(name="dino_capacity")
     private int dinoCapacity;
 
-    private int noOfDinos;
-
+    @Column(name="cost")
     private int costToBuy;
 
+    @Column(name="upkeep")
     private int upKeepCost;
 
+    @Column(name="owned")
     private boolean owned;
 
     @JsonIgnoreProperties("paddock")
@@ -43,9 +48,9 @@ public class Paddock {
     private Game game;
 
 
-    public Paddock(int dinoCapacity, int noOfDinos, int costToBuy, int upKeepCost, boolean owned, Game game) {
+    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, Game game) {
+        this.name = name;
         this.dinoCapacity = dinoCapacity;
-        this.noOfDinos = noOfDinos;
         this.costToBuy = costToBuy;
         this.upKeepCost = upKeepCost;
         this.owned = owned;
@@ -55,6 +60,14 @@ public class Paddock {
     }
 
     public Paddock () {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -71,14 +84,6 @@ public class Paddock {
 
     public void setDinoCapacity(int dinoCapacity) {
         this.dinoCapacity = dinoCapacity;
-    }
-
-    public int getNoOfDinos() {
-        return noOfDinos;
-    }
-
-    public void setNoOfDinos(int noOfDinos) {
-        this.noOfDinos = noOfDinos;
     }
 
     public int getCostToBuy() {
