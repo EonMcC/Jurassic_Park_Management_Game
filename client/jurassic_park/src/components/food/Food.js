@@ -6,6 +6,7 @@ class Food extends Component {
     this.state = {  }
     this.handleSelect = this.handleSelect.bind(this);
     this.checkCanAffordFood = this.checkCanAffordFood.bind(this);
+    this.checkRightTypeOfFood = this.checkRightTypeOfFood.bind(this);
   }
 
   handleSelect(e) {
@@ -22,15 +23,28 @@ class Food extends Component {
     }
   }
 
+  //This function ensures only the right type of food for current dino is rendered.
+  checkRightTypeOfFood() {
+    const dietaryType = this.props.selectedDino.dietaryType;
+    const foodType = this.props.food.type;
+    if (foodType === dietaryType) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   render() { 
 
     return ( 
-      <div className="food-item">
-        <h4>Food: {this.props.food.name}</h4>
-        <h4>Replenishment: {this.props.food.replenLevel}</h4>
-        <h4>Cost: €{this.props.food.price}</h4>
-        {this.checkCanAffordFood() && <button onClick={this.handleSelect}>Feed to Dino</button>}
-      </div>
+      <>
+        {this.checkRightTypeOfFood() && <div className="food-item">
+          <h4>Food: {this.props.food.name}</h4>
+          <h4>Replenishment: {this.props.food.replenLevel}</h4>
+          <h4>Cost: €{this.props.food.price}</h4>
+          {this.checkCanAffordFood() && <button onClick={this.handleSelect}>Feed to Dino</button>}
+        </div>}
+      </>
      );
   }
 }

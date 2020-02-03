@@ -8,7 +8,7 @@ class FoodList extends Component {
   }
 
   render() { 
-
+    
     const splitFoods = this.props.foods.map((food, index) => {
       return (
         <Food 
@@ -16,6 +16,7 @@ class FoodList extends Component {
           food={food}
           onHandleSelectFood={this.props.onHandleSelectFood} 
           bankBalance={this.props.bankBalance}
+          selectedDino={this.props.selectedDino}
           />
       );
     });
