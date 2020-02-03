@@ -11,18 +11,15 @@ class GameContainer extends Component {
     super(props);
     this.state = { 
       dinos: [
-        {id: 1, paddockId: 1, foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
-        {id: 2, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
-        {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
+        // {id: 1, paddockId: 1, foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
+        // {id: 2, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
+        // {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
       ],
       newDinos: [
         {type: 'Triceratops', foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
         {type: 'T-Rex', foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
       ],
-      paddocks: [
-        // {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
-        // {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
-      ],
+      paddocks: [],
       foods: [
         {id: 1, name: "Shrubbery", replen: 3, cost: 1},
         {id: 2, name: "Cow", replen: 3, cost: 2}
@@ -48,12 +45,17 @@ class GameContainer extends Component {
     //})
 
     componentDidMount() {
+      //Get Paddocks
       const request = new Request();
       const url = 'http://localhost:8080';
-
       request.get(`${url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
+      })
+      //GetDinos
+      request.get(`${url}/dinosaurs`)
+      .then((data) => {
+        this.setState({dinos: data._embedded.dinosaurs})
       })
     }
 
