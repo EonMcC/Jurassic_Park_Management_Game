@@ -2,8 +2,10 @@ package com.codeclan.example.Jurassic_Park.components;
 
 
 import com.codeclan.example.Jurassic_Park.Models.Bank;
+import com.codeclan.example.Jurassic_Park.Models.Food;
 import com.codeclan.example.Jurassic_Park.Models.Game;
 import com.codeclan.example.Jurassic_Park.repository.banks.BankRepository;
+import com.codeclan.example.Jurassic_Park.repository.foods.FoodRepository;
 import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -19,6 +21,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     GameRepository gameRepository;
 
+    @Autowired
+    FoodRepository foodRepository;
+
     public DataLoader() {
 
     }
@@ -32,6 +37,8 @@ public class DataLoader implements ApplicationRunner {
         Game game1 = new Game(bank1);
         gameRepository.save(game1);
 
+        Food food1 = new Food("Cow", 2, 2, 'm');
+        foodRepository.save(food1);
 
     }
 }
