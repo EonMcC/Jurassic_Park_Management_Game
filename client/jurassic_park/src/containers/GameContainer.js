@@ -114,6 +114,7 @@ class GameContainer extends Component {
                                             foods={this.state.foods}
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
+                                            selectedDino={this.state.selectedDino}
                                             />}
         {this.state.showAddDino && <AddDinoContainer 
                                       newDinos={this.state.newDinos}
