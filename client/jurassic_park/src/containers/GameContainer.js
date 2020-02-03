@@ -49,9 +49,7 @@ class GameContainer extends Component {
       })
       .then(()=> {
         this.setState({newDinos:
-
           this.state.dinos.slice(0, 2)
-
         })
       })
         //GetFoods
