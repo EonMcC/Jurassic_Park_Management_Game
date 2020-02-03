@@ -19,8 +19,8 @@ class GameContainer extends Component {
         {foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
       ],
       paddocks: [
-        {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
-        {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
+        // {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
+        // {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
       ],
       foods: [
         {id: 1, name: "Shrubbery", replen: 3, cost: 1},
