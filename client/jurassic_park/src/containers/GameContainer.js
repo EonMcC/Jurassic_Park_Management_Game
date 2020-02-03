@@ -20,7 +20,8 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 10
+      bankBalance: 10,
+      dinoAdded: false //purely to try to do another fetch.
      }
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);
@@ -28,6 +29,7 @@ class GameContainer extends Component {
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
      this.handleNewDino = this.handleNewDino.bind(this);
+     // this.getDinos = this.getDinos.bind(this);
   }
 
   //request.get('/dinos')
@@ -61,6 +63,15 @@ class GameContainer extends Component {
 
   }
 
+    // getDinos() {
+    //   const request = new Request();
+    //   const url = 'http://localhost:8080';
+    //   request.get(`${url}/dinosaurs`)
+    //   .then((data) => {
+    //     this.setState({dinos: data._embedded.dinosaurs})
+    //   })
+    // }
+
     updateDinoFoodLevelWhenFed(replenLevel) {
       const dino = this.state.selectedDino;
       // const foodReplenLevel = this.state.selectedFood.replenLevel;
@@ -79,8 +90,11 @@ class GameContainer extends Component {
       // dino["paddock"] = this.state.selectedPaddock;
       const request = new Request();
       const url = 'http://localhost:8080';
+
       // request.post(`${url}/paddocks/${paddock.id}/dinosaurs`, dino)
       request.post(`${url}/dinosaurs`, dino)
+      // this.getDinos();
+      this.setState({showAddDino: false});
     }
 
     handleStartClick(e) {
