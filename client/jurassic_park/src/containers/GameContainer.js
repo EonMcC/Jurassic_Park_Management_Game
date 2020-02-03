@@ -16,8 +16,8 @@ class GameContainer extends Component {
         {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
       ],
       newDinos: [
-        {foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
-        {foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
+        {type: 'Triceratops', foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
+        {type: 'T-Rex', foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
       ],
       paddocks: [
         // {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
@@ -32,7 +32,7 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 1
+      bankBalance: 10
      }
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);

@@ -10,6 +10,8 @@ class NewDino extends Component {
   checkCanAffordDino(){
     const dinoCost = this.props.newDino.buyValue;
     const bankBalance = this.props.bankBalance;
+    console.log(dinoCost);
+    console.log(`Bank: ${bankBalance}`);
     if (dinoCost <= bankBalance) {
       return true;
     } else {
@@ -21,19 +23,11 @@ class NewDino extends Component {
   render() { 
     return ( 
       <>
-        <h2>Iguanadon</h2>
-        <p>Herbivore</p>
-        <p>€1000</p>
-        <p>€50</p>
-        {/* AddDino button can send a post request from here? Rather than back up the chain? */}
-        <button>Add this Dino!</button>
-
-        <h2>T-Rex</h2>
-        <p>Carnivore</p>
-        <p>€2000</p>
-        <p>€100</p>
-        {this.checkCanAffordDino() && <button>Add this Dino!</button>}
-        
+        <h2>{this.props.newDino.type}</h2>
+        <p>Dietary Type: {this.props.newDino.dietaryType}</p>
+        <p>Cost: {this.props.newDino.buyValue}</p>
+        <p>Revenue: {this.props.newDino.revenue}</p>
+        {this.checkCanAffordDino() && <button>Add this Dino!</button>}        
       </>
      );
   }
