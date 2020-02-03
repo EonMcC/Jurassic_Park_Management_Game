@@ -61,7 +61,7 @@ class GameContainer extends Component {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
 
-      // setInterval(this.timerPost, 5000); 
+    //   setInterval(this.timerPost, 5000); 
     }
 
     // timerPost() {
@@ -106,7 +106,10 @@ class GameContainer extends Component {
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
           />    
         <h2>€{this.state.bankBalance} </h2>
-        <InfoBox />
+        <InfoBox 
+          paddocks={this.state.paddocks}
+          dinos={this.state.dinos} 
+                  />
          {this.state.showFoodContainer && <FoodContainer 
                                             foods={this.state.foods}
                                             onHandleSelectFood={this.handleSelectFood}
