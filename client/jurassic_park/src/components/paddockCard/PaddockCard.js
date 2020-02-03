@@ -73,7 +73,9 @@ class PaddockCard extends Component {
           name={this.props.paddock.name}
           costToBuy={this.props.paddock.costToBuy}
           dinoCapacity={this.props.paddock.dinoCapacity}
-          id={this.props.paddock.id} />           
+          id={this.props.paddock.id}
+          bankBalance={this.props.bankBalance}
+        />           
       </div>}
       </div>
      );
