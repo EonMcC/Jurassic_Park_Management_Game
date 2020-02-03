@@ -110,11 +110,11 @@ public class Paddock {
         this.owned = owned;
     }
 
-    public List<Dinosaur> getTRexes() {
+    public List<Dinosaur> getDinosaurs() {
         return this.dinosaurs;
     }
 
-    public void setTRexes(List<Dinosaur> trexes) {
+    public void setDinosaurs(List<Dinosaur> trexes) {
         this.dinosaurs = trexes;
     }
 
@@ -129,4 +129,8 @@ public class Paddock {
     public void setGame(Game game) {
         this.game = game;
     }
+
+
 }
+
+
