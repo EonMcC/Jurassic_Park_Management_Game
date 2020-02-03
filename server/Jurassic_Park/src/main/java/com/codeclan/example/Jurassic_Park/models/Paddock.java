@@ -37,13 +37,13 @@ public class Paddock {
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
     private List<Triceratops> triceratops;
 
-//    @JsonIgnoreProperties("paddocks")
-//    @ManyToOne
-//    @JoinColumn(name = "game_id", nullable = false)
-//    private Game game;
+    @JsonIgnoreProperties("paddocks")
+    @ManyToOne
+    @JoinColumn(name = "game_id", nullable = false)
+    private Game game;
 
 
-    public Paddock(int dinoCapacity, int noOfDinos, int costToBuy, int upKeepCost, boolean owned) {
+    public Paddock(int dinoCapacity, int noOfDinos, int costToBuy, int upKeepCost, boolean owned, Game game) {
         this.dinoCapacity = dinoCapacity;
         this.noOfDinos = noOfDinos;
         this.costToBuy = costToBuy;
@@ -51,7 +51,7 @@ public class Paddock {
         this.owned = owned;
         this.trexes = new ArrayList<>();
         this.triceratops = new ArrayList<>();
-//        this.game = game;
+        this.game = game;
     }
 
     public Paddock () {
@@ -117,11 +117,11 @@ public class Paddock {
 
     public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
 
-//    public Game getGame() {
-//        return game;
-//    }
-//
-//    public void setGame(Game game) {
-//        this.game = game;
-//    }
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }

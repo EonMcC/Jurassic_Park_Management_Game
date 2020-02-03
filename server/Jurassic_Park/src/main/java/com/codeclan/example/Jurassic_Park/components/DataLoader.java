@@ -47,7 +47,14 @@ public class DataLoader implements ApplicationRunner {
 
 
     public void run(ApplicationArguments args) {
-        Paddock paddock = new Paddock(1, 2, 3, 4, false);
+
+        Bank bank1 = new Bank(1000);
+        bankRepository.save(bank1);
+
+        Game game1 = new Game(bank1);
+        gameRepository.save(game1);
+
+        Paddock paddock = new Paddock(1, 2, 3, 4, false, game1);
         paddockRepository.save(paddock);
 
         TRex tRex = new TRex(4, 5, "cow", 5, paddock);
@@ -61,11 +68,6 @@ public class DataLoader implements ApplicationRunner {
 //      TriceratopsInherit triceratops = new TriceratopsInherit(10, 30, "Shrubbery", 3, paddock);
 //      triceratopsInheritRepository.save(triceratops);
 
-        Bank bank1 = new Bank(1000);
-        bankRepository.save(bank1);
-
-        Game game1 = new Game(bank1);
-        gameRepository.save(game1);
 
     }
 
