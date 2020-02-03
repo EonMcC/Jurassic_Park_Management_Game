@@ -14,6 +14,10 @@ class GameContainer extends Component {
         {id: 2, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
         {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
       ],
+      newDinos: [
+        {foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
+        {foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
+      ],
       paddocks: [
         {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true},
         {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, revenue: 1, owned: true}
@@ -102,7 +106,10 @@ class GameContainer extends Component {
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
                                             />}
-        {this.state.showAddDino && <AddDinoContainer />}
+        {this.state.showAddDino && <AddDinoContainer 
+                                      newDinos={this.state.newDinos}
+                                      bankBalance={this.state.bankBalance}
+                                      />}
          
       </>
      );

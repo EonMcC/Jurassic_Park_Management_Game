@@ -8,7 +8,7 @@ class AddDinoContainer extends Component {
   }
   render() { 
     return ( 
-      <NewDinoList />
+      <NewDinoList newDinos={this.props.newDinos}/>
      );
   }
 }

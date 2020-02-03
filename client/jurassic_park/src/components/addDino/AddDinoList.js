@@ -7,8 +7,19 @@ class AddDinoList extends Component {
     this.state = {  }
   }
   render() { 
+    const splitNewDinos = this.props.newDinos.map(dino => {
+      return (
+        <NewDino 
+          dino={dino}
+          bankBalance={this.props.bankBalance}
+          />
+      )
+    })
     return ( 
-      <NewDino />
+      <NewDino 
+        newDino={splitNewDinos}
+        bankBalance={this.props.bankBalance}
+        />
      );
   }
 }
