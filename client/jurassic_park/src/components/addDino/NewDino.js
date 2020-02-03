@@ -12,8 +12,9 @@ class NewDino extends Component {
         <p>Herbivore</p>
         <p>€1000</p>
         <p>€50</p>
+        {/* AddDino button can send a post request from here? Rather than back up the chain? */}
         <button>Add this Dino!</button>
-        
+
         <h2>T-Rex</h2>
         <p>Carnivore</p>
         <p>€2000</p>
