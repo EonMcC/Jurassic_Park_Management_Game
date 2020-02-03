@@ -7,8 +7,6 @@ public enum FoodType {
     SHRUBBERY(10, 2, 'h'),
     BERRIES(5, 1, 'h');
 
-
-
     private int value;
     private int replenLevel;
     private char type;
