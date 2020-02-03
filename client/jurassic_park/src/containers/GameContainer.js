@@ -101,7 +101,10 @@ class GameContainer extends Component {
 
     decreaseFoodLevel(){
       this.state.dinos.forEach((dino) =>{
+        if(dino.foodLevel > 0){
         dino.foodLevel -= 1;
+        }
+        // else{this.endGame()}
       })
     }
 
@@ -130,6 +133,8 @@ class GameContainer extends Component {
     handleSelectDino(dino) {
       this.setState({selectedDino: dino});
       this.setState({showFoodContainer: true});
+      // let newBalance = this.state.bankBalance - dino.buyValue;
+      // this.setState({bankBalance: newBalance});
     }
 
     //handleSelectFood sets the state equal to the food that the user selects,
@@ -137,6 +142,8 @@ class GameContainer extends Component {
     handleSelectFood(food) {
       this.setState({selectedFood: food});
       this.setState({showFoodContainer: false});
+      // let newBalance = this.state.bankBalance - food.cost;
+      // this.setState({bankBalance: newBalance});
     }
 
     handleOpenNewDinoCard(){
