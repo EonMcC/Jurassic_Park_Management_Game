@@ -9,15 +9,13 @@ import Request from '../helpers/requests';
 class GameContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       dinos: [],
-      newDinos: [
-        {type: 'Triceratops', foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
-        {type: 'T-Rex', foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
-      ],
+      newDinos: [], //choices
       paddocks: [],
       foods: [],
       selectedPaddock: null,
+      selectedNewDino: null, //the new dinosaur
       selectedDino: null,
       selectedFood: null,
       showAddDino: false,
@@ -30,8 +28,6 @@ class GameContainer extends Component {
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
   }
-
-  
 
   //request.get('/dinos')
     //.then((data) => {
@@ -51,11 +47,19 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
+      .then(()=> {
+        this.setState({newDinos:
+
+          this.state.dinos.slice(0, 2)
+
+        })
+      })
         //GetFoods
       request.get(`${url}/foods`)
       .then((data) => {
         this.setState({foods: data._embedded.foods})
-      }) 
+      })
+
   }
 
     updateDinoFoodLevelWhenFed(replenLevel) {
@@ -65,14 +69,14 @@ class GameContainer extends Component {
       const request = new Request();
       const url = 'http://localhost:8080';
       request.patch(`${url}/dinosaurs/${dino.id}`, dino)
-      
+
     }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
 
-      // setInterval(this.timerPost, 5000); 
+      // setInterval(this.timerPost, 5000);
     }
 
     // timerPost() {
@@ -109,35 +113,35 @@ class GameContainer extends Component {
       this.setState({showAddDino: true});
     }
 
-  render() { 
-    return ( 
+  render() {
+    return (
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
-        <h1>Welcome to Jurassic Park</h1> 
-        <PaddockCardList 
-          paddocks={this.state.paddocks} 
-          dinos={this.state.dinos} 
+        <h1>Welcome to Jurassic Park</h1>
+        <PaddockCardList
+          paddocks={this.state.paddocks}
+          dinos={this.state.dinos}
           onHandleSelectPaddock={this.handleSelectPaddock}
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
-          />    
+          />
         <h2>€{this.state.bankBalance} </h2>
         <InfoBox />
-         {this.state.showFoodContainer && <FoodContainer 
+         {this.state.showFoodContainer && <FoodContainer
                                             foods={this.state.foods}
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
                                             selectedDino={this.state.selectedDino}
                                             />}
-        {this.state.showAddDino && <AddDinoContainer 
+        {this.state.showAddDino && <AddDinoContainer
                                       newDinos={this.state.newDinos}
                                       bankBalance={this.state.bankBalance}
                                       />}
-         
+
       </>
      );
   }
 }
- 
+
 export default GameContainer;

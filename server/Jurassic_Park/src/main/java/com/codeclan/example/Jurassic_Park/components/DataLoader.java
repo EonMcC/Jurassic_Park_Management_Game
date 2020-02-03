@@ -60,10 +60,14 @@ public class DataLoader implements ApplicationRunner {
         Paddock paddock2 = new Paddock("East Paddock", 2, 6, 8, false, game1);
         paddockRepository.save(paddock2);
 
+
+
         Dinosaur tRex = new Dinosaur("T-Rex",4, 5, "Carnivore", 5, paddock);
         dinosaurRepository.save(tRex);
         Dinosaur tRex2 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock);
         dinosaurRepository.save(tRex2);
+        Dinosaur dino3 = new Dinosaur("Triceratops", 8, 4, "Herbivore", 5, paddock);
+        dinosaurRepository.save(dino3);
 
         Food food1 = new Food("Beef", 10, 2, "Carnivore");
         Food food2 = new Food("Chicken", 5, 1, "Carnivore");
