@@ -22,13 +22,14 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 10
+      bankBalance: 1000
      }
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);
      this.handleSelectFood = this.handleSelectFood.bind(this);
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
+     this.handleAddNewDino = this.handleAddNewDino.bind(this);
   }
 
   
@@ -104,9 +105,15 @@ class GameContainer extends Component {
       this.setState({showFoodContainer: false});
     }
 
-
     handleOpenNewDinoCard(){
       this.setState({showAddDino: true});
+    }
+
+    handleAddNewDino(dino){
+      const dinoBuyValue = dino.buyValue;
+      const currentBankBalance = this.state.bankBalance;
+      const newBankBalance = currentBankBalance - dinoBuyValue;
+      this.setState({bankBalance: newBankBalance});
     }
 
   render() { 
@@ -133,6 +140,7 @@ class GameContainer extends Component {
         {this.state.showAddDino && <AddDinoContainer 
                                       newDinos={this.state.newDinos}
                                       bankBalance={this.state.bankBalance}
+                                      onHandleAddNewDino={this.handleAddNewDino}
                                       />}
          
       </>

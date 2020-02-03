@@ -13,6 +13,7 @@ class AddDinoList extends Component {
           key={index}
           newDino={dino}
           bankBalance={this.props.bankBalance}
+          onHandleAddNewDino={this.props.onHandleAddNewDino}
         />
       )
     })

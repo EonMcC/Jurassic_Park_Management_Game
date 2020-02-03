@@ -11,6 +11,7 @@ class AddDinoContainer extends Component {
       <NewDinoList 
         newDinos={this.props.newDinos}
         bankBalance={this.props.bankBalance}
+        onHandleAddNewDino={this.props.onHandleAddNewDino}
       />
      );
   }

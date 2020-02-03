@@ -5,6 +5,7 @@ class NewDino extends Component {
     super(props);
     this.state = {  }
     this.checkCanAffordDino = this.checkCanAffordDino.bind(this);
+    this.onClickAddNewDino = this.onClickAddNewDino.bind(this);
   }
 
   checkCanAffordDino(){
@@ -19,6 +20,10 @@ class NewDino extends Component {
     }
   }
 
+  onClickAddNewDino() {
+    this.props.onHandleAddNewDino(this.props.newDino);
+  }
+
 
   render() { 
     return ( 
@@ -27,7 +32,7 @@ class NewDino extends Component {
         <p>Dietary Type: {this.props.newDino.dietaryType}</p>
         <p>Cost: {this.props.newDino.buyValue}</p>
         <p>Revenue: {this.props.newDino.revenue}</p>
-        {this.checkCanAffordDino() && <button>Add this Dino!</button>}        
+        {this.checkCanAffordDino() && <button onClick={this.onClickAddNewDino}>Add this Dino!</button>}        
       </>
      );
   }
