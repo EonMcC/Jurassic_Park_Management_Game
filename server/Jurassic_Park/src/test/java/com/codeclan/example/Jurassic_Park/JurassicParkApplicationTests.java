@@ -54,7 +54,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-		Paddock paddock = new Paddock(5, 0, 3000, 30, false, game1);
+		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, game1);
 		paddockRepository.save(paddock);
 	}
 
@@ -64,7 +64,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-		Paddock paddock = new Paddock(5, 0, 3000, 30, false, game1);
+		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, game1);
 		paddockRepository.save(paddock);
 		TRex tRex = new TRex(10, 30, "Cow", 3, paddock);
 		tRexRepository.save(tRex);
@@ -76,7 +76,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-        Paddock paddock = new Paddock(5, 0, 3000, 30, false, game1);
+        Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, game1);
         paddockRepository.save(paddock);
         Triceratops triceratops = new Triceratops(10, 30, "Shrubbery", 3, paddock);
         triceratopsRepository.save(triceratops);
@@ -88,7 +88,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-		Paddock paddock = new Paddock(5, 0, 3000, 30, false, game1);
+		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, game1);
 		paddockRepository.save(paddock);
 		TriceratopsInherit triceratops = new TriceratopsInherit(10, 30, "Shrubbery", 3, paddock);
 		triceratopsInheritRepository.save(triceratops);
