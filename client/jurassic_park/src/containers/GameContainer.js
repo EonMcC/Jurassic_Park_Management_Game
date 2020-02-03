@@ -3,6 +3,7 @@ import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
 import FoodContainer from '../components/food/FoodContainer';
 import AddDinoContainer from '../components/addDino/AddDinoContainer';
+import Request from '../helpers/requests';
 
 
 class GameContainer extends Component {
@@ -50,6 +51,16 @@ class GameContainer extends Component {
     //.then((data) => {
       //this.setState({paddocks: data})   ((((data.????))))
     //})
+
+    componentDidMount() {
+      const request = new Request();
+      const url = 'http://localhost:8080';
+
+      request.get(`${url}/paddocks`)
+      .then((data) => {
+        this.setState({paddocks: data._embedded.paddocks})
+      })
+    }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
