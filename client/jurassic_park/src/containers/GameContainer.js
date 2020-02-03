@@ -10,21 +10,13 @@ class GameContainer extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      dinos: [
-        // {id: 1, paddockId: 1, foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
-        // {id: 2, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
-        // {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
-      ],
+      dinos: [],
       newDinos: [
         {type: 'Triceratops', foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
         {type: 'T-Rex', foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
       ],
       paddocks: [],
-      foods: [
-        // {id: 1, name: "Shrubbery", replen: 3, cost: 1},
-        // {id: 2, name: "Cow", replen: 3, cost: 2}
-        // {name, price, replenLevel, type}
-      ],
+      foods: [],
       selectedPaddock: null,
       selectedDino: null,
       selectedFood: null,
@@ -36,6 +28,7 @@ class GameContainer extends Component {
      this.handleSelectDino = this.handleSelectDino.bind(this);
      this.handleSelectFood = this.handleSelectFood.bind(this);
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
+     this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
   }
 
   
@@ -64,6 +57,16 @@ class GameContainer extends Component {
         this.setState({foods: data._embedded.foods})
       }) 
   }
+
+    updateDinoFoodLevelWhenFed(replenLevel) {
+      const dino = this.state.selectedDino;
+      // const foodReplenLevel = this.state.selectedFood.replenLevel;
+      dino.foodLevel += replenLevel;
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      request.patch(`${url}/dinosaurs/${dino.id}`, dino)
+      
+    }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
@@ -96,11 +99,11 @@ class GameContainer extends Component {
       const currentBankBalance = this.state.bankBalance;
       const newBankBalance = currentBankBalance - foodPrice;
       this.setState({bankBalance: newBankBalance});
-      this.updateDinoFoodLevel();
-
       this.setState({selectedFood: food});
+      this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
     }
+
 
     handleOpenNewDinoCard(){
       this.setState({showAddDino: true});
