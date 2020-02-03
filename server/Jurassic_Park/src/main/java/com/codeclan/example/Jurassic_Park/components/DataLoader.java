@@ -1,9 +1,7 @@
 package com.codeclan.example.Jurassic_Park.components;
 
 import com.codeclan.example.Jurassic_Park.controller.DinosaurController;
-import com.codeclan.example.Jurassic_Park.models.Paddock;
-import com.codeclan.example.Jurassic_Park.models.Dinosaur;
-import com.codeclan.example.Jurassic_Park.models.Triceratops;
+import com.codeclan.example.Jurassic_Park.models.*;
 import com.codeclan.example.Jurassic_Park.models.inheritance.Dino;
 import com.codeclan.example.Jurassic_Park.repositories.DinosaurRepository;
 import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
@@ -12,9 +10,8 @@ import com.codeclan.example.Jurassic_Park.repositories.TriceratopsRepository;
 import com.codeclan.example.Jurassic_Park.repositories.inheritance.TriceratopsInheritRepository;
 
 
-import com.codeclan.example.Jurassic_Park.models.Bank;
-import com.codeclan.example.Jurassic_Park.models.Game;
 import com.codeclan.example.Jurassic_Park.repository.banks.BankRepository;
+import com.codeclan.example.Jurassic_Park.repository.foods.FoodRepository;
 import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +31,8 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     TriceratopsRepository triceratopsRepository;
 
-//    @Autowired
-//    TriceratopsInheritRepository triceratopsInheritRepository;
+    @Autowired
+    FoodRepository foodRepository;
 
     @Autowired
     BankRepository bankRepository;
@@ -64,6 +61,15 @@ public class DataLoader implements ApplicationRunner {
         dinosaurRepository.save(tRex);
         Dinosaur tRex2 = new Dinosaur("Triceratops", 10, 5, "herbivore", 5, paddock);
         dinosaurRepository.save(tRex2);
+
+        Food food1 = new Food("Beef", 10, 2, "carnivore");
+        Food food2 = new Food("Chicken", 5, 1, "carnivore");
+        Food food3 = new Food("Shrubbery", 10, 2, "herbivore");
+        Food food4 = new Food("Berries", 5, 1, "herbivore");
+        foodRepository.save(food1);
+        foodRepository.save(food2);
+        foodRepository.save(food3);
+        foodRepository.save(food4);
 
 //        Triceratops triceratops = new Triceratops(4, 5, "herbivore", 5, paddock);
 //        triceratopsRepository.save(triceratops);

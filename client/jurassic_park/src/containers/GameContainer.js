@@ -21,8 +21,9 @@ class GameContainer extends Component {
       ],
       paddocks: [],
       foods: [
-        {id: 1, name: "Shrubbery", replen: 3, cost: 1},
-        {id: 2, name: "Cow", replen: 3, cost: 2}
+        // {id: 1, name: "Shrubbery", replen: 3, cost: 1},
+        // {id: 2, name: "Cow", replen: 3, cost: 2}
+        // {name, price, replenLevel, type}
       ],
       selectedPaddock: null,
       selectedDino: null,
@@ -57,7 +58,12 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
-    }
+        //GetFoods
+      request.get(`${url}/foods`)
+      .then((data) => {
+        this.setState({foods: data._embedded.foods})
+      }) 
+  }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
@@ -113,6 +119,7 @@ class GameContainer extends Component {
                                             foods={this.state.foods}
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
+                                            selectedDino={this.state.selectedDino}
                                             />}
         {this.state.showAddDino && <AddDinoContainer 
                                       newDinos={this.state.newDinos}
