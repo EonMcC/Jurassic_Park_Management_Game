@@ -13,9 +13,9 @@ class Food extends Component {
   }
 
   checkCanAffordFood(){
-    const foodCost = this.props.food.cost;
+    const foodPrice = this.props.food.price;
     const bankBalance = this.props.bankBalance;
-    if (foodCost <= bankBalance) {
+    if (foodPrice <= bankBalance) {
       return true;
     } else {
       return false;
@@ -27,8 +27,8 @@ class Food extends Component {
     return ( 
       <div className="food-item">
         <h4>Food: {this.props.food.name}</h4>
-        <h4>Replenishment: {this.props.food.replen}</h4>
-        <h4>Cost: €{this.props.food.cost}</h4>
+        <h4>Replenishment: {this.props.food.replenLevel}</h4>
+        <h4>Cost: €{this.props.food.price}</h4>
         {this.checkCanAffordFood() && <button onClick={this.handleSelect}>Feed to Dino</button>}
       </div>
      );

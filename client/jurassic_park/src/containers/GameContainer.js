@@ -19,13 +19,11 @@ class GameContainer extends Component {
         {type: 'Triceratops', foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
         {type: 'T-Rex', foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
       ],
-      paddocks: [
-        // {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
-        // {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
-      ],
+      paddocks: [],
       foods: [
-        {id: 1, name: "Shrubbery", replen: 3, cost: 1},
-        {id: 2, name: "Cow", replen: 3, cost: 2}
+        // {id: 1, name: "Shrubbery", replen: 3, cost: 1},
+        // {id: 2, name: "Cow", replen: 3, cost: 2}
+        // {name, price, replenLevel, type}
       ],
       selectedPaddock: null,
       selectedDino: null,
@@ -54,6 +52,11 @@ class GameContainer extends Component {
       request.get(`${url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
+      })
+
+      request.get(`${url}/foods`)
+      .then((data) => {
+        this.setState({foods: data._embedded.foods})
       })
     }
 
