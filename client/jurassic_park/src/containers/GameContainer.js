@@ -49,7 +49,7 @@ class GameContainer extends Component {
      this.calculateIncome = this.calculateIncome.bind(this);
      this.calculateNet = this.calculateNet.bind(this);
      this.setBalance = this.setBalance.bind(this);
-
+     this.decreaseFoodLevel = this.decreaseFoodLevel.bind(this);
   }
 
     componentDidMount() {
@@ -99,14 +99,18 @@ class GameContainer extends Component {
       this.setState({bankBalance: value});
     }
 
+    decreaseFoodLevel(){
+      this.state.dinos.forEach((dino) =>{
+        dino.foodLevel -= 1;
+      })
+    }
+
     timerTrigger() {
       this.calculateIncome();
       this.calculateExpenditure();
       this.calculateNet();
       this.setBalance();
-      
-      
-      // decreaseFoodLevel();
+      this.decreaseFoodLevel();
     }
 
     handleStartClick(e) {
