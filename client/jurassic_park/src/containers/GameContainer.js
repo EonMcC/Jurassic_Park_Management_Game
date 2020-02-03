@@ -88,7 +88,8 @@ class GameContainer extends Component {
 
   render() { 
     return ( 
-      <>
+      <div className="game-container">
+        <div className="background"></div>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1> 
         <PaddockCardList 
@@ -111,7 +112,7 @@ class GameContainer extends Component {
                                       bankBalance={this.state.bankBalance}
                                       />}
          
-      </>
+      </div>
      );
   }
 }

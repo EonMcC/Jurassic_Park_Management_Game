@@ -1,3 +1,8 @@
 .info-box {
   border: black 2px solid;
+  width: 20vw;
+}
+
+.info-box * {
+  text-align: center;
 }

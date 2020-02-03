@@ -1,3 +1,20 @@
+.game-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.background {
+  background-image: url('../images/map.jpg');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+  height: 95vh;
+  width: 100vw;
+  position: fixed;
+  z-index: -5;
+  margin-top: 3%;
+}
+
 h1 {
   text-align: center;
 }
@@ -12,3 +29,4 @@ h1 {
   z-index: 1;
   opacity: 1;
   }
+
