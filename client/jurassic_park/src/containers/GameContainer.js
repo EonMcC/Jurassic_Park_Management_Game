@@ -95,7 +95,8 @@ class GameContainer extends Component {
       const foodPrice = food.price;
       const currentBankBalance = this.state.bankBalance;
       const newBankBalance = currentBankBalance - foodPrice;
-      this.setState({bankBalance: newBankBalance})
+      this.setState({bankBalance: newBankBalance});
+      this.updateDinoFoodLevel();
 
       this.setState({selectedFood: food});
       this.setState({showFoodContainer: false});
