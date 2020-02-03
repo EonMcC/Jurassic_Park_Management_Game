@@ -32,4 +32,7 @@ public class FoodTest {
     }
 
     @Test
+    public void canGetType(){
+        assertEquals('m', food.getType());
+    }
 }
