@@ -29,6 +29,10 @@ public class Food {
         this.type = type;
     }
 
+    public Food(){
+        
+    }
+
     public Long getId() {
         return id;
     }
