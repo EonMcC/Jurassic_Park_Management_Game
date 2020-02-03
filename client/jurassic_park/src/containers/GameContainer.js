@@ -90,8 +90,13 @@ class GameContainer extends Component {
     }
 
     //handleSelectFood sets the state equal to the food that the user selects,
-    //closes the FoodContainer and sends the info to the database.
+    //closes the FoodContainer and updates the bankBalance state.
     handleSelectFood(food) {
+      const foodPrice = food.price;
+      const currentBankBalance = this.state.bankBalance;
+      const newBankBalance = currentBankBalance - foodPrice;
+      this.setState({bankBalance: newBankBalance})
+
       this.setState({selectedFood: food});
       this.setState({showFoodContainer: false});
     }
