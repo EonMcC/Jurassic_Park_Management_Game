@@ -25,4 +25,11 @@ public class FoodTest {
     public void canGetValue(){
         assertEquals(2, food.getValue());
     }
+
+    @Test
+    public void canGetReplenLevel(){
+        assertEquals(2, food.getReplenLevel());
+    }
+
+    @Test
 }
