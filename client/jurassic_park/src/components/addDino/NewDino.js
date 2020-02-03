@@ -20,17 +20,17 @@ class NewDino extends Component {
   }
 
 
-  render() { 
-    return ( 
+  render() {
+    return (
       <>
         <h2>{this.props.newDino.type}</h2>
         <p>Dietary Type: {this.props.newDino.dietaryType}</p>
         <p>Cost: {this.props.newDino.buyValue}</p>
-        <p>Revenue: {this.props.newDino.revenue}</p>
-        {this.checkCanAffordDino() && <button>Add this Dino!</button>}        
+        <p>Revenue: {this.props.newDino.revenueIncrease}</p>
+        {this.checkCanAffordDino() && <button>Add this Dino!</button>}
       </>
      );
   }
 }
- 
+
 export default NewDino;
