@@ -32,20 +32,25 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 1
+      bankBalance: 1,
+      totalIncome: 0,
+      totalExpenditure: 0,
+      net: 0
      }
+
+     this.handleStartClick = this.handleStartClick.bind(this);
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);
      this.handleSelectFood = this.handleSelectFood.bind(this);
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
+     this.startCounter = this.startCounter.bind(this);
+     this.timerTrigger = this.timerTrigger.bind(this);
+     this.calculateExpenditure = this.calculateExpenditure.bind(this);
+     this.calculateIncome = this.calculateIncome.bind(this);
+     this.calculateNet = this.calculateNet.bind(this);
+     this.setBalance = this.setBalance.bind(this);
+
   }
-
-  
-
-  //request.get('/dinos')
-    //.then((data) => {
-      //this.setState({dinos: data})   ((((data.????))))
-    //})
 
     componentDidMount() {
       const request = new Request();
@@ -57,17 +62,59 @@ class GameContainer extends Component {
       })
     }
 
+    
+    startCounter() {
+
+       setInterval( () => this.timerTrigger(), 3000);
+
+    }
+
+    calculateIncome(){
+      let newTotalIncome = 0;
+      this.state.dinos.forEach((dino) => {
+      newTotalIncome += dino.revenue;
+      this.setState({totalIncome: newTotalIncome})
+
+    })
+  }
+    
+    calculateExpenditure(){
+      let newTotalExpenditure = 0;
+      this.state.paddocks.forEach((paddock) =>{
+      if(paddock.owned = true){
+      newTotalExpenditure += paddock.upKeepCost;
+      }
+      this.setState({totalExpenditure: newTotalExpenditure})
+    })
+  }
+
+    calculateNet(){
+      let newNet = 0;
+      newNet = this.state.totalIncome - this.state.totalExpenditure;
+      this.setState({net: newNet});
+    };
+
+    setBalance(){
+      const value = this.state.bankBalance + this.state.net;
+      this.setState({bankBalance: value});
+    }
+
+    timerTrigger() {
+      this.calculateIncome();
+      this.calculateExpenditure();
+      this.calculateNet();
+      this.setBalance();
+      
+      
+      // decreaseFoodLevel();
+    }
+
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
 
-    //   setInterval(this.timerPost, 5000); 
+      this.startCounter();
     }
-
-    // timerPost() {
-    //   const request = new Request();
-    //   request.post(url, payload)
-    // }
 
         //handleSelectPaddock sets the state to equal the paddock that the user selected
     handleSelectPaddock(paddock) {
@@ -108,7 +155,11 @@ class GameContainer extends Component {
         <h2>€{this.state.bankBalance} </h2>
         <InfoBox 
           paddocks={this.state.paddocks}
-          dinos={this.state.dinos} 
+          dinos={this.state.dinos}
+          totalIncome={this.state.totalIncome}
+          totalExpenditure={this.state.totalExpenditure}
+          net={this.state.net}
+          bankBalance={this.bankBalance}
                   />
          {this.state.showFoodContainer && <FoodContainer 
                                             foods={this.state.foods}
