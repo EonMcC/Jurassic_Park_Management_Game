@@ -1,4 +1,4 @@
-package com.codeclan.example.Jurassic_Park.Models;
+package com.codeclan.example.Jurassic_Park.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

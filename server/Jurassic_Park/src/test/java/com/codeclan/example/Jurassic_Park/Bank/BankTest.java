@@ -1,6 +1,6 @@
 package com.codeclan.example.Jurassic_Park.Bank;
-import com.codeclan.example.Jurassic_Park.Models.Bank;
-import com.codeclan.example.Jurassic_Park.Models.Game;
+import com.codeclan.example.Jurassic_Park.models.Bank;
+import com.codeclan.example.Jurassic_Park.models.Game;
 import org.junit.Before;
 import org.junit.Test;
 
