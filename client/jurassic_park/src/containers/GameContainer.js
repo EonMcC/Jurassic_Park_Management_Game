@@ -27,6 +27,7 @@ class GameContainer extends Component {
      this.handleSelectFood = this.handleSelectFood.bind(this);
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
+     this.handleNewDino = this.handleNewDino.bind(this);
   }
 
   //request.get('/dinos')
@@ -70,6 +71,18 @@ class GameContainer extends Component {
 
     }
 
+    handleNewDino(dino) {
+      // const paddock = this.state.selectedPaddock;
+      // console.log(paddock);
+      console.log(dino);
+
+      // dino["paddock"] = this.state.selectedPaddock;
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      // request.post(`${url}/paddocks/${paddock.id}/dinosaurs`, dino)
+      request.post(`${url}/dinosaurs`, dino)
+    }
+
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
@@ -111,6 +124,7 @@ class GameContainer extends Component {
       this.setState({showAddDino: true});
     }
 
+
   render() {
     return (
       <>
@@ -135,6 +149,8 @@ class GameContainer extends Component {
         {this.state.showAddDino && <AddDinoContainer
                                       newDinos={this.state.newDinos}
                                       bankBalance={this.state.bankBalance}
+                                      onHandleAddNewDino={this.handleNewDino}
+                                      selectedPaddock={this.state.selectedPaddock}
                                       />}
 
       </>

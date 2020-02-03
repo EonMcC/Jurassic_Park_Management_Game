@@ -20,9 +20,29 @@ class NewDino extends Component {
     }
   }
 
-  onClickAddNewDino() {
-    this.props.onHandleAddNewDino(this.props.newDino);
+  onClickAddNewDino(e) {
+    const freshDino = {
+      type: this.props.newDino.type,
+      foodLevel: this.props.newDino.foodLevel,
+      buyValue: this.props.newDino.buyValue,
+      dietaryType: this.props.newDino.dietaryType,
+      revenueIncrease: this.props.newDino.revenueIncrease,
+      paddock: this.props.selectedPaddock._links.self.href
+    
+    }
+    this.props.onHandleAddNewDino(freshDino);
   }
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  //   const newPirate = {
+  //     firstName: this.state.firstName,
+  //     lastName: this.state.lastName,
+  //     age: this.state.age,
+  //     ship: event.target.ship.value
+  //   }
+  //   this.props.onFormSubmit(newPirate);
+  // }
 
 
   render() {

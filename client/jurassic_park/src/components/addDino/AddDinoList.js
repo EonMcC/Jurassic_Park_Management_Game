@@ -6,21 +6,22 @@ class AddDinoList extends Component {
     super(props);
     this.state = {  }
   }
-  render() { 
+  render() {
     const splitNewDinos = this.props.newDinos.map((dino, index) => {
       return (
-        <NewDino 
+        <NewDino
           key={index}
           newDino={dino}
           bankBalance={this.props.bankBalance}
           onHandleAddNewDino={this.props.onHandleAddNewDino}
+          selectedPaddock={this.props.selectedPaddock}
         />
       )
     })
-    return ( 
+    return (
       (splitNewDinos)
      );
   }
 }
- 
+
 export default AddDinoList;

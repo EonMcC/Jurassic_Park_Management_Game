@@ -6,15 +6,16 @@ class AddDinoContainer extends Component {
     super(props);
     this.state = {  }
   }
-  render() { 
-    return ( 
-      <NewDinoList 
+  render() {
+    return (
+      <NewDinoList
         newDinos={this.props.newDinos}
         bankBalance={this.props.bankBalance}
         onHandleAddNewDino={this.props.onHandleAddNewDino}
+        selectedPaddock={this.props.selectedPaddock}
       />
      );
   }
 }
- 
+
 export default AddDinoContainer;
