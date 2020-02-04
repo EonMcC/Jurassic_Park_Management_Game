@@ -32,6 +32,9 @@ public class Paddock {
     @Column(name="owned")
     private boolean owned;
 
+    @Column(name="action_required")
+    private boolean actionRequired;
+
     @JsonIgnoreProperties("paddock")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
@@ -47,20 +50,19 @@ public class Paddock {
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;
 
-    @Column(name="action_required")
-    private boolean actionRequired;
 
 
-    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, Game game, boolean actionRequired) {
+    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, boolean actionRequired, Game game) {
         this.name = name;
         this.dinoCapacity = dinoCapacity;
         this.costToBuy = costToBuy;
         this.upKeepCost = upKeepCost;
         this.owned = owned;
+        this.actionRequired = actionRequired;
         this.dinosaurs = new ArrayList<>();
 //        this.triceratops = new ArrayList<>();
         this.game = game;
-        this.actionRequired = actionRequired;
+
     }
 
     public Paddock () {

@@ -5,7 +5,9 @@ class BuyPaddockCard extends Component {
     super(props);
     this.state = {  }
     this.checkCanAffordPaddock = this.checkCanAffordPaddock.bind(this);
+    this.onClickChangePaddockOwned = this.onClickChangePaddockOwned.bind(this);
   }
+  
 
 
   checkCanAffordPaddock(){
@@ -18,6 +20,10 @@ class BuyPaddockCard extends Component {
     }
   }
 
+  onClickChangePaddockOwned(e) {
+    this.props.onHandleBuyPaddock(this.props.id);
+  }
+
   render() { 
     return ( 
       <div>
@@ -25,7 +31,7 @@ class BuyPaddockCard extends Component {
         <p>Dinosaur Capacity: {this.props.dinoCapacity}</p>
         <p>UpKeep Cost: {this.props.upKeepCost}</p>
         <p>Cost to Buy: {this.props.costToBuy}</p>
-        {this.checkCanAffordPaddock() && <button>Buy this Paddock</button>}
+        {this.checkCanAffordPaddock() && <button onClick={this.onClickChangePaddockOwned}>Buy this Paddock</button>}
         {!this.checkCanAffordPaddock() && <h4>You can't afford this paddock right now</h4>}
       </div>
      );
