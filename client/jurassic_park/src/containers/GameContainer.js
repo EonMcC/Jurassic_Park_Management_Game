@@ -6,7 +6,6 @@ import AddDinoContainer from '../components/addDino/AddDinoContainer';
 import EndGame from  '../components/EndGame';
 import Request from '../helpers/requests';
 
-
 class GameContainer extends Component {
   constructor(props) {
     super(props);
@@ -143,13 +142,11 @@ class GameContainer extends Component {
       this.setState({bankBalance: newBalance});
     }
 
-
     calculateIncome(){
       let newTotalIncome = 0;
       this.state.dinos.forEach((dino) => {
       newTotalIncome += dino.revenueIncrease;
       this.setState({totalIncome: newTotalIncome})
-
     })
   }
 
@@ -183,7 +180,7 @@ class GameContainer extends Component {
         dino.foodLevel -= 1;
         request.patch(`${url}/dinosaurs/${dino.id}`, dino)       
         }
-        if(dino.foodLevel < 4) {
+        if(dino.foodLevel < 1) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
@@ -194,11 +191,10 @@ class GameContainer extends Component {
                 console.log(data)
               this.setState({paddocks: data._embedded.paddocks})
               
-      })
+              })
             })
 
         }
-        
         // else{this.endGame()}
       })
     }
@@ -237,7 +233,6 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({foods: data._embedded.foods})
       })
-
       this.timerTrigger();
     }
 
@@ -267,9 +262,7 @@ class GameContainer extends Component {
       this.setState({selectedFood: food});
       this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
-
     }
-
 
     handleOpenNewDinoCard(){
       this.setState({showAddDino: true});
@@ -293,23 +286,15 @@ class GameContainer extends Component {
 
       request.patch(`${url}/paddocks/${newID}`, {owned: true})
       
-      this.takePaddockCostOffBalance(changedPaddock.costToBuy)
-      
+      this.takePaddockCostOffBalance(changedPaddock.costToBuy)    
     }
-
 
     takePaddockCostOffBalance(cost){
       let newBalance = this.state.bankBalance - cost;
       this.setState({bankBalance: newBalance});
     }
 
-
-    
-
-
   render() {
-
-
     return (
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
