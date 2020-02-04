@@ -44,6 +44,10 @@ class GameContainer extends Component {
 
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
      this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
+     this.onHandleBuyPaddock = this.HandleBuyPaddock.bind(this);
+     this.takePaddockCostOffBalance = this.takePaddockCostOffBalance.bind(this);
+     this.takeDinoCostOffBalance = this.takeDinoCostOffBalance.bind(this);
+
 
   }
 
@@ -258,6 +262,34 @@ class GameContainer extends Component {
       this.setState({showAddDino: false});
     }
 
+    HandleBuyPaddock(id){
+      const changedPaddock = this.state.paddocks.find((paddock) => {
+        return paddock.id === parseInt(id);
+      });
+      changedPaddock.owned = true; 
+      this.setState({selectedPaddock: changedPaddock});
+
+      // PATCH
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      const newID = changedPaddock.id;
+
+      request.patch(`${url}/paddocks/${newID}`, {owned: true})
+      
+      this.takePaddockCostOffBalance(changedPaddock.costToBuy)
+      
+    }
+
+
+    takePaddockCostOffBalance(cost){
+      let newBalance = this.state.bankBalance - cost;
+      this.setState({bankBalance: newBalance});
+    }
+
+
+    
+
+
   render() {
 
 
@@ -273,7 +305,7 @@ class GameContainer extends Component {
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
-
+          onHandleBuyPaddock={this.onHandleBuyPaddock}
           />
         <h2>€{this.state.bankBalance} </h2>
 
