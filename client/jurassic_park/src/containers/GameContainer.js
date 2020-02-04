@@ -41,7 +41,6 @@ class GameContainer extends Component {
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
 
      this.handleNewDino = this.handleNewDino.bind(this);
-     // this.getDinos = this.getDinos.bind(this);
      this.handleDeletePaddock = this.handleDeletePaddock.bind(this);
 
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
@@ -134,8 +133,6 @@ class GameContainer extends Component {
         })
       })
     }
-
-
 
     startCounter() {
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PaddockCard from './PaddockCard';
 
-const PaddockCardList = ({paddocks, dinos, onHandleSelectDino, bankBalance, onHandleSelectPaddock, onHandleOpenNewDinoCard, onHandleDeletePaddock}) => {
+const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, bankBalance, onHandleSelectPaddock, onHandleOpenNewDinoCard, onHandleDeletePaddock}) => {
 
 
   // const getDinosForPaddock = (paddockId) => {

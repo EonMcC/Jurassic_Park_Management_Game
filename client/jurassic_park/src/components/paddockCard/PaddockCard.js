@@ -64,6 +64,8 @@ class PaddockCard extends Component {
       return dinoRevenue;
     }
 
+    // {this.props.selectedPaddock.dinosaurs.length === 0 &&
+
 
   render() {
     return (
@@ -76,7 +78,7 @@ class PaddockCard extends Component {
           bankBalance={this.props.bankBalance}
           />
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
-        <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>
+        {this.props.paddock.dinosaurs.length === 0 && <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>}
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
         <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
