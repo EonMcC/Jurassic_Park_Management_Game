@@ -180,7 +180,7 @@ class GameContainer extends Component {
         dino.foodLevel -= 1;
         request.patch(`${url}/dinosaurs/${dino.id}`, dino)       
         }
-        if(dino.foodLevel < 1) {
+        if(dino.foodLevel < 4) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
