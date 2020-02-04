@@ -91,7 +91,7 @@ class GameContainer extends Component {
     calculateIncome(){
       let newTotalIncome = 0;
       this.state.dinos.forEach((dino) => {
-      newTotalIncome += dino.revenue;
+      newTotalIncome += dino.revenueIncrease;
       this.setState({totalIncome: newTotalIncome})
 
     })
