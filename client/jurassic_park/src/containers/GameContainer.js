@@ -165,12 +165,20 @@ class GameContainer extends Component {
 
     decreaseFoodLevel(){
       this.state.dinos.forEach((dino) =>{
-        if(dino.foodLevel > 0){
-        dino.foodLevel -= 1;
         const request = new Request();
         const url = 'http://localhost:8080';
-        request.patch(`${url}/dinosaurs/${dino.id}`, dino)
+
+        if(dino.foodLevel > 0){
+        dino.foodLevel -= 1;
+        request.patch(`${url}/dinosaurs/${dino.id}`, dino)       
         }
+        if(dino.foodLevel < 4) {
+          const paddockToChange = dino._embedded.paddock;
+          const paddockId = paddockToChange.id;
+          paddockToChange.actionRequired = true;
+          request.patch(`${url}/paddocks/${paddockId}`, paddockToChange);
+        }
+        
         // else{this.endGame()}
       })
     }
@@ -190,7 +198,6 @@ class GameContainer extends Component {
 
 
       this.timerTrigger();
-
     }
 
         //handleSelectPaddock sets the state to equal the paddock that the user selected
