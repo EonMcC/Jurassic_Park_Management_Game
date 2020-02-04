@@ -9,7 +9,7 @@ class AddDinoContainer extends Component {
   }
 
   handleClickCloseAddDino() {
-    this.props.onHandleClickCloseAddDino(false)
+    this.props.onHandleClickCloseAddDino()
   }
 
   render() { 

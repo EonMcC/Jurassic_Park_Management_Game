@@ -29,6 +29,7 @@ class GameContainer extends Component {
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
+     this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
   }
 
   //request.get('/dinos')
@@ -96,6 +97,10 @@ class GameContainer extends Component {
       this.setState({showFoodContainer: true});
     }
 
+    handleClickCloseFeedDino(){
+      this.setState({showFoodContainer: false});
+    }
+
     //handleSelectFood sets the state equal to the food that the user selects,
     //closes the FoodContainer and updates the bankBalance state.
     handleSelectFood(food) {
@@ -113,8 +118,8 @@ class GameContainer extends Component {
       this.setState({showAddDino: true});
     }
 
-    handleClickCloseAddDino(data){
-      this.setState({showAddDino: data});
+    handleClickCloseAddDino(){
+      this.setState({showAddDino: false});
     }
 
   render() {
@@ -137,6 +142,7 @@ class GameContainer extends Component {
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
                                             selectedDino={this.state.selectedDino}
+                                            onHandleClickCloseFeedDino={this.handleClickCloseFeedDino}
                                             />}
         {this.state.showAddDino && <AddDinoContainer
                                       newDinos={this.state.newDinos}
