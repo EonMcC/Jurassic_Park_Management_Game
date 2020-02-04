@@ -1,5 +1,5 @@
 .paddock-card {
-  border: 2px blue solid;
+  border: 2px black solid;
   background-color: blue;
   height: 15px;
   width: 15px;
@@ -7,7 +7,11 @@
   overflow: hidden;
 }
 
-/* .close-button {
-  z-index: -1;
-  opacity: 0;
-} */
+.paddock-card-unowned {
+  border: 2px black solid;
+  background-color: yellow;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+}

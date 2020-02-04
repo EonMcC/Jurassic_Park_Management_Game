@@ -67,7 +67,7 @@ class PaddockCard extends Component {
         <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
       </div>}
 
-      {!this.props.paddock.owned && <div className="paddock-card" onClick={this.handleClick}> 
+      {!this.props.paddock.owned && <div className="paddock-card-unowned" onClick={this.handleClick}> 
         <BuyPaddockCard
           upKeepCost={this.props.paddock.upKeepCost}    
           name={this.props.paddock.name}
