@@ -245,13 +245,10 @@ class GameContainer extends Component {
 
       request.patch(`${url}/paddocks/${newID}`, {owned: true})
       
-      // this.takePaddockCostOffBalance(paddock.costToBuy)
+      this.takePaddockCostOffBalance(changedPaddock.costToBuy)
       
     }
-      
-      
-     
-      
+
 
     takePaddockCostOffBalance(cost){
       let newBalance = this.state.bankBalance - cost;
