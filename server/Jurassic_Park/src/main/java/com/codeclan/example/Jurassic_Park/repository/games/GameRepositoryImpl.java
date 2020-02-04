@@ -60,6 +60,12 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
     @Transactional
     public void resetGame(){
 
+        dinosaurRepository.deleteAll();
+        paddockRepository.deleteAll();
+        gameRepository.deleteAll();
+        bankRepository.deleteAll();
+        foodRepository.deleteAll();
+
         Bank bank1 = new Bank(1000);
         bankRepository.save(bank1);
 
