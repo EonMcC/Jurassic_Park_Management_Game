@@ -98,7 +98,7 @@ class GameContainer extends Component {
 
       request.get(`${url}/paddocks`)
       .then((data) => {
-        this.setState({paddocks: data.paddocks})
+        this.setState({paddocks: data._embedded.paddocks})
       })
 
     })
@@ -188,6 +188,12 @@ class GameContainer extends Component {
           paddockToChange.actionRequired = true;
           request.patch(`${url}/paddocks/${paddockId}`, {actionRequired: true})
             .then(() =>{
+              request.get(`${url}/paddocks`)
+              .then((data) => {
+                console.log(data)
+              this.setState({paddocks: data._embedded.paddocks})
+              
+      })
             })
 
         }

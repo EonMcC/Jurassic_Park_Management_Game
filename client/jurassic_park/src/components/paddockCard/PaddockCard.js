@@ -72,7 +72,7 @@ class PaddockCard extends Component {
 
 
   render() {
-    console.log(this.props.paddock);
+    console.log(this.props.paddock)
     if (this.props.paddock.actionRequired === false) {
     return (
       <div>
