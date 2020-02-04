@@ -5,15 +5,12 @@ import BuyPaddockCard from './BuyPaddockCard';
 class PaddockCard extends Component {
   constructor({props}) {
     super(props);
-    this.state = {
-
-     }
+    this.state = {};
     this.handleClick = this.handleClick.bind(this);
     this.handleClickClose = this.handleClickClose.bind(this);
     this.dinosForPaddock = this.dinosForPaddock.bind(this);
     this.calculateTotalPaddockRevenue = this.calculateTotalPaddockRevenue.bind(this);
     this.handleClickAddDino = this.handleClickAddDino.bind(this);
-    this.handleClickCloseUnowned = this.handleClickCloseUnowned.bind(this);
     this.handleRemovePaddock = this.handleRemovePaddock.bind(this);
     this.getOccupancy = this.getOccupancy.bind(this);
   }
@@ -27,17 +24,7 @@ class PaddockCard extends Component {
   handleClickClose(e) {
     e.stopPropagation();
     const elementToChange = e.target.parentElement;
-    const actionRequired = this.props.paddock.actionRequired;
-    if(actionRequired === true) {
-      elementToChange.style = "border: 2px black solid; background-color: red; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
-    } else {
-      elementToChange.style = "border: 2px black solid; background-color: blue; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
-    }
-  }
-  handleClickCloseUnowned(e) {
-    e.stopPropagation();
-    const elementToChange = e.target.parentElement;
-    elementToChange.style = "border: 2px black solid; background-color: grey; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
+    elementToChange.style = "height: 15px; width: 15px;";
   }
 
   handleClickAddDino(e) {
@@ -45,7 +32,6 @@ class PaddockCard extends Component {
     //post new dino
     this.props.onHandleOpenNewDinoCard();
   }
-
 
   handleRemovePaddock(e){
     e.stopPropagation();
@@ -73,11 +59,8 @@ class PaddockCard extends Component {
     getOccupancy(){
       return this.props.paddock.dinoCapacity > this.props.paddock.dinosaurs.length ? true : false;
     }
-
-
-
+    
   render() {
-    console.log(this.props.paddock)
     if (this.props.paddock.actionRequired === false) {
     return (
       <div>
@@ -108,7 +91,7 @@ class PaddockCard extends Component {
           onHandleBuyPaddock={this.props.onHandleBuyPaddock}
         />           
 
-        <button className="close-button" onClick={this.handleClickCloseUnowned}>X</button>
+        <button className="close-button" onClick={this.handleClickClose}>X</button>
       </div>}
       </div>
      )} else {
@@ -138,7 +121,7 @@ class PaddockCard extends Component {
             id={this.props.paddock.id}
             bankBalance={this.props.bankBalance}
           />
-          <button className="close-button" onClick={this.handleClickCloseUnowned}>X</button>
+          <button className="close-button" onClick={this.handleClickClose}>X</button>
         </div>}
         </div>
       )};

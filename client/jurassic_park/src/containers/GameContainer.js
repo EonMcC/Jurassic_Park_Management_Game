@@ -188,12 +188,9 @@ class GameContainer extends Component {
             .then(() =>{
               request.get(`${url}/paddocks`)
               .then((data) => {
-                console.log(data)
-              this.setState({paddocks: data._embedded.paddocks})
-              
+              this.setState({paddocks: data._embedded.paddocks})             
               })
             })
-
         }
         // else{this.endGame()}
       })
