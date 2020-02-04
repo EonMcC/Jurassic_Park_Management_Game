@@ -14,6 +14,7 @@ class PaddockCard extends Component {
     this.calculateTotalPaddockRevenue = this.calculateTotalPaddockRevenue.bind(this);
     this.handleClickAddDino = this.handleClickAddDino.bind(this);
     this.handleClickCloseUnowned = this.handleClickCloseUnowned.bind(this);
+    this.getOccupancy = this.getOccupancy.bind(this);
   }
 
   handleClick(e) {
@@ -62,6 +63,10 @@ class PaddockCard extends Component {
       return dinoRevenue;
     }
 
+    getOccupancy(){
+      return this.props.paddock.dinoCapacity > this.props.paddock.dinosaurs.length ? true : false;
+    }
+
 
   render() { 
     return ( 
@@ -73,7 +78,9 @@ class PaddockCard extends Component {
           onHandleSelectDino={this.props.onHandleSelectDino}
           bankBalance={this.props.bankBalance}
           />
+        {this.getOccupancy() &&
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
+        }
         <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
