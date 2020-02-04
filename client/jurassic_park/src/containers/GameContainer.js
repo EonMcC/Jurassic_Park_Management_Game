@@ -103,18 +103,25 @@ class GameContainer extends Component {
       const url = 'http://localhost:8080';
 
       // request.post(`${url}/paddocks/${paddock.id}/dinosaurs`, dino)
-      request.post(`${url}/dinosaurs`, dino)
+      request.post(`${url}/dinosaurs`, dino).then( () => {
+      // .then( () => {
+
+
+      // })
       // this.getDinos();
-      .then(
+     
       request.get(`${url}/dinosaurs`)
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
-    ).then(
+
       request.get(`${url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
-      }))
+      })
+
+    })
+    
       this.setState({showAddDino: false});
     }
 
@@ -222,14 +229,14 @@ class GameContainer extends Component {
     }
 
   render() {
-    const paddockList = this.state.paddocks;
+  
 
     return (
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1>
         <PaddockCardList
-          paddocks={paddockList}
+          paddocks={this.state.paddocks}
           dinos={this.state.dinos}
           onHandleSelectPaddock={this.handleSelectPaddock}
           onHandleSelectDino={this.handleSelectDino}
