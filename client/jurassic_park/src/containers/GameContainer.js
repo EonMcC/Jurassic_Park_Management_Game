@@ -105,6 +105,16 @@ class GameContainer extends Component {
       // request.post(`${url}/paddocks/${paddock.id}/dinosaurs`, dino)
       request.post(`${url}/dinosaurs`, dino)
       // this.getDinos();
+      .then(
+      request.get(`${url}/dinosaurs`)
+      .then((data) => {
+        this.setState({dinos: data._embedded.dinosaurs})
+      })
+    ).then(
+      request.get(`${url}/paddocks`)
+      .then((data) => {
+        this.setState({paddocks: data._embedded.paddocks})
+      }))
       this.setState({showAddDino: false});
     }
 
@@ -126,7 +136,7 @@ class GameContainer extends Component {
     calculateExpenditure(){
       let newTotalExpenditure = 0;
       this.state.paddocks.forEach((paddock) =>{
-      if(paddock.owned = true){
+      if(paddock.owned === true){
       newTotalExpenditure += paddock.upKeepCost;
       }
       this.setState({totalExpenditure: newTotalExpenditure})
@@ -212,12 +222,14 @@ class GameContainer extends Component {
     }
 
   render() {
+    const paddockList = this.state.paddocks;
+
     return (
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1>
         <PaddockCardList
-          paddocks={this.state.paddocks}
+          paddocks={paddockList}
           dinos={this.state.dinos}
           onHandleSelectPaddock={this.handleSelectPaddock}
           onHandleSelectDino={this.handleSelectDino}
