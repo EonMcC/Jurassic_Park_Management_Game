@@ -7,19 +7,18 @@ class AddDinoList extends Component {
     this.state = {  }
   }
   render() { 
-    const splitNewDinos = this.props.newDinos.map(dino => {
+    const splitNewDinos = this.props.newDinos.map((dino, index) => {
       return (
         <NewDino 
-          dino={dino}
+          key={index}
+          newDino={dino}
           bankBalance={this.props.bankBalance}
-          />
+          onHandleAddNewDino={this.props.onHandleAddNewDino}
+        />
       )
     })
     return ( 
-      <NewDino 
-        newDino={splitNewDinos}
-        bankBalance={this.props.bankBalance}
-        />
+      (splitNewDinos)
      );
   }
 }

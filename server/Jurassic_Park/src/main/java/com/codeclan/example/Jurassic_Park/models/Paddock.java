@@ -17,44 +17,57 @@ public class Paddock {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="name")
+    private String name;
+
+    @Column(name="dino_capacity")
     private int dinoCapacity;
 
-    private int noOfDinos;
-
+    @Column(name="cost")
     private int costToBuy;
 
+    @Column(name="upkeep")
     private int upKeepCost;
 
+    @Column(name="owned")
     private boolean owned;
 
     @JsonIgnoreProperties("paddock")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
-    private List<TRex> trexes;
+    private List<Dinosaur> dinosaurs;
 
-    @JsonIgnoreProperties("paddock")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
-    private List<Triceratops> triceratops;
+//    @JsonIgnoreProperties("paddock")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
+//    private List<Triceratops> triceratops;
 
-//    @JsonIgnoreProperties("paddocks")
-//    @ManyToOne
-//    @JoinColumn(name = "game_id", nullable = false)
-//    private Game game;
+    @JsonIgnoreProperties("paddocks")
+    @ManyToOne
+    @JoinColumn(name = "game_id", nullable = false)
+    private Game game;
 
 
-    public Paddock(int dinoCapacity, int noOfDinos, int costToBuy, int upKeepCost, boolean owned) {
+    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, Game game) {
+        this.name = name;
         this.dinoCapacity = dinoCapacity;
-        this.noOfDinos = noOfDinos;
         this.costToBuy = costToBuy;
         this.upKeepCost = upKeepCost;
         this.owned = owned;
-        this.trexes = new ArrayList<>();
-        this.triceratops = new ArrayList<>();
-//        this.game = game;
+        this.dinosaurs = new ArrayList<>();
+//        this.triceratops = new ArrayList<>();
+        this.game = game;
     }
 
     public Paddock () {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Long getId() {
@@ -71,14 +84,6 @@ public class Paddock {
 
     public void setDinoCapacity(int dinoCapacity) {
         this.dinoCapacity = dinoCapacity;
-    }
-
-    public int getNoOfDinos() {
-        return noOfDinos;
-    }
-
-    public void setNoOfDinos(int noOfDinos) {
-        this.noOfDinos = noOfDinos;
     }
 
     public int getCostToBuy() {
@@ -105,23 +110,27 @@ public class Paddock {
         this.owned = owned;
     }
 
-    public List<TRex> getTRexes() {
-        return this.trexes;
+    public List<Dinosaur> getDinosaurs() {
+        return this.dinosaurs;
     }
 
-    public void setTRexes(List<TRex> trexes) {
-        this.trexes = trexes;
+    public void setDinosaurs(List<Dinosaur> trexes) {
+        this.dinosaurs = trexes;
     }
 
-    public List<Triceratops> getTriceratops() { return this.triceratops; }
-
-    public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
-
-//    public Game getGame() {
-//        return game;
-//    }
+//    public List<Triceratops> getTriceratops() { return this.triceratops; }
 //
-//    public void setGame(Game game) {
-//        this.game = game;
-//    }
+//    public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+
 }
+
+

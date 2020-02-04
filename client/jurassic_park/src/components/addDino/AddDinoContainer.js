@@ -8,7 +8,11 @@ class AddDinoContainer extends Component {
   }
   render() { 
     return ( 
-      <NewDinoList newDinos={this.props.newDinos}/>
+      <NewDinoList 
+        newDinos={this.props.newDinos}
+        bankBalance={this.props.bankBalance}
+        onHandleAddNewDino={this.props.onHandleAddNewDino}
+      />
      );
   }
 }

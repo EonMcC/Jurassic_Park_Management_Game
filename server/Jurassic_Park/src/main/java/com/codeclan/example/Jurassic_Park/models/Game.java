@@ -20,14 +20,14 @@ public class Game {
     @JoinColumn(name = "bank_id", nullable =  false)
     private Bank bank;
 
-//    @JsonIgnoreProperties("game")
-//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-//    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY)
-//    private List<Paddock> paddocks;
+    @JsonIgnoreProperties("game")
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY)
+    private List<Paddock> paddocks;
 
     public Game(Bank bank){
         this.bank = bank;
-//        this.paddocks = new ArrayList<Paddock>();
+        this.paddocks = new ArrayList<Paddock>();
     }
 
     public Game() {
@@ -53,16 +53,16 @@ public class Game {
         this.id = id;
     }
 
-//    public List<Paddock> getPaddocks() {
-//        return paddocks;
-//    }
-//
-//    public void setPaddocks(ArrayList<Paddock> paddocks) {
-//        this.paddocks = paddocks;
-//    }
+    public List<Paddock> getPaddocks() {
+        return paddocks;
+    }
+
+    public void setPaddocks(ArrayList<Paddock> paddocks) {
+        this.paddocks = paddocks;
+    }
 
 
-//    public void buyPaddock(Paddock paddock){
-//        this.paddocks.add(paddock);
-//    }
+    public void buyPaddock(Paddock paddock){
+        this.paddocks.add(paddock);
+    }
 }

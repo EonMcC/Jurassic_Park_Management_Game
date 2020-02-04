@@ -21,5 +21,4 @@ public class GameController {
         return gameRepository.getBankBalance();
     }
 
-
 }
