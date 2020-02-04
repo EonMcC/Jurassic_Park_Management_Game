@@ -42,6 +42,7 @@ class GameContainer extends Component {
 
      this.handleNewDino = this.handleNewDino.bind(this);
      // this.getDinos = this.getDinos.bind(this);
+     this.handleDeletePaddock = this.handleDeletePaddock.bind(this);
 
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
      this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
@@ -117,6 +118,24 @@ class GameContainer extends Component {
       }))
       this.setState({showAddDino: false});
     }
+
+    handleDeletePaddock(){
+      console.log(10);
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      const id = this.state.selectedPaddock.id;
+      request.delete(`${url}/paddocks/${id}`)
+      .then(()=>{
+        const request = new Request();
+        const url = 'http://localhost:8080';
+        request.get(`${url}/paddocks`)
+        .then((data) => {
+          this.setState({paddocks: data._embedded.paddocks})
+        })
+      })
+    }
+
+
 
     startCounter() {
 
@@ -232,9 +251,11 @@ class GameContainer extends Component {
           paddocks={paddockList}
           dinos={this.state.dinos}
           onHandleSelectPaddock={this.handleSelectPaddock}
+          onHandleDeletePaddock={this.handleDeletePaddock}
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
+
           />
         <h2>€{this.state.bankBalance} </h2>
 
