@@ -16,6 +16,7 @@ public interface EmbedDinosaur {
     int getCostToBuy();
     int getUpKeepCost();
     boolean isOwned();
+    boolean isActionRequired();
     List<Dinosaur> getDinosaurs();
     Game getGame();
 }

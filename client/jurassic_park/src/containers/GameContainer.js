@@ -94,7 +94,7 @@ class GameContainer extends Component {
 
       request.get(`${url}/paddocks`)
       .then((data) => {
-        this.setState({paddocks: data._embedded.paddocks})
+        this.setState({paddocks: data.paddocks})
       })
 
     })
