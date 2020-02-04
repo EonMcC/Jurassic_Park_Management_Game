@@ -28,6 +28,7 @@ class GameContainer extends Component {
      this.handleSelectFood = this.handleSelectFood.bind(this);
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
+     this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
   }
 
   //request.get('/dinos')
@@ -112,6 +113,10 @@ class GameContainer extends Component {
       this.setState({showAddDino: true});
     }
 
+    handleClickCloseAddDino(data){
+      this.setState({showAddDino: data});
+    }
+
   render() {
     return (
       <>
@@ -136,6 +141,7 @@ class GameContainer extends Component {
         {this.state.showAddDino && <AddDinoContainer
                                       newDinos={this.state.newDinos}
                                       bankBalance={this.state.bankBalance}
+                                      onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
 
       </>
