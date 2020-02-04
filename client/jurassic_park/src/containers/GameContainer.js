@@ -40,7 +40,7 @@ class GameContainer extends Component {
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
 
      this.handleNewDino = this.handleNewDino.bind(this);
-     // this.getDinos = this.getDinos.bind(this);
+     this.handleDeletePaddock = this.handleDeletePaddock.bind(this);
 
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
      this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
@@ -70,7 +70,7 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({foods: data._embedded.foods})
       })
-      
+
 
   }
 
@@ -109,7 +109,7 @@ class GameContainer extends Component {
 
       // })
       // this.getDinos();
-     
+
       request.get(`${url}/dinosaurs`)
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
@@ -121,9 +121,30 @@ class GameContainer extends Component {
       })
 
     })
-    
+
       this.setState({showAddDino: false});
       this.takeDinoCostOffBalance(dino.buyValue);
+    }
+
+    handleDeletePaddock(){
+      console.log(10);
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      const id = this.state.selectedPaddock.id;
+      request.delete(`${url}/paddocks/${id}`)
+      .then(()=>{
+        const request = new Request();
+        const url = 'http://localhost:8080';
+        request.get(`${url}/paddocks`)
+        .then((data) => {
+          this.setState({paddocks: data._embedded.paddocks})
+        })
+      })
+    }
+
+    startCounter() {
+
+       setInterval( () => this.timerTrigger(), 3000);
     }
 
     takeDinoCostOffBalance(cost){
@@ -215,7 +236,7 @@ class GameContainer extends Component {
       this.setState({selectedFood: food});
       this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
-     
+
     }
 
 
@@ -228,7 +249,7 @@ class GameContainer extends Component {
     }
 
   render() {
-  
+
 
     return (
       <>
@@ -238,9 +259,11 @@ class GameContainer extends Component {
           paddocks={this.state.paddocks}
           dinos={this.state.dinos}
           onHandleSelectPaddock={this.handleSelectPaddock}
+          onHandleDeletePaddock={this.handleDeletePaddock}
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
+
           />
         <h2>€{this.state.bankBalance} </h2>
 
