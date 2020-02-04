@@ -49,29 +49,6 @@ class GameContainer extends Component {
 
     componentDidMount() {
       //Get Paddocks
-      const request = new Request();
-      const url = 'http://localhost:8080';
-      request.get(`${url}/paddocks`)
-      .then((data) => {
-        this.setState({paddocks: data._embedded.paddocks})
-      })
-      //GetDinos
-      request.get(`${url}/dinosaurs`)
-      .then((data) => {
-        this.setState({dinos: data._embedded.dinosaurs})
-      })
-      .then(()=> {
-        this.setState({newDinos:
-          this.state.dinos.slice(0, 2)
-        })
-      })
-        //GetFoods
-      request.get(`${url}/foods`)
-      .then((data) => {
-        this.setState({foods: data._embedded.foods})
-      })
-
-
   }
 
     // getDinos() {
@@ -214,6 +191,27 @@ class GameContainer extends Component {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
 
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      request.get(`${url}/paddocks`)
+      .then((data) => {
+        this.setState({paddocks: data._embedded.paddocks})
+      })
+      //GetDinos
+      request.get(`${url}/dinosaurs`)
+      .then((data) => {
+        this.setState({dinos: data._embedded.dinosaurs})
+      })
+      .then(()=> {
+        this.setState({newDinos:
+          this.state.dinos.slice(0, 2)
+        })
+      })
+        //GetFoods
+      request.get(`${url}/foods`)
+      .then((data) => {
+        this.setState({foods: data._embedded.foods})
+      })
 
       this.timerTrigger();
 
