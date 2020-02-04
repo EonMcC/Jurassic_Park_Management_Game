@@ -3,9 +3,8 @@ package com.codeclan.example.Jurassic_Park;
 
 import com.codeclan.example.Jurassic_Park.models.*;
 import com.codeclan.example.Jurassic_Park.models.inheritance.TriceratopsInherit;
-import com.codeclan.example.Jurassic_Park.repositories.TRexRepository;
+import com.codeclan.example.Jurassic_Park.repositories.DinosaurRepository;
 import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
-//import com.codeclan.example.Jurassic_Park.repositories.TRexRepository;
 import com.codeclan.example.Jurassic_Park.repositories.TriceratopsRepository;
 import com.codeclan.example.Jurassic_Park.repositories.inheritance.TriceratopsInheritRepository;
 
@@ -15,8 +14,6 @@ import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -28,7 +25,7 @@ class JurassicParkApplicationTests {
 	PaddockRepository paddockRepository;
 
 	@Autowired
-	TRexRepository tRexRepository;
+	DinosaurRepository dinosaurRepository;
 
 	@Autowired
     TriceratopsRepository triceratopsRepository;
@@ -66,8 +63,8 @@ class JurassicParkApplicationTests {
 		gameRepository.save(game1);
 		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, game1);
 		paddockRepository.save(paddock);
-		TRex tRex = new TRex(10, 30, "Cow", 3, paddock);
-		tRexRepository.save(tRex);
+		Dinosaur tRex = new Dinosaur("T-Rex",10, 30, "Cow", 3, paddock);
+		dinosaurRepository.save(tRex);
 	}
 
 	@Test

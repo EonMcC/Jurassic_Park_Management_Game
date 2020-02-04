@@ -35,12 +35,12 @@ public class Paddock {
     @JsonIgnoreProperties("paddock")
     @Cascade(org.hibernate.annotations.CascadeType.DELETE)
     @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
-    private List<TRex> trexes;
+    private List<Dinosaur> dinosaurs;
 
-    @JsonIgnoreProperties("paddock")
-    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
-    @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
-    private List<Triceratops> triceratops;
+//    @JsonIgnoreProperties("paddock")
+//    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+//    @OneToMany(mappedBy = "paddock", fetch = FetchType.LAZY)
+//    private List<Triceratops> triceratops;
 
     @JsonIgnoreProperties("paddocks")
     @ManyToOne
@@ -54,8 +54,8 @@ public class Paddock {
         this.costToBuy = costToBuy;
         this.upKeepCost = upKeepCost;
         this.owned = owned;
-        this.trexes = new ArrayList<>();
-        this.triceratops = new ArrayList<>();
+        this.dinosaurs = new ArrayList<>();
+//        this.triceratops = new ArrayList<>();
         this.game = game;
     }
 
@@ -110,17 +110,17 @@ public class Paddock {
         this.owned = owned;
     }
 
-    public List<TRex> getTRexes() {
-        return this.trexes;
+    public List<Dinosaur> getDinosaurs() {
+        return this.dinosaurs;
     }
 
-    public void setTRexes(List<TRex> trexes) {
-        this.trexes = trexes;
+    public void setDinosaurs(List<Dinosaur> trexes) {
+        this.dinosaurs = trexes;
     }
 
-    public List<Triceratops> getTriceratops() { return this.triceratops; }
-
-    public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
+//    public List<Triceratops> getTriceratops() { return this.triceratops; }
+//
+//    public void setTriceratops(List<Triceratops> triceratops) { this.triceratops = triceratops; }
 
     public Game getGame() {
         return game;
@@ -129,4 +129,8 @@ public class Paddock {
     public void setGame(Game game) {
         this.game = game;
     }
+
+
 }
+
+

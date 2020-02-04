@@ -8,14 +8,15 @@ class FoodList extends Component {
   }
 
   render() { 
-
-    const splitFoods = this.props.foods.map(food => {
+    
+    const splitFoods = this.props.foods.map((food, index) => {
       return (
         <Food 
-          key={food.id} 
+          key={index} 
           food={food}
           onHandleSelectFood={this.props.onHandleSelectFood} 
           bankBalance={this.props.bankBalance}
+          selectedDino={this.props.selectedDino}
           />
       );
     });

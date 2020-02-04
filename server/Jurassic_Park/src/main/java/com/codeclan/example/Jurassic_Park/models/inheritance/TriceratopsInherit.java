@@ -1,14 +1,13 @@
 package com.codeclan.example.Jurassic_Park.models.inheritance;
 
 import com.codeclan.example.Jurassic_Park.models.Paddock;
-import com.codeclan.example.Jurassic_Park.models.inheritance.Dinosaur;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "triceratops")
-public class TriceratopsInherit extends Dinosaur {
+public class TriceratopsInherit extends Dino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

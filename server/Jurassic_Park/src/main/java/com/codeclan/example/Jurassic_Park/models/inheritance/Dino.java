@@ -1,12 +1,10 @@
-package com.codeclan.example.Jurassic_Park.models;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package com.codeclan.example.Jurassic_Park.models.inheritance;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "trexes")
-public class TRex {
+@Inheritance
+public abstract class Dino {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,20 +22,14 @@ public class TRex {
     @Column(name = "revenue_increase")
     private int revenueIncrease;
 
-    @JsonIgnoreProperties("trexes")
-    @ManyToOne
-    @JoinColumn(name = "paddock_id", nullable = false)
-    private Paddock paddock;
-
-    public TRex(int foodLevel, int buyValue, String dietaryType, int revenueIncrease, Paddock paddock) {
+    public Dino(int foodLevel, int buyValue, String dietaryType, int revenueIncrease) {
         this.foodLevel = foodLevel;
         this.buyValue = buyValue;
         this.dietaryType = dietaryType;
         this.revenueIncrease = revenueIncrease;
-        this.paddock = paddock;
     }
 
-    public TRex() {
+    public Dino() {
     }
 
     public Long getId() {
@@ -68,8 +60,8 @@ public class TRex {
         return dietaryType;
     }
 
-    public void setDietaryType(String dietaryType) {
-        this.dietaryType = dietaryType;
+    public void setDietaryType(String food) {
+        this.dietaryType = food;
     }
 
     public int getRevenueIncrease() {
@@ -80,11 +72,4 @@ public class TRex {
         this.revenueIncrease = revenueIncrease;
     }
 
-    public Paddock getPaddock() {
-        return paddock;
-    }
-
-    public void setPaddock(Paddock paddock) {
-        this.paddock = paddock;
-    }
 }

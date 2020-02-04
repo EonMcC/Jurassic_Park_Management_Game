@@ -9,25 +9,13 @@ import Request from '../helpers/requests';
 class GameContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      dinos: [
-        {id: 1, paddockId: 1, foodLevel: 10, buyValue: 1, dietaryType: 'Herbivore', revenue: 1},
-        {id: 2, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1},
-        {id: 3, paddockId: 2, foodLevel: 10, buyValue: 1, dietaryType: 'Carnivore', revenue: 1}
-      ],
-      newDinos: [
-        {foodLevel: 10, buyValue: 50, dietaryType: 'Herbivore', revenue: 1},
-        {foodLevel: 10, buyValue: 100, dietaryType: 'Carnivore', revenue: 1}
-      ],
-      paddocks: [
-        // {id: 1, name: "East Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true},
-        // {id: 2, name: "West Paddock", dinoCapacity: 5, costToBuy: 1, upKeepCost: 1, owned: true}
-      ],
-      foods: [
-        {id: 1, name: "Shrubbery", replen: 3, cost: 1},
-        {id: 2, name: "Cow", replen: 3, cost: 2}
-      ],
+    this.state = {
+      dinos: [],
+      newDinos: [], //choices
+      paddocks: [],
+      foods: [],
       selectedPaddock: null,
+      selectedNewDino: null, //the new dinosaur
       selectedDino: null,
       selectedFood: null,
       showAddDino: false,
@@ -50,16 +38,47 @@ class GameContainer extends Component {
      this.calculateNet = this.calculateNet.bind(this);
      this.setBalance = this.setBalance.bind(this);
      this.decreaseFoodLevel = this.decreaseFoodLevel.bind(this);
+     this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
+     this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
+     this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
   }
 
+ 
+
     componentDidMount() {
+      //Get Paddocks
       const request = new Request();
       const url = 'http://localhost:8080';
-
       request.get(`${url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
       })
+      //GetDinos
+      request.get(`${url}/dinosaurs`)
+      .then((data) => {
+        this.setState({dinos: data._embedded.dinosaurs})
+      })
+      .then(()=> {
+        this.setState({newDinos:
+          this.state.dinos.slice(0, 2)
+        })
+      })
+        //GetFoods
+      request.get(`${url}/foods`)
+      .then((data) => {
+        this.setState({foods: data._embedded.foods})
+      })
+
+  }
+
+    updateDinoFoodLevelWhenFed(replenLevel) {
+      const dino = this.state.selectedDino;
+      // const foodReplenLevel = this.state.selectedFood.replenLevel;
+      dino.foodLevel += replenLevel;
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      request.patch(`${url}/dinosaurs/${dino.id}`, dino)
+
     }
 
     
@@ -120,7 +139,9 @@ class GameContainer extends Component {
       const elementToChange = document.querySelector('.start-button');
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
 
+
       this.startCounter();
+
     }
 
         //handleSelectPaddock sets the state to equal the paddock that the user selected
@@ -137,33 +158,48 @@ class GameContainer extends Component {
       // this.setState({bankBalance: newBalance});
     }
 
+    handleClickCloseFeedDino(){
+      this.setState({showFoodContainer: false});
+    }
+
     //handleSelectFood sets the state equal to the food that the user selects,
-    //closes the FoodContainer and sends the info to the database.
+    //closes the FoodContainer and updates the bankBalance state.
     handleSelectFood(food) {
+      const foodPrice = food.price;
+      const currentBankBalance = this.state.bankBalance;
+      const newBankBalance = currentBankBalance - foodPrice;
+      this.setState({bankBalance: newBankBalance});
       this.setState({selectedFood: food});
+      this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
       // let newBalance = this.state.bankBalance - food.cost;
       // this.setState({bankBalance: newBalance});
     }
 
+
     handleOpenNewDinoCard(){
       this.setState({showAddDino: true});
     }
 
-  render() { 
-    return ( 
+    handleClickCloseAddDino(){
+      this.setState({showAddDino: false});
+    }
+
+  render() {
+    return (
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
-        <h1>Welcome to Jurassic Park</h1> 
-        <PaddockCardList 
-          paddocks={this.state.paddocks} 
-          dinos={this.state.dinos} 
+        <h1>Welcome to Jurassic Park</h1>
+        <PaddockCardList
+          paddocks={this.state.paddocks}
+          dinos={this.state.dinos}
           onHandleSelectPaddock={this.handleSelectPaddock}
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
-          />    
+          />
         <h2>€{this.state.bankBalance} </h2>
+
         <InfoBox 
           paddocks={this.state.paddocks}
           dinos={this.state.dinos}
@@ -173,18 +209,22 @@ class GameContainer extends Component {
           bankBalance={this.bankBalance}
                   />
          {this.state.showFoodContainer && <FoodContainer 
+
                                             foods={this.state.foods}
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
+                                            selectedDino={this.state.selectedDino}
+                                            onHandleClickCloseFeedDino={this.handleClickCloseFeedDino}
                                             />}
-        {this.state.showAddDino && <AddDinoContainer 
+        {this.state.showAddDino && <AddDinoContainer
                                       newDinos={this.state.newDinos}
                                       bankBalance={this.state.bankBalance}
+                                      onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
-         
+
       </>
      );
   }
 }
- 
+
 export default GameContainer;
