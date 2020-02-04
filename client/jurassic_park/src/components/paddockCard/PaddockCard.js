@@ -82,7 +82,7 @@ class PaddockCard extends Component {
           bankBalance={this.props.bankBalance}
           />
         {this.getOccupancy() &&
-        <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>
+        <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>}
         {this.props.paddock.dinosaurs.length === 0 && <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>}
         <button className="close-button" onClick={this.handleClickClose}>X</button>
         <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>

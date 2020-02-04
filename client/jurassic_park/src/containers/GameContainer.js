@@ -145,6 +145,7 @@ class GameContainer extends Component {
     startCounter() {
 
        setInterval( () => this.timerTrigger(), 3000);
+    }
 
     takeDinoCostOffBalance(cost){
       let newBalance = this.state.bankBalance - cost;
