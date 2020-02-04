@@ -1,14 +1,15 @@
 import React from 'react';
 
-const InfoBox = (props) => {
+const InfoBox = ({totalIncome, totalExpenditure, net}) => {
+
   return (
     <div className="info-box">
       <h3>Income:</h3>
-      <p>€1000</p>
+      <p>{totalIncome}</p>
       <h3>Expenditure:</h3>
-      <p>€300</p>
+      <p>{totalExpenditure}</p>
       <h3>Net:</h3>
-      <p>€700</p>
+      <p>{net}</p>
     </div>
   )
 }
