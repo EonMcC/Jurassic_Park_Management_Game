@@ -3,6 +3,7 @@ import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
 import FoodContainer from '../components/food/FoodContainer';
 import AddDinoContainer from '../components/addDino/AddDinoContainer';
+import EndGame from  '../components/EndGame';
 import Request from '../helpers/requests';
 
 
@@ -329,7 +330,7 @@ class GameContainer extends Component {
                                       selectedPaddock={this.state.selectedPaddock}
                                       onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
-
+        <EndGame></EndGame>
       </>
      );
   }
