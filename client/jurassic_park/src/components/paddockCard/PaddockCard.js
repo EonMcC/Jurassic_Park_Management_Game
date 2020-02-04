@@ -17,7 +17,7 @@ class PaddockCard extends Component {
 
   handleClick(e) {
     const elementToChange = e.target;
-    elementToChange.style = "height: 100%; width: 100%; border-radius: 0; background-color: white;";
+    elementToChange.style = "height: 50vh; width: 50vw; border-radius: 0; background-color: white;";
     this.props.onHandleSelectPaddock(this.props.paddock);
   }
 
@@ -61,10 +61,11 @@ class PaddockCard extends Component {
     }
     
   render() {
+    const num = this.props.classId + 1;
     if (this.props.paddock.actionRequired === false) {
     return (
       <>
-        {this.props.paddock.owned && <div className="paddock-card" onClick={this.handleClick}>
+        {this.props.paddock.owned && <div className={"paddock-card-" + num} onClick={this.handleClick}>
         <p>{this.props.paddock.name}</p>
         <DinoList
           dinos={this.dinosForPaddock(this.props.paddock.id)}
@@ -79,7 +80,7 @@ class PaddockCard extends Component {
         <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
       </div>}
 
-      {!this.props.paddock.owned && <div className="paddock-card-unowned" onClick={this.handleClick}>
+      {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
         <BuyPaddockCard
           upKeepCost={this.props.paddock.upKeepCost}
           name={this.props.paddock.name}
@@ -97,7 +98,7 @@ class PaddockCard extends Component {
      )} else {
       return (
         <>
-          {this.props.paddock.owned && <div className="paddock-card-action" onClick={this.handleClick}>
+          {this.props.paddock.owned && <div className={"paddock-card-action-" + num} onClick={this.handleClick}>
           <p>{this.props.paddock.name}</p>
           <DinoList
             dinos={this.dinosForPaddock(this.props.paddock.id)}
@@ -112,7 +113,7 @@ class PaddockCard extends Component {
           <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
         </div>}
   
-        {!this.props.paddock.owned && <div className="paddock-card-unowned" onClick={this.handleClick}>
+        {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
           <BuyPaddockCard
             upKeepCost={this.props.paddock.upKeepCost}
             name={this.props.paddock.name}

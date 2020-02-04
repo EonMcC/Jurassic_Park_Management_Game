@@ -1,4 +1,10 @@
-.paddock-card {
+.paddock-card-open {
+  height: 50vh; 
+  width: 50vw; 
+  border-radius: 0; 
+  background-color: white;
+}
+.paddock-card-1 {
   border: 2px black solid;
   background-color: blue;
   height: 15px;
@@ -7,14 +13,7 @@
   overflow: hidden;
   grid-area: 3/6/4/7;
 }
-.paddock-card-open {
-  height: 100%; 
-  width: 100%; 
-  border-radius: 0; 
-  background-color: white;
-}
-
-.paddock-card-unowned {
+.paddock-card-unowned-1 {
   border: 2px black solid;
   background-color: grey;
   height: 15px;
@@ -23,8 +22,7 @@
   overflow: hidden;
   grid-area: 3/6/4/7;
 }
-
-.paddock-card-action {
+.paddock-card-action-1 {
   border: 2px black solid;
   background-color: red;
   height: 15px;
@@ -33,7 +31,30 @@
   overflow: hidden;
   grid-area: 3/6/4/7;
 }
-
-.one {
-  grid
+.paddock-card-2 {
+  border: 2px black solid;
+  background-color: blue;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  grid-area: 5/7/4/8;
+}
+.paddock-card-unowned-2 {
+  border: 2px black solid;
+  background-color: grey;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  grid-area: 5/7/4/8;
+}
+.paddock-card-action-2 {
+  border: 2px black solid;
+  background-color: red;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  grid-area: 5/7/4/8;
 }

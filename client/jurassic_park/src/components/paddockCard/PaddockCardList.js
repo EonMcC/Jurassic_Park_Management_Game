@@ -16,7 +16,7 @@ const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, 
   //   return foundDinos;
   // }
 
-  const allPaddocks = paddocks.map((paddock) => {
+  const allPaddocks = paddocks.map((paddock, index) => {
     return (
       <PaddockCard
         key={paddock.id}
@@ -29,6 +29,7 @@ const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, 
         onHandleOpenNewDinoCard={onHandleOpenNewDinoCard}
         onHandleBuyPaddock={onHandleBuyPaddock}
         onHandleDeletePaddock={onHandleDeletePaddock}
+        classId={index}
         />
     )
   })

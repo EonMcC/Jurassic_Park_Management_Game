@@ -1,22 +1,35 @@
+html {
+  background-color: #262a32;
+
+}
 .game-container {
   height: 100vh;
   width: 100vw;
-  background-image: url('../images/map.jpg');
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
   display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1000px;
+  grid-template-columns: 1fr 900px 1fr;
+  text-align: center;
+  font-family: avenir;
+  color: red;
+
 }
 
-h1 {
-  grid-area: 1/2/2/3;
-  text-align: center;
+.header {
+  margin: auto;
+  position: fixed;
+  width: 100vw;
+  color: red;
+  font-family: 'jurassic_parkregular';
+  font-size: 5rem;
+  padding: 0;
+  top:1%;
+  z-index: 5;
+  letter-spacing: 5px;
 }
 
 h2 {
   grid-area: 1/3/2/4;
+  font-size: 5rem;
 }
 
 .start-button {
@@ -24,8 +37,10 @@ h2 {
   border: none;
   height: 100vh;
   width: 100vw;
-  font-size: 3rem;
   position: fixed;
   z-index: 1;
   opacity: 1;
+  font-family: 'jurassic_parkregular';
+  font-size: 10rem;
+  z-index: 10;
   }
