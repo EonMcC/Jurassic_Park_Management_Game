@@ -76,6 +76,7 @@ public class DataLoader implements ApplicationRunner {
         foodRepository.save(food1);
         foodRepository.save(food2);
         foodRepository.save(food3);
+
         foodRepository.save(food4);
 
 //        Triceratops triceratops = new Triceratops(4, 5, "herbivore", 5, paddock);
