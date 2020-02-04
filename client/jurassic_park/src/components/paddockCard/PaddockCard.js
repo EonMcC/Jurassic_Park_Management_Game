@@ -87,7 +87,9 @@ class PaddockCard extends Component {
           costToBuy={this.props.paddock.costToBuy}
           dinoCapacity={this.props.paddock.dinoCapacity}
           id={this.props.paddock.id}
+          owned={this.props.paddock.owned}
           bankBalance={this.props.bankBalance}
+          onHandleBuyPaddock={this.props.onHandleBuyPaddock}
         />           
         <button className="close-button" onClick={this.handleClickCloseUnowned}>X</button>
       </div>}
