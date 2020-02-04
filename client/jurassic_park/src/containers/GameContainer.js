@@ -116,6 +116,12 @@ class GameContainer extends Component {
         this.setState({paddocks: data._embedded.paddocks})
       }))
       this.setState({showAddDino: false});
+      this.takeDinoCostOffBalance(dino.buyValue);
+    }
+
+    takeDinoCostOffBalance(cost){
+      let newBalance = this.state.bankBalance - cost;
+      this.setState({bankBalance: newBalance});
     }
 
 
@@ -186,8 +192,6 @@ class GameContainer extends Component {
     handleSelectDino(dino) {
       this.setState({selectedDino: dino});
       this.setState({showFoodContainer: true});
-      // let newBalance = this.state.bankBalance - dino.buyValue;
-      // this.setState({bankBalance: newBalance});
     }
 
     handleClickCloseFeedDino(){
