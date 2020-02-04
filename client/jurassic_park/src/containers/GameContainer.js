@@ -105,19 +105,28 @@ class GameContainer extends Component {
 
     handleDeletePaddock(){
       console.log(10);
+      this.state.selectedPaddock.owned = false;
+
       const request = new Request();
       const url = 'http://localhost:8080';
       const id = this.state.selectedPaddock.id;
-      request.delete(`${url}/paddocks/${id}`)
-      .then(()=>{
-        const request = new Request();
-        const url = 'http://localhost:8080';
-        request.get(`${url}/paddocks`)
-        .then((data) => {
-          this.setState({paddocks: data._embedded.paddocks})
-        })
-      })
+
+      request.patch(`${url}/paddocks/${id}`, {owned: false})
     }
+
+      // THIS WILL DELETE A PADDOCK
+      // const request = new Request();
+      // const url = 'http://localhost:8080';
+      // const id = this.state.selectedPaddock.id;
+      // request.delete(`${url}/paddocks/${id}`)
+      // .then(()=>{
+      //   const request = new Request();
+      //   const url = 'http://localhost:8080';
+      //   request.get(`${url}/paddocks`)
+      //   .then((data) => {
+      //     this.setState({paddocks: data._embedded.paddocks})
+      //   })
+      // })
 
     startCounter() {
 
