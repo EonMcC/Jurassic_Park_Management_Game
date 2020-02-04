@@ -31,7 +31,6 @@ class GameContainer extends Component {
      this.handleSelectDino = this.handleSelectDino.bind(this);
      this.handleSelectFood = this.handleSelectFood.bind(this);
      this.handleOpenNewDinoCard = this.handleOpenNewDinoCard.bind(this);
-     this.startCounter = this.startCounter.bind(this);
      this.timerTrigger = this.timerTrigger.bind(this);
      this.calculateExpenditure = this.calculateExpenditure.bind(this);
      this.calculateIncome = this.calculateIncome.bind(this);
@@ -71,6 +70,7 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({foods: data._embedded.foods})
       })
+      
 
   }
 
@@ -118,11 +118,6 @@ class GameContainer extends Component {
       this.setState({showAddDino: false});
     }
 
-    startCounter() {
-
-       setInterval( () => this.timerTrigger(), 3000);
-
-    }
 
     calculateIncome(){
       let newTotalIncome = 0;
@@ -169,6 +164,7 @@ class GameContainer extends Component {
       this.calculateNet();
       this.setBalance();
       this.decreaseFoodLevel();
+      setTimeout( () => this.timerTrigger(), 3000);
     }
 
     handleStartClick(e) {
@@ -176,7 +172,7 @@ class GameContainer extends Component {
       elementToChange.style = "color: green; opacity: 0; z-index: -1;";
 
 
-      this.startCounter();
+      this.timerTrigger();
 
     }
 
