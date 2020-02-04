@@ -21,9 +21,9 @@ public class GameController {
         return gameRepository.getBankBalance();
     }
 
-//    @GetMapping(value="/reset")
-//    public void resetGame() {
-//        gameRepository.resetGame();
-//    }
+    @GetMapping(value="/reset")
+    public void resetGame() {
+        gameRepository.resetGame();
+    }
 
 }
