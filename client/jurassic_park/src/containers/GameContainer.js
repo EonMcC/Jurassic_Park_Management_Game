@@ -71,6 +71,7 @@ class GameContainer extends Component {
         this.setState({foods: data._embedded.foods})
       })
       
+      
 
   }
 
@@ -166,6 +167,9 @@ class GameContainer extends Component {
       this.state.dinos.forEach((dino) =>{
         if(dino.foodLevel > 0){
         dino.foodLevel -= 1;
+        const request = new Request();
+        const url = 'http://localhost:8080';
+        request.patch(`${url}/dinosaurs/${dino.id}`, dino)
         }
         // else{this.endGame()}
       })
