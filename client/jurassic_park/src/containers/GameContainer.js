@@ -293,7 +293,7 @@ class GameContainer extends Component {
 
   render() {
     return (
-      <>
+      <div className="game-container">
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
         <h1>Welcome to Jurassic Park</h1>
         <PaddockCardList
@@ -332,7 +332,7 @@ class GameContainer extends Component {
                                       onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
         <EndGame></EndGame>
-      </>
+      </div>
      );
   }
 }

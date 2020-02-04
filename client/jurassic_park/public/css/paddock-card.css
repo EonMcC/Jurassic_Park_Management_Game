@@ -5,6 +5,7 @@
   width: 15px;
   border-radius: 50%;
   overflow: hidden;
+  grid-area: 3/6/4/7;
 }
 .paddock-card-open {
   height: 100%; 
@@ -20,6 +21,7 @@
   width: 15px;
   border-radius: 50%;
   overflow: hidden;
+  grid-area: 3/6/4/7;
 }
 
 .paddock-card-action {
@@ -29,4 +31,5 @@
   width: 15px;
   border-radius: 50%;
   overflow: hidden;
+  grid-area: 3/6/4/7;
 }

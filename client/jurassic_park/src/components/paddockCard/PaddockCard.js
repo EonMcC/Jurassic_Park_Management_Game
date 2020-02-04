@@ -63,7 +63,7 @@ class PaddockCard extends Component {
   render() {
     if (this.props.paddock.actionRequired === false) {
     return (
-      <div>
+      <>
         {this.props.paddock.owned && <div className="paddock-card" onClick={this.handleClick}>
         <p>{this.props.paddock.name}</p>
         <DinoList
@@ -93,10 +93,10 @@ class PaddockCard extends Component {
 
         <button className="close-button" onClick={this.handleClickClose}>X</button>
       </div>}
-      </div>
+      </>
      )} else {
       return (
-        <div>
+        <>
           {this.props.paddock.owned && <div className="paddock-card-action" onClick={this.handleClick}>
           <p>{this.props.paddock.name}</p>
           <DinoList
@@ -123,7 +123,7 @@ class PaddockCard extends Component {
           />
           <button className="close-button" onClick={this.handleClickClose}>X</button>
         </div>}
-        </div>
+        </>
       )};
   }
 }

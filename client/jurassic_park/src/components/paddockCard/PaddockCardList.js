@@ -35,9 +35,9 @@ const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, 
   })
 
   return (
-    <>
+    <div className="paddock-card-list">
       {allPaddocks}
-    </>
+    </div>
   )
 }
 
