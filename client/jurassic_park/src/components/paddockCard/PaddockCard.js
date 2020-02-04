@@ -72,6 +72,8 @@ class PaddockCard extends Component {
 
 
   render() {
+    console.log(this.props.paddock);
+    if (this.props.paddock.actionRequired === false) {
     return (
       <div>
         {this.props.paddock.owned && <div className="paddock-card" onClick={this.handleClick}>
@@ -101,7 +103,37 @@ class PaddockCard extends Component {
         <button className="close-button" onClick={this.handleClickCloseUnowned}>X</button>
       </div>}
       </div>
-     );
+     )} else {
+      return (
+        <div>
+          {this.props.paddock.owned && <div className="paddock-card-action" onClick={this.handleClick}>
+          <p>{this.props.paddock.name}</p>
+          <DinoList
+            dinos={this.dinosForPaddock(this.props.paddock.id)}
+            onHandleSelectDino={this.props.onHandleSelectDino}
+            bankBalance={this.props.bankBalance}
+            />
+          {this.getOccupancy() &&
+          <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>}
+          {this.props.paddock.dinosaurs.length === 0 && <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>}
+          <button className="close-button" onClick={this.handleClickClose}>X</button>
+          <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
+          <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
+        </div>}
+  
+        {!this.props.paddock.owned && <div className="paddock-card-unowned" onClick={this.handleClick}>
+          <BuyPaddockCard
+            upKeepCost={this.props.paddock.upKeepCost}
+            name={this.props.paddock.name}
+            costToBuy={this.props.paddock.costToBuy}
+            dinoCapacity={this.props.paddock.dinoCapacity}
+            id={this.props.paddock.id}
+            bankBalance={this.props.bankBalance}
+          />
+          <button className="close-button" onClick={this.handleClickCloseUnowned}>X</button>
+        </div>}
+        </div>
+      )};
   }
 }
 

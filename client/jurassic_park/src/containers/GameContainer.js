@@ -195,7 +195,6 @@ class GameContainer extends Component {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
-          console.log(paddockToChange);
           request.patch(`${url}/paddocks/${paddockId}`, {actionRequired: true})
             .then(() =>{
             })

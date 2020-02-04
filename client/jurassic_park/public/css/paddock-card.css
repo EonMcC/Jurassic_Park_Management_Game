@@ -9,7 +9,16 @@
 
 .paddock-card-unowned {
   border: 2px black solid;
-  background-color: yellow;
+  background-color: grey;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.paddock-card-action {
+  border: 2px black solid;
+  background-color: red;
   height: 15px;
   width: 15px;
   border-radius: 50%;
