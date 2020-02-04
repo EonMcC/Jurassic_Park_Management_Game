@@ -27,12 +27,17 @@ class PaddockCard extends Component {
   handleClickClose(e) {
     e.stopPropagation();
     const elementToChange = e.target.parentElement;
-    elementToChange.style = "border: 2px black solid; background-color: blue; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
+    const actionRequired = this.props.paddock.actionRequired;
+    if(actionRequired === true) {
+      elementToChange.style = "border: 2px black solid; background-color: red; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
+    } else {
+      elementToChange.style = "border: 2px black solid; background-color: blue; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
+    }
   }
   handleClickCloseUnowned(e) {
     e.stopPropagation();
     const elementToChange = e.target.parentElement;
-    elementToChange.style = "border: 2px black solid; background-color: yellow; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
+    elementToChange.style = "border: 2px black solid; background-color: grey; height: 15px; width: 15px; border-radius: 50%; overflow: hidden;";
   }
 
   handleClickAddDino(e) {

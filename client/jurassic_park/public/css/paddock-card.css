@@ -6,6 +6,12 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.paddock-card-open {
+  height: 100%; 
+  width: 100%; 
+  border-radius: 0; 
+  background-color: white;
+}
 
 .paddock-card-unowned {
   border: 2px black solid;
