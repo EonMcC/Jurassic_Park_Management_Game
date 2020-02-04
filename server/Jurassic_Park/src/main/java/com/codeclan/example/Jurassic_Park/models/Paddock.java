@@ -47,8 +47,11 @@ public class Paddock {
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;
 
+    @Column(name="action_required")
+    private boolean actionRequired;
 
-    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, Game game) {
+
+    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, Game game, boolean actionRequired) {
         this.name = name;
         this.dinoCapacity = dinoCapacity;
         this.costToBuy = costToBuy;
@@ -57,6 +60,7 @@ public class Paddock {
         this.dinosaurs = new ArrayList<>();
 //        this.triceratops = new ArrayList<>();
         this.game = game;
+        this.actionRequired = actionRequired;
     }
 
     public Paddock () {
@@ -130,7 +134,13 @@ public class Paddock {
         this.game = game;
     }
 
+    public boolean isActionRequired() {
+        return actionRequired;
+    }
 
+    public void setActionRequired(boolean actionRequired) {
+        this.actionRequired = actionRequired;
+    }
 }
 
 
