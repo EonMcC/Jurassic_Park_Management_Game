@@ -29,7 +29,6 @@ const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, 
         onHandleOpenNewDinoCard={onHandleOpenNewDinoCard}
         onHandleBuyPaddock={onHandleBuyPaddock}
         onHandleDeletePaddock={onHandleDeletePaddock}
-
         />
     )
   })
