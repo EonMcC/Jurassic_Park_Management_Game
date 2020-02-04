@@ -39,6 +39,10 @@ class PaddockCard extends Component {
     this.props.onHandleOpenNewDinoCard();
   }
 
+  handleRemovePaddock(e){
+    e.stopPropagation();
+  }
+
   dinosForPaddock(paddockId) {
     let currentPaddockDinos = [];
     this.props.dinos.forEach(dino => {

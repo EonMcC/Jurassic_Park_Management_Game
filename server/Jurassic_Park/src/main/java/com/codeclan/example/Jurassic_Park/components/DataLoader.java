@@ -56,11 +56,8 @@ public class DataLoader implements ApplicationRunner {
 
         Paddock paddock = new Paddock("West Paddock", 1, 3, 4, true, game1);
         paddockRepository.save(paddock);
-
         Paddock paddock2 = new Paddock("East Paddock", 2, 6, 8, false, game1);
         paddockRepository.save(paddock2);
-
-
 
         Dinosaur tRex = new Dinosaur("T-Rex",4, 5, "Carnivore", 5, paddock);
         dinosaurRepository.save(tRex);
@@ -76,7 +73,6 @@ public class DataLoader implements ApplicationRunner {
         foodRepository.save(food1);
         foodRepository.save(food2);
         foodRepository.save(food3);
-
         foodRepository.save(food4);
 
 //        Triceratops triceratops = new Triceratops(4, 5, "herbivore", 5, paddock);
