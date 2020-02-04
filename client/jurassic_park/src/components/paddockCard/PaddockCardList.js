@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import PaddockCard from './PaddockCard';
 
 const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, bankBalance, onHandleSelectPaddock, onHandleOpenNewDinoCard, onHandleDeletePaddock}) => {
