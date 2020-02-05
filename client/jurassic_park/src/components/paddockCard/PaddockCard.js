@@ -62,7 +62,7 @@ class PaddockCard extends Component {
     }
     
   render() {
-    const num = this.props.classId + 1;
+    const num = this.props.classNumber;
     if (this.props.paddock.actionRequired === false) {
     return (
       <>
