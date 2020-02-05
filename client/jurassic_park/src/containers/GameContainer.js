@@ -216,12 +216,13 @@ class GameContainer extends Component {
     }
 
     timerTrigger() {
-      console.log("Starts Timer Trigger");
       this.calculateIncome();
       this.calculateExpenditure();
       this.calculateNet();
       this.setBalance();
+      if(this.state.timeOutID > 0){
       this.decreaseFoodLevel();
+      }
       this.checkGameOver();
       if(!this.state.gameOver){
       const start = setTimeout( () => this.timerTrigger(), 3000);
