@@ -11,7 +11,7 @@ const DinoList = ({dinos, onHandleSelectDino, bankBalance}) => {
       onHandleSelectDino={onHandleSelectDino}
       bankBalance={bankBalance}
       />
-    )
+    ) 
   })
   
     return ( 
