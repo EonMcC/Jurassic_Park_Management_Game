@@ -17,7 +17,7 @@ class PaddockCard extends Component {
 
   handleClick(e) {
     const elementToChange = e.target;
-    elementToChange.style = "cursor: auto; overflow: visible; height: auto; width: 50vw; border-radius: 0; background-color: #e4ae1f; transform: rotate(+1deg)";
+    elementToChange.style = "transition-duration: 0.5s; cursor: auto; overflow: visible; height: auto; width: 50vw; border-radius: 0; background-color: #e4ae1f; transform: rotate(+1deg)";
     this.props.onHandleSelectPaddock(this.props.paddock);
   }
 
