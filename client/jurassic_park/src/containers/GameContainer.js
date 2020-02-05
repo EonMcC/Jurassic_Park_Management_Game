@@ -225,16 +225,8 @@ class GameContainer extends Component {
       this.decreaseFoodLevel();
       }
       this.checkGameOver();
-<<<<<<< HEAD
-      console.log(this.state.gameOver);
-      if(this.state.gameOver === false){
-        console.log("timer-trigger");
-        console.log("once, twice");
-      let start = setTimeout( () => this.timerTrigger(), 5000);
-=======
       if(!this.state.gameOver){
       const start = setTimeout( () => this.timerTrigger(), 3000);
->>>>>>> develop
       this.setState({timeOutID: start});
       }
     }
