@@ -196,7 +196,7 @@ class GameContainer extends Component {
         dino.foodLevel -= 1;
         request.patch(`${url}/dinosaurs/${dino.id}`, dino)
         }
-        if(dino.foodLevel > 4) {
+        if(dino.foodLevel < 4) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
@@ -207,8 +207,8 @@ class GameContainer extends Component {
               this.setState({paddocks: data._embedded.paddocks})
               })
             })
-        }
-        else {
+        } 
+        if (dino.foodLevel <= 0) {
           this.endGame(this.state.timeOutID);
           this.setState({isWinner: false});
         }
@@ -221,9 +221,7 @@ class GameContainer extends Component {
       this.calculateExpenditure();
       this.calculateNet();
       this.setBalance();
-      if(!this.state.timeOutID === null){
       this.decreaseFoodLevel();
-      }
       this.checkGameOver();
       if(!this.state.gameOver){
       const start = setTimeout( () => this.timerTrigger(), 3000);
@@ -329,7 +327,7 @@ class GameContainer extends Component {
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: false});
       }
-      else if(this.state.bankBalance >= 30){
+      else if(this.state.bankBalance >= 500){
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: true});
 
