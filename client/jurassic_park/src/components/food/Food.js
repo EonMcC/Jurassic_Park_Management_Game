@@ -34,11 +34,13 @@ class Food extends Component {
     }
   }
 
-  render() { 
+  // this.props.selectedDino.foodLevel
 
-    return ( 
+  render() {
+
+    return (
       <>
-        {this.checkRightTypeOfFood() && <div className="food">
+        {(this.checkRightTypeOfFood() && this.props.selectedDino.foodLevel + this.props.food.replenLevel < 20 ) && <div className="food">
           <h4>{this.props.food.name}</h4>
           <h4>Replenishment: {this.props.food.replenLevel}</h4>
           <h4>Cost: €{this.props.food.price}</h4>
@@ -48,5 +50,5 @@ class Food extends Component {
      );
   }
 }
- 
+
 export default Food;
