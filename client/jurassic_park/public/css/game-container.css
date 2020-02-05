@@ -28,7 +28,7 @@ button {
 
 .header {
   margin: auto;
-  position: fixed;
+  position: absolute;
   width: 100vw;
   color: #e4ae1f;
   font-family: 'jurassic_parkregular';
