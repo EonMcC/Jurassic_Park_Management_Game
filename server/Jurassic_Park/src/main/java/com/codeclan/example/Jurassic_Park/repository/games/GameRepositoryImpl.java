@@ -58,7 +58,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
     }
 
     @Transactional
-    public void resetGame(){
+    public String resetGame(){
 
         dinosaurRepository.deleteAll();
         paddockRepository.deleteAll();
@@ -109,5 +109,7 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
         foodRepository.save(food2);
         foodRepository.save(food3);
         foodRepository.save(food4);
+
+        return "true";
     }
 }

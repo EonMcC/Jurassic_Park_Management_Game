@@ -21,8 +21,8 @@ public class GameController {
     }
 
     @GetMapping(value="/reset")
-    public void resetGame() {
-        gameRepository.resetGame();
+    public String resetGame() {
+        return gameRepository.resetGame();
     }
 
 }
