@@ -12,7 +12,7 @@ const Dino = ({dino, onHandleSelectDino, bankBalance}) => {
       <h3>{dino.type}</h3>
       <p>Food: {dino.foodLevel}</p>
       <p>Type: {dino.dietaryType}</p>
-      <p>Revenue: {dino.revenue}</p>
+      <p>Revenue: {dino.revenueIncrease}</p>
     </div>
   )
   
