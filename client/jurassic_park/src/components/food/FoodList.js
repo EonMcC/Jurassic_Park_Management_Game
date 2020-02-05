@@ -7,26 +7,27 @@ class FoodList extends Component {
     this.state = {  }
   }
 
-  render() { 
-    
+  render() {
+
     const splitFoods = this.props.foods.map((food, index) => {
       return (
-        <Food 
-          key={index} 
+        <Food
+          key={index}
           food={food}
-          onHandleSelectFood={this.props.onHandleSelectFood} 
+          onHandleSelectFood={this.props.onHandleSelectFood}
           bankBalance={this.props.bankBalance}
           selectedDino={this.props.selectedDino}
+          // dinoFull={this.props.dinoFull}
           />
       );
     });
 
-    return ( 
+    return (
       <div className="food-list">
         {splitFoods}
       </div>
      );
   }
 }
- 
+
 export default FoodList;

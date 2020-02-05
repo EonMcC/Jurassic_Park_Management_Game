@@ -7,6 +7,7 @@ class Food extends Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.checkCanAffordFood = this.checkCanAffordFood.bind(this);
     this.checkRightTypeOfFood = this.checkRightTypeOfFood.bind(this);
+    this.returnTrueIfDinoCanBeFed = this.returnTrueIfDinoCanBeFed.bind(this);
   }
 
   handleSelect(e) {
@@ -34,13 +35,21 @@ class Food extends Component {
     }
   }
 
-  // this.props.selectedDino.foodLevel
+  returnTrueIfDinoCanBeFed() {
+    const maxValue = 20;
+    if (this.props.selectedDino.foodLevel + this.props.food.replenLevel <= maxValue) {
+      return true;
+    } else {
+      return false;
+      // this.props.dinoFull(true);
+    }
+  }
 
   render() {
 
     return (
       <>
-        {(this.checkRightTypeOfFood() && this.props.selectedDino.foodLevel + this.props.food.replenLevel < 20 ) && <div className="food">
+        {(this.checkRightTypeOfFood() && this.returnTrueIfDinoCanBeFed()) && <div className="food">
           <h4>{this.props.food.name}</h4>
           <h4>Replenishment: {this.props.food.replenLevel}</h4>
           <h4>Cost: €{this.props.food.price}</h4>
@@ -50,5 +59,8 @@ class Food extends Component {
      );
   }
 }
+
+// this.props.selectedDino.foodLevel + this.props.food.replenLevel < 20
+// <div>Dinosaur is Full</div>
 
 export default Food;
