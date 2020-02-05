@@ -20,11 +20,11 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 50,
+      bankBalance: 1,
       totalIncome: 0,
       totalExpenditure: 0,
       net: 0,
-      gameOver: true,
+      gameOver: false,
       isWinner: null,
       timeOutID: null
      }
