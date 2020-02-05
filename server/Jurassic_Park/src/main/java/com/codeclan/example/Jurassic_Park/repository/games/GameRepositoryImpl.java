@@ -72,16 +72,33 @@ public class GameRepositoryImpl implements GameRepositoryCustom{
         Game game1 = new Game(bank1);
         gameRepository.save(game1);
 
-        Paddock paddock = new Paddock("West Paddock", 1, 3, 4, true, false, game1);
-        paddockRepository.save(paddock);
+        Paddock paddock1 = new Paddock("West Paddock", 1, 3, 4, true, false, game1);
+        paddockRepository.save(paddock1);
         Paddock paddock2 = new Paddock("East Paddock", 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock2);
+        Paddock paddock3 = new Paddock("North Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock3);
+        Paddock paddock4 = new Paddock("South Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock4);
+        Paddock paddock5 = new Paddock("North West Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock5);
+        Paddock paddock6 = new Paddock("North East Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock6);
+        Paddock paddock7 = new Paddock("South West Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock7);
+        Paddock paddock8 = new Paddock("South East Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock8);
+        Paddock paddock9 = new Paddock("Mountain Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock9);
+        Paddock paddock10 = new Paddock("River Paddock", 2, 6, 8, false, false, game1);
+        paddockRepository.save(paddock10);
 
-        Dinosaur tRex = new Dinosaur("T-Rex",4, 5, "Carnivore", 5, paddock);
+
+        Dinosaur tRex = new Dinosaur("T-Rex",10, 5, "Carnivore", 5, paddock1);
         dinosaurRepository.save(tRex);
-        Dinosaur tRex2 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock);
+        Dinosaur tRex2 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock1);
         dinosaurRepository.save(tRex2);
-        Dinosaur dino3 = new Dinosaur("Triceratops", 8, 4, "Herbivore", 5, paddock);
+        Dinosaur dino3 = new Dinosaur("Triceratops", 10, 4, "Herbivore", 5, paddock1);
         dinosaurRepository.save(dino3);
 
         Food food1 = new Food("Beef", 10, 2, "Carnivore");
