@@ -20,7 +20,7 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 100,
+      bankBalance: 25,
       totalIncome: 0,
       totalExpenditure: 0,
       net: 0,
@@ -194,7 +194,7 @@ class GameContainer extends Component {
         dino.foodLevel -= 1;
         request.patch(`${url}/dinosaurs/${dino.id}`, dino)
         }
-        if(dino.foodLevel < 4) {
+        if(dino.foodLevel > 4) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
@@ -206,7 +206,7 @@ class GameContainer extends Component {
               })
             })
         }
-        else{
+        else {
           this.endGame(this.state.timeOutID);
           this.setState({isWinner: false});
         }
