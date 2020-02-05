@@ -8,8 +8,8 @@ const InfoBox = ({totalIncome, totalExpenditure, net}) => {
       <p>{totalIncome}</p>
       <h3>Expenditure</h3>
       <p>{totalExpenditure}</p>
-      <h3>Net</h3>
-      <p>{net}</p>
+      <h2>Net</h2>
+      <p className="net">{net}</p>
     </div>
   )
 }
