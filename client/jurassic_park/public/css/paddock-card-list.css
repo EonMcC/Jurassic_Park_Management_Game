@@ -11,6 +11,6 @@
   background-size: 80%;
   margin-top: 9%;
   height: 1000px;
-  overflow: hidden;
+  overflow: visible;
   transform: rotate(-1deg);
 }

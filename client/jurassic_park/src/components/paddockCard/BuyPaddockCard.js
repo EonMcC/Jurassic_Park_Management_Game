@@ -26,10 +26,10 @@ class BuyPaddockCard extends Component {
 
   render() { 
     return ( 
-      <div>
-        <p>{this.props.name}</p>
-        <p>Dinosaur Capacity: {this.props.dinoCapacity}</p>
-        <p>UpKeep Cost: {this.props.upKeepCost}</p>
+      <div className="buy-paddock-card">
+        <h2 className="paddock-name">{this.props.name}</h2>
+        <p> Max Dinosaur Capacity: {this.props.dinoCapacity}</p>
+        <p>Upkeep Cost: {this.props.upKeepCost}</p>
         <p>Cost to Buy: {this.props.costToBuy}</p>
         {this.checkCanAffordPaddock() && <button onClick={this.onClickChangePaddockOwned}>Buy this Paddock</button>}
         {!this.checkCanAffordPaddock() && <h4>You can't afford this paddock right now</h4>}

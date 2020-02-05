@@ -1,6 +1,11 @@
 html {
   background-color: #262a32;
 }
+
+.close-button {
+  margin: 10px;
+  padding: 2px;
+}
 .game-container {
   height: 100vh;
   width: 100vw;
@@ -16,7 +21,7 @@ html {
   margin: auto;
   position: fixed;
   width: 100vw;
-  color: red;
+  color: #e4ae1f;
   font-family: 'jurassic_parkregular';
   font-size: 7rem;
   padding: 0;
@@ -36,6 +41,7 @@ html {
   background-color: #e4ae1f;
   transform: rotate(+2deg);
   margin-top: 50%;
+  z-index: -1;
 }
 
 .start-button {

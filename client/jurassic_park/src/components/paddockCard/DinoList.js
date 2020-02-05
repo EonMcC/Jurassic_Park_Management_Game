@@ -15,9 +15,9 @@ const DinoList = ({dinos, onHandleSelectDino, bankBalance}) => {
   })
   
     return ( 
-      <>
+      <div className="dino-list">
         {allDinos}
-      </>
+      </div>
      );
   
 }

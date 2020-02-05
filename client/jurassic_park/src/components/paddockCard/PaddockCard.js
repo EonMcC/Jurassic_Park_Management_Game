@@ -17,7 +17,7 @@ class PaddockCard extends Component {
 
   handleClick(e) {
     const elementToChange = e.target;
-    elementToChange.style = "height: 50vh; width: 50vw; border-radius: 0; background-color: white;";
+    elementToChange.style = "overflow: visible; height: auto; width: 50vw; border-radius: 0; background-color: white; transform: rotate(+1deg)";
     this.props.onHandleSelectPaddock(this.props.paddock);
   }
 
@@ -66,18 +66,17 @@ class PaddockCard extends Component {
     return (
       <>
         {this.props.paddock.owned && <div className={"paddock-card-" + num} onClick={this.handleClick}>
-        <p>{this.props.paddock.name}</p>
+        <h2 className="paddock-name">{this.props.paddock.name}</h2>
         <DinoList
           dinos={this.dinosForPaddock(this.props.paddock.id)}
           onHandleSelectDino={this.props.onHandleSelectDino}
           bankBalance={this.props.bankBalance}
           />
+        <button className="close-button" onClick={this.handleClickClose}>Close Paddock</button>
         {this.getOccupancy() &&
         <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>}
         {this.props.paddock.dinosaurs.length === 0 && <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>}
-        <button className="close-button" onClick={this.handleClickClose}>X</button>
-        <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
-        <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
+        <p>Paddock Upkeep Cost: €{this.props.paddock.upKeepCost} | Paddock Revenue: €{this.calculateTotalPaddockRevenue()}</p>
       </div>}
 
       {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
@@ -92,25 +91,25 @@ class PaddockCard extends Component {
           onHandleBuyPaddock={this.props.onHandleBuyPaddock}
         />           
 
-        <button className="close-button" onClick={this.handleClickClose}>X</button>
+        <button className="close-button" onClick={this.handleClickClose}>Close Paddock</button>
       </div>}
       </>
      )} else {
       return (
         <>
           {this.props.paddock.owned && <div className={"paddock-card-action-" + num} onClick={this.handleClick}>
-          <p>{this.props.paddock.name}</p>
+          <h2 className="paddock-name">{this.props.paddock.name}</h2>
           <DinoList
             dinos={this.dinosForPaddock(this.props.paddock.id)}
             onHandleSelectDino={this.props.onHandleSelectDino}
             bankBalance={this.props.bankBalance}
             />
+          <button className="close-button" onClick={this.handleClickClose}>Close Paddock</button>
           {this.getOccupancy() &&
           <button className="add-dino-button" onClick={this.handleClickAddDino}>Add Dinosaur</button>}
           {this.props.paddock.dinosaurs.length === 0 && <button className="remove-paddock-button" onClick={this.handleRemovePaddock}>Remove Paddock</button>}
-          <button className="close-button" onClick={this.handleClickClose}>X</button>
-          <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
-          <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
+          <p className="paddock-revenue-box">Paddock Upkeep Cost: €{this.props.paddock.upKeepCost} | Paddock Revenue: €{this.calculateTotalPaddockRevenue()}</p>
+
         </div>}
   
         {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
@@ -122,7 +121,7 @@ class PaddockCard extends Component {
             id={this.props.paddock.id}
             bankBalance={this.props.bankBalance}
           />
-          <button className="close-button" onClick={this.handleClickClose}>X</button>
+          <button className="close-button" onClick={this.handleClickClose}>Close Paddock</button>
         </div>}
         </>
       )};

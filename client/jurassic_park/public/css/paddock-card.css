@@ -1,3 +1,14 @@
+.paddock-name {
+  font-family: 'jurassic_parkregular';
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+.paddock-revenue-box {
+  color: black;
+  font-weight: bold;
+}
+
 .paddock-card-open {
   height: 50vh; 
   width: 50vw; 
