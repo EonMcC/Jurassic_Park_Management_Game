@@ -23,7 +23,10 @@ class GameContainer extends Component {
       bankBalance: 1,
       totalIncome: 0,
       totalExpenditure: 0,
-      net: 0
+      net: 0,
+      gameOver: false,
+      isWinner: null,
+      timeOutID: null
      }
 
      this.handleStartClick = this.handleStartClick.bind(this);
@@ -47,6 +50,8 @@ class GameContainer extends Component {
      this.onHandleBuyPaddock = this.HandleBuyPaddock.bind(this);
      this.takePaddockCostOffBalance = this.takePaddockCostOffBalance.bind(this);
      this.takeDinoCostOffBalance = this.takeDinoCostOffBalance.bind(this);
+     this.endGame = this.endGame.bind(this);
+     this.checkGameOver = this.checkGameOver.bind(this);
 
 
   }
@@ -132,10 +137,11 @@ class GameContainer extends Component {
       //   })
       // })
 
-    startCounter() {
+    // startCounter() {
 
-       setInterval( () => this.timerTrigger(), 3000);
-    }
+    //   setInterval( () => this.timerTrigger(), 3000);
+      
+    // }
 
     takeDinoCostOffBalance(cost){
       let newBalance = this.state.bankBalance - cost;
@@ -178,7 +184,10 @@ class GameContainer extends Component {
         if(dino.foodLevel > 0){
         dino.foodLevel -= 1;
         }
-        // else{this.endGame()}
+        else{
+          this.endGame(this.state.timeOutID);
+          this.setState({isWinner: false});
+        }
       })
     }
 
@@ -188,7 +197,11 @@ class GameContainer extends Component {
       this.calculateNet();
       this.setBalance();
       this.decreaseFoodLevel();
-      setTimeout( () => this.timerTrigger(), 3000);
+      this.checkGameOver();
+      if(!this.state.gameOver){
+      const start = setTimeout( () => this.timerTrigger(), 3000);
+      this.setState({timeOutID: start});
+      }
     }
 
     handleStartClick(e) {
@@ -277,10 +290,28 @@ class GameContainer extends Component {
       
     }
 
-
     takePaddockCostOffBalance(cost){
       let newBalance = this.state.bankBalance - cost;
       this.setState({bankBalance: newBalance});
+    }
+
+    endGame(timeOutID){
+      this.setState({gameOver: true});
+      clearTimeout(timeOutID);
+      // this.setState({timeOutID: null});
+      
+    }
+    checkGameOver(){
+      if(this.state.bankBalance <= 0 ){
+        this.endGame(this.state.timeOutID);
+        this.setState({isWinner: false});
+      }
+      else if(this.state.bankBalance >= 50){
+        this.endGame(this.state.timeOutID);
+        this.setState({isWinner: true});
+
+      }
+
     }
 
 
