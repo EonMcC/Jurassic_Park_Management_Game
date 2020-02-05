@@ -20,13 +20,14 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 100,
+      bankBalance: 10,
       totalIncome: 0,
       totalExpenditure: 0,
       net: 0,
       gameOver: false,
       isWinner: null,
-      timeOutID: null
+      timeOutID: null,
+      gameReset: false
      }
 
      this.handleStartClick = this.handleStartClick.bind(this);
@@ -52,6 +53,7 @@ class GameContainer extends Component {
      this.takeDinoCostOffBalance = this.takeDinoCostOffBalance.bind(this);
      this.endGame = this.endGame.bind(this);
      this.checkGameOver = this.checkGameOver.bind(this);
+     this.handleResetGame = this.handleResetGame.bind(this);
 
 
   }
@@ -205,8 +207,8 @@ class GameContainer extends Component {
               this.setState({paddocks: data._embedded.paddocks})
               })
             })
-        }
-        else{
+        } 
+        if (dino.foodLevel <= 0) {
           this.endGame(this.state.timeOutID);
           this.setState({isWinner: false});
         }
@@ -218,17 +220,19 @@ class GameContainer extends Component {
       this.calculateExpenditure();
       this.calculateNet();
       this.setBalance();
+      if(this.state.timeOutID > 0){
       this.decreaseFoodLevel();
+      }
       this.checkGameOver();
       if(!this.state.gameOver){
-      const start = setTimeout( () => this.timerTrigger(), 10000);
+      const start = setTimeout( () => this.timerTrigger(), 3000);
       this.setState({timeOutID: start});
       }
     }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
-      elementToChange.style = "color: green; opacity: 0; z-index: -1;";
+      elementToChange.style = "color: green; opacity: 0; z-index: -1; width: 1vw; height: 1vh;";
 
       const request = new Request();
       const url = 'http://localhost:8080';
@@ -241,9 +245,11 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
-      .then(()=> {
+      .then(() => {
+        const result = this.state.dinos.slice(0, 2);
+
         this.setState({newDinos:
-          this.state.dinos.slice(0, 2)
+          [...result]
         })
       })
         //GetFoods
@@ -319,17 +325,82 @@ class GameContainer extends Component {
 
     }
     checkGameOver(){
+      console.log(this.state.bankBalance);
       if(this.state.bankBalance <= 0 ){
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: false});
       }
-      else if(this.state.bankBalance >= 50){
+      else if(this.state.bankBalance >= 500){
+
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: true});
 
       }
 
     }
+
+  handleResetGame(){
+    const request = new Request();
+    const url = 'http://localhost:8080';
+    let response = true;
+
+    request.get(`${url}/games/reset`)
+      .then((data) => {
+        response = data;
+      })
+    .then( () => {
+    const promise1 =  request.get(`${url}/paddocks`)
+    .then((data) => {
+      this.setState({paddocks: data._embedded.paddocks})
+    })
+    //GetDinos
+    request.get(`${url}/dinosaurs`)
+    .then((data) => {
+      this.setState({dinos: data._embedded.dinosaurs})
+    })
+    .then(()=> {
+      const result = this.state.dinos.slice(0, 2);
+
+        this.setState({newDinos:
+          [...result]
+      })
+    })
+      //GetFoods
+    request.get(`${url}/foods`)
+    .then((data) => {
+      this.setState({foods: data._embedded.foods})
+    });
+
+  })
+
+    .then(() => {
+    this.setState({timeOutID: null});
+    this.setState({isWinner: null});
+    this.setState({gameReset: false});
+    this.setState({bankBalance: 0});
+    this.setState({net: 0});
+    this.setState({totalIncome: 0});
+    this.setState({totalExpenditure: 0});
+    this.setState({gameOver: false});
+    console.log("mew", this.state.timeOutID);
+
+  })
+  .then(() => {
+    this.timerTrigger();
+  })
+        console.log(response);
+      
+      // request.get(`${url}/games/reset`)
+      // .then((data) => {
+      //   this.setState({gameReset: data})
+      // })
+      // .then( () => {
+      //   setTimeout(Promise.all([promise1, promise2])
+      //   .then(() => {
+      //     this.timerTrigger()}, 10000))
+      //   })
+    }
+  
 
 
 
@@ -375,7 +446,7 @@ class GameContainer extends Component {
                                       selectedPaddock={this.state.selectedPaddock}
                                       onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
-        <EndGame></EndGame>
+        {this.state.gameOver && <EndGame onHandleResetGame={this.handleResetGame}></EndGame>}
       </div>
      );
   }
