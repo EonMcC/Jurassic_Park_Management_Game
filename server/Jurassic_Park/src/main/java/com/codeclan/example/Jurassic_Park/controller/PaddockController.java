@@ -13,5 +13,5 @@ public class PaddockController {
 
     @Autowired
     PaddockRepository paddockRepository;
-    
+
 }
