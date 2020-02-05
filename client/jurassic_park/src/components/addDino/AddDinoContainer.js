@@ -14,7 +14,8 @@ class AddDinoContainer extends Component {
 
   render() {
     return (
-      <>
+      <div className="add-dino-container">
+        <h2>Add a Dinosaur to the Paddock</h2>
       <NewDinoList
         newDinos={this.props.newDinos}
         bankBalance={this.props.bankBalance}
@@ -22,7 +23,7 @@ class AddDinoContainer extends Component {
         selectedPaddock={this.props.selectedPaddock}
       />
         <button className="close-button" onClick={this.handleClickCloseAddDino}>X</button>
-      </>
+      </div>
      );
   }
 }

@@ -8,6 +8,7 @@ button {
   border: none;
   padding: 10px;
   border: black 1px solid;
+  box-shadow: 3px 4px 2px;
 }
 
 .close-button {

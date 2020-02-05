@@ -47,13 +47,13 @@ class NewDino extends Component {
 
   render() {
     return (
-      <>
+      <div className="dino">
         <h2>{this.props.newDino.type}</h2>
         <p>Dietary Type: {this.props.newDino.dietaryType}</p>
         <p>Cost: {this.props.newDino.buyValue}</p>
         <p>Revenue: {this.props.newDino.revenue}</p>
         {this.checkCanAffordDino() && <button onClick={this.onClickAddNewDino}>Add this Dino!</button>}
-      </>
+      </div>
      );
   }
 }

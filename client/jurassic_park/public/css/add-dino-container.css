@@ -1,0 +1,16 @@
+.add-dino-container {
+  color: black;
+  position: fixed;
+  left: 23%;  
+  top: 20%;
+  background-color: #e4ae1f;
+  width: 50vw;
+  height: auto;
+  border: black solid 5px;
+}
+
+.add-dino-container h2 {
+  font-size: 3rem;
+  font-family: 'jurassic_parkregular';
+  letter-spacing: 3px;
+}
