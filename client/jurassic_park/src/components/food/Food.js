@@ -41,7 +41,6 @@ class Food extends Component {
       return true;
     } else {
       return false;
-      // this.props.dinoFull(true);
     }
   }
 
@@ -59,8 +58,5 @@ class Food extends Component {
      );
   }
 }
-
-// this.props.selectedDino.foodLevel + this.props.food.replenLevel < 20
-// <div>Dinosaur is Full</div>
 
 export default Food;

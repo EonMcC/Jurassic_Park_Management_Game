@@ -7,8 +7,6 @@ const Dino = ({dino, onHandleSelectDino, bankBalance}) => {
     onHandleSelectDino(dino);
   }
 
-  //2 functions:
-
   return (
     <div className="dino" onClick={handleSelect}>
       <h3>{dino.type}</h3>

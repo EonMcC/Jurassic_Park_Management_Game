@@ -33,18 +33,6 @@ class NewDino extends Component {
     this.props.onHandleAddNewDino(freshDino);
   }
 
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  //   const newPirate = {
-  //     firstName: this.state.firstName,
-  //     lastName: this.state.lastName,
-  //     age: this.state.age,
-  //     ship: event.target.ship.value
-  //   }
-  //   this.props.onFormSubmit(newPirate);
-  // }
-
-
   render() {
     return (
       <div className="dino">
