@@ -1,0 +1,9 @@
+.food {
+  border: dashed black 2px;
+  padding: 3px;
+}
+
+.food button {
+  padding: 3px;
+  margin: 3px;
+}
