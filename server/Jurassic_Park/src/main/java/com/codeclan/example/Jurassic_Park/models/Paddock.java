@@ -1,6 +1,5 @@
 package com.codeclan.example.Jurassic_Park.models;
 
-import com.codeclan.example.Jurassic_Park.models.inheritance.TriceratopsInherit;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cascade;
 

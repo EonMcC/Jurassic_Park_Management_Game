@@ -2,19 +2,13 @@ package com.codeclan.example.Jurassic_Park;
 
 
 import com.codeclan.example.Jurassic_Park.models.*;
-import com.codeclan.example.Jurassic_Park.models.inheritance.TriceratopsInherit;
 import com.codeclan.example.Jurassic_Park.repositories.DinosaurRepository;
 import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
-import com.codeclan.example.Jurassic_Park.repositories.TriceratopsRepository;
-import com.codeclan.example.Jurassic_Park.repositories.inheritance.TriceratopsInheritRepository;
-
 import com.codeclan.example.Jurassic_Park.repository.banks.BankRepository;
 import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
@@ -26,12 +20,6 @@ class JurassicParkApplicationTests {
 
 	@Autowired
 	DinosaurRepository dinosaurRepository;
-
-	@Autowired
-    TriceratopsRepository triceratopsRepository;
-
-	@Autowired
-    TriceratopsInheritRepository triceratopsInheritRepository;
 
 	@Autowired
 	GameRepository gameRepository;
@@ -75,8 +63,6 @@ class JurassicParkApplicationTests {
 		gameRepository.save(game1);
         Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, false, game1);
         paddockRepository.save(paddock);
-        Triceratops triceratops = new Triceratops(10, 30, "Shrubbery", 3, paddock);
-        triceratopsRepository.save(triceratops);
     }
 
 	@Test
@@ -87,8 +73,6 @@ class JurassicParkApplicationTests {
 		gameRepository.save(game1);
 		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, false, game1);
 		paddockRepository.save(paddock);
-		TriceratopsInherit triceratops = new TriceratopsInherit(10, 30, "Shrubbery", 3, paddock);
-		triceratopsInheritRepository.save(triceratops);
 	}
 
 	@Test

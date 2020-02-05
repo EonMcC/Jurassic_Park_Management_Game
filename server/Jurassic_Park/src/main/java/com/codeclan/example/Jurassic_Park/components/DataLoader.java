@@ -1,19 +1,11 @@
 package com.codeclan.example.Jurassic_Park.components;
 
-import com.codeclan.example.Jurassic_Park.controller.DinosaurController;
 import com.codeclan.example.Jurassic_Park.models.*;
-import com.codeclan.example.Jurassic_Park.models.inheritance.Dino;
 import com.codeclan.example.Jurassic_Park.repositories.DinosaurRepository;
 import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
-import com.codeclan.example.Jurassic_Park.repositories.DinosaurRepository;
-import com.codeclan.example.Jurassic_Park.repositories.TriceratopsRepository;
-import com.codeclan.example.Jurassic_Park.repositories.inheritance.TriceratopsInheritRepository;
-
-
 import com.codeclan.example.Jurassic_Park.repository.banks.BankRepository;
 import com.codeclan.example.Jurassic_Park.repository.foods.FoodRepository;
 import com.codeclan.example.Jurassic_Park.repository.games.GameRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -29,9 +21,6 @@ public class DataLoader implements ApplicationRunner {
     PaddockRepository paddockRepository;
 
     @Autowired
-    TriceratopsRepository triceratopsRepository;
-
-    @Autowired
     FoodRepository foodRepository;
 
     @Autowired
@@ -40,11 +29,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     GameRepository gameRepository;
 
-
     public DataLoader() {
 
     }
-
 
     public void run(ApplicationArguments args) {
 
@@ -74,13 +61,6 @@ public class DataLoader implements ApplicationRunner {
         foodRepository.save(food2);
         foodRepository.save(food3);
         foodRepository.save(food4);
-
-//        Triceratops triceratops = new Triceratops(4, 5, "herbivore", 5, paddock);
-//        triceratopsRepository.save(triceratops);
-
-//      TriceratopsInherit triceratops = new TriceratopsInherit(10, 30, "Shrubbery", 3, paddock);
-//      triceratopsInheritRepository.save(triceratops);
-
 
     }
 
