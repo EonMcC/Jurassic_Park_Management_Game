@@ -11,10 +11,10 @@ const Dino = ({dino, onHandleSelectDino, bankBalance}) => {
     <div className="dino" onClick={handleSelect}>
       <p>Food Level:{dino.foodLevel}</p>
       <p>Dietary Type: {dino.dietaryType}</p>
-      <p>Revenue: {dino.revenue}</p>
+      <p>Revenue: {dino.revenueIncrease}</p>
     </div>
   )
-  
+
 }
 
 export default Dino;
