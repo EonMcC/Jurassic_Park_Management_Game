@@ -9,7 +9,8 @@
   background-size: contain;
   background-position: center;
   background-size: 80%;
-  margin-top: 7%;
+  margin-top: 9%;
   height: 1000px;
   overflow: hidden;
+  transform: rotate(-1deg);
 }
