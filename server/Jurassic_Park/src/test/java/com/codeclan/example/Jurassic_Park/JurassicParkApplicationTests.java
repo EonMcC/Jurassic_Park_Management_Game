@@ -39,7 +39,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, false, game1);
+		Paddock paddock = new Paddock("West Paddock", 1,  0, 3000, 30, false, false, game1);
 		paddockRepository.save(paddock);
 	}
 
@@ -49,7 +49,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, false, game1);
+		Paddock paddock = new Paddock("West Paddock", 1, 0, 3000, 30, false, false, game1);
 		paddockRepository.save(paddock);
 		Dinosaur tRex = new Dinosaur("T-Rex",10, 30, "Cow", 3, paddock);
 		dinosaurRepository.save(tRex);
@@ -61,7 +61,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-        Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, false, game1);
+        Paddock paddock = new Paddock("West Paddock", 1, 0, 3000, 30, false, false, game1);
         paddockRepository.save(paddock);
     }
 
@@ -71,7 +71,7 @@ class JurassicParkApplicationTests {
 		bankRepository.save(bank1);
 		Game game1 = new Game(bank1);
 		gameRepository.save(game1);
-		Paddock paddock = new Paddock("West Paddock", 0, 3000, 30, false, false, game1);
+		Paddock paddock = new Paddock("West Paddock", 1, 0, 3000, 30, false, false, game1);
 		paddockRepository.save(paddock);
 	}
 

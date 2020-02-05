@@ -41,25 +41,25 @@ public class DataLoader implements ApplicationRunner {
         Game game1 = new Game(bank1);
         gameRepository.save(game1);
 
-        Paddock paddock = new Paddock("West Paddock", 1, 3, 4, true, false, game1);
+        Paddock paddock = new Paddock("Malcolm Paddock", 1, 1, 3, 4, true, false, game1);
         paddockRepository.save(paddock);
-        Paddock paddock2 = new Paddock("East Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock2 = new Paddock("Grant Paddock", 2, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock2);
-        Paddock paddock3 = new Paddock("North Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock3 = new Paddock("Nedry Paddock", 3, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock3);
-        Paddock paddock4 = new Paddock("South Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock4 = new Paddock("Sattler Paddock", 4, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock4);
-        Paddock paddock5 = new Paddock("North West Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock5 = new Paddock("Hammond Paddock", 5, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock5);
-        Paddock paddock6 = new Paddock("North East Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock6 = new Paddock("Murphy Paddock", 6, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock6);
-        Paddock paddock7 = new Paddock("South West Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock7 = new Paddock("Dodgson Paddock", 7, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock7);
-        Paddock paddock8 = new Paddock("South East Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock8 = new Paddock("Wu Paddock", 8, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock8);
-        Paddock paddock9 = new Paddock("Mountain Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock9 = new Paddock("Gennaro Paddock", 9, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock9);
-        Paddock paddock10 = new Paddock("River Paddock", 2, 6, 8, false, false, game1);
+        Paddock paddock10 = new Paddock("Muldoon Paddock", 10, 2, 6, 8, false, false, game1);
         paddockRepository.save(paddock10);
 
 

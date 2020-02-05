@@ -196,7 +196,7 @@ class GameContainer extends Component {
         dino.foodLevel -= 1;
         request.patch(`${url}/dinosaurs/${dino.id}`, dino)
         }
-        if(dino.foodLevel < 4) {
+        if(dino.foodLevel > 4) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
@@ -208,7 +208,7 @@ class GameContainer extends Component {
               })
             })
         }
-        else{
+        else {
           this.endGame(this.state.timeOutID);
           this.setState({isWinner: false});
         }
@@ -225,18 +225,23 @@ class GameContainer extends Component {
       this.decreaseFoodLevel();
       }
       this.checkGameOver();
+<<<<<<< HEAD
       console.log(this.state.gameOver);
       if(this.state.gameOver === false){
         console.log("timer-trigger");
         console.log("once, twice");
       let start = setTimeout( () => this.timerTrigger(), 5000);
+=======
+      if(!this.state.gameOver){
+      const start = setTimeout( () => this.timerTrigger(), 3000);
+>>>>>>> develop
       this.setState({timeOutID: start});
       }
     }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
-      elementToChange.style = "color: green; opacity: 0; z-index: -1;";
+      elementToChange.style = "color: green; opacity: 0; z-index: -1; width: 1vw; height: 1vh;";
 
       const request = new Request();
       const url = 'http://localhost:8080';

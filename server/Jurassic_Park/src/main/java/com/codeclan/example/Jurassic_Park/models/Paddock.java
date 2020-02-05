@@ -19,6 +19,9 @@ public class Paddock {
     @Column(name="name")
     private String name;
 
+    @Column(name="class_number")
+    private int classNumber;
+
     @Column(name="dino_capacity")
     private int dinoCapacity;
 
@@ -50,9 +53,9 @@ public class Paddock {
     private Game game;
 
 
-
-    public Paddock(String name, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, boolean actionRequired, Game game) {
+    public Paddock(String name, int classNumber, int dinoCapacity, int costToBuy, int upKeepCost, boolean owned, boolean actionRequired, Game game) {
         this.name = name;
+        this.classNumber = classNumber;
         this.dinoCapacity = dinoCapacity;
         this.costToBuy = costToBuy;
         this.upKeepCost = upKeepCost;
@@ -141,6 +144,14 @@ public class Paddock {
 
     public void setActionRequired(boolean actionRequired) {
         this.actionRequired = actionRequired;
+    }
+
+    public int getClassNumber() {
+        return classNumber;
+    }
+
+    public void setClassNumber(int classNumber) {
+        this.classNumber = classNumber;
     }
 }
 

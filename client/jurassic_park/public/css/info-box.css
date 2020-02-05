@@ -2,6 +2,7 @@
   height: auto;
   font-size: 2rem;
   margin-top: 30%;
+  margin-left: 10%;
   padding: 10px;
 }
 
@@ -14,4 +15,10 @@
 
 .info-box h3 {
   color:#e4ae1f;
+  line-height: 5px;
+}
+
+.net {
+  font-size: 5rem;
+  transform: rotate(-3deg);
 }

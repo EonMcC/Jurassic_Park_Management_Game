@@ -12,6 +12,7 @@ public interface EmbedDinosaur {
 
     Long getId();
     String getName();
+    int getClassNumber();
     int getDinoCapacity();
     int getCostToBuy();
     int getUpKeepCost();
