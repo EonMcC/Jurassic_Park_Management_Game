@@ -1,0 +1,11 @@
+.buy-paddock-card {
+  font-size: 1.3rem;
+}
+
+.buy-paddock-card * {
+  color: black;
+}
+
+.buy-paddock-card .paddock-name {
+  color: black;
+}

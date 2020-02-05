@@ -38,11 +38,11 @@ class Food extends Component {
 
     return ( 
       <>
-        {this.checkRightTypeOfFood() && <div className="food-item">
-          <h4>Food: {this.props.food.name}</h4>
+        {this.checkRightTypeOfFood() && <div className="food">
+          <h4>{this.props.food.name}</h4>
           <h4>Replenishment: {this.props.food.replenLevel}</h4>
           <h4>Cost: €{this.props.food.price}</h4>
-          {this.checkCanAffordFood() && <button onClick={this.handleSelect}>Feed to Dino</button>}
+          {this.checkCanAffordFood() ? <button onClick={this.handleSelect}>Feed to Dino</button> : <h3>Can't Afford</h3>}
         </div>}
       </>
      );

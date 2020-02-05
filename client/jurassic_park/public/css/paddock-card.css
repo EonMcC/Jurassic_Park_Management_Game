@@ -1,3 +1,20 @@
+.paddock-name {
+  font-family: 'jurassic_parkregular';
+  font-size: 3rem;
+  letter-spacing: 5px;
+}
+
+.paddock-revenue-box {
+  color: black;
+  font-weight: bold;
+}
+
+.paddock-card-open {
+  height: 50vh; 
+  width: 50vw; 
+  border-radius: 0; 
+  background-color: white;
+}
 .paddock-card-1 {
   border: 2px black solid;
   background-color: blue;
@@ -15,6 +32,7 @@
   border-radius: 50%;
   overflow: hidden;
   grid-area: 3/6/4/7;
+  cursor: pointer;
 }
 .paddock-card-action-1 {
   border: 2px black solid;
@@ -42,6 +60,7 @@
   border-radius: 50%;
   overflow: hidden;
   grid-area: 5/7/4/8;
+  cursor: pointer;
 }
 .paddock-card-action-2 {
   border: 2px black solid;
