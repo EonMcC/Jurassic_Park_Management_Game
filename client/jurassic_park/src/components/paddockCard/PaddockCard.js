@@ -51,16 +51,15 @@ class PaddockCard extends Component {
 
     calculateTotalPaddockRevenue() {
       let dinoRevenue = 0;
-      const dinosThisPaddock = this.dinosForPaddock(this.props.id);
+      const dinosThisPaddock = this.dinosForPaddock(this.props.id); //check this return something.
       dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenueIncrease);
-      console.log(dinoRevenue);
       return dinoRevenue;
     }
 
     getOccupancy(){
       return this.props.paddock.dinoCapacity > this.props.paddock.dinosaurs.length ? true : false;
     }
-    
+
   render() {
     const num = this.props.classNumber;
     if (this.props.paddock.actionRequired === false) {
@@ -90,7 +89,7 @@ class PaddockCard extends Component {
           owned={this.props.paddock.owned}
           bankBalance={this.props.bankBalance}
           onHandleBuyPaddock={this.props.onHandleBuyPaddock}
-        />           
+        />
 
         <button className="close-button" onClick={this.handleClickClose}>Close Paddock</button>
       </div>}

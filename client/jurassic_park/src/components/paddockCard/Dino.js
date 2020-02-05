@@ -15,7 +15,7 @@ const Dino = ({dino, onHandleSelectDino, bankBalance}) => {
       <p>Revenue: {dino.revenueIncrease}</p>
     </div>
   )
-  
+
 }
 
 export default Dino;
