@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EndGame = () => {
+const EndGame = ({onHandleResetGame}) => {
 
     const handleReset = (e) => {
         e.stopPropagation();
