@@ -52,6 +52,7 @@ class GameContainer extends Component {
      this.takeDinoCostOffBalance = this.takeDinoCostOffBalance.bind(this);
      this.endGame = this.endGame.bind(this);
      this.checkGameOver = this.checkGameOver.bind(this);
+     this.handleReset = this.handleReset.bind(this);
 
 
   }
@@ -307,7 +308,7 @@ class GameContainer extends Component {
     endGame(timeOutID){
       this.setState({gameOver: true});
       clearTimeout(timeOutID);
-      // this.setState({timeOutID: null});
+      
       
     }
     checkGameOver(){
@@ -321,6 +322,54 @@ class GameContainer extends Component {
 
       }
 
+    }
+    handleReset(e){
+      const request = new Request();
+      const url = 'http://localhost:8080';
+      request.get(`${url}/games/reset`)
+      .then((res) => { 
+        if(res === true){
+        console.log("hi");
+        console.log(this.state.dinos);
+        
+        request.get(`${url}/paddocks`)
+        .then((data) => {
+          this.setState({paddocks: data._embedded.paddocks})
+        })
+        //GetDinos
+        request.get(`${url}/dinosaurs`)
+        .then((data) => {
+          this.setState({dinos: data._embedded.dinosaurs})
+        })
+        .then(()=> {
+          this.setState({newDinos:
+            this.state.dinos.slice(0, 2)
+          })
+        })
+          //GetFoods
+        request.get(`${url}/foods`)
+        .then((data) => {
+          this.setState({foods: data._embedded.foods})
+        })
+      }
+    })
+      
+        .then(() =>{
+          this.setState({gameOver: false});
+          this.setState({bankBalance: 1});
+          this.setState({isWinner: null});
+          this.setState({timeOutID: null});
+          console.log(this.state.dinos);
+        })
+        // .then(() =>{
+        //   this.timerTrigger();
+        // })
+        
+          
+          
+      
+
+      
     }
 
 
@@ -369,6 +418,7 @@ class GameContainer extends Component {
                                       />}
         {this.state.gameOver && <EndGame 
             winner={this.state.isWinner}
+            onHandleReset={this.handleReset}
             />
             
           }

@@ -4,5 +4,5 @@ public interface GameRepositoryCustom {
 
     int getBankBalance();
 
-    void resetGame();
+    String resetGame();
 }
