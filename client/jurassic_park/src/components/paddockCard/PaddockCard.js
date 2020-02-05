@@ -65,7 +65,7 @@ class PaddockCard extends Component {
     if (this.props.paddock.actionRequired === false) {
     return (
       <>
-        {this.props.paddock.owned && <div className={"paddock-card-" + num} onClick={this.handleClick}>
+        {this.props.paddock.owned && <div className={"paddock-card paddock-card-" + num} onClick={this.handleClick}>
         <h2 className="paddock-name">{this.props.paddock.name}</h2>
         <DinoList
           dinos={this.dinosForPaddock(this.props.paddock.id)}
@@ -79,7 +79,7 @@ class PaddockCard extends Component {
         <p>Paddock Upkeep Cost: €{this.props.paddock.upKeepCost} | Paddock Revenue: €{this.calculateTotalPaddockRevenue()}</p>
       </div>}
 
-      {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
+      {!this.props.paddock.owned && <div className={"paddock-card paddock-card-unowned-" + num} onClick={this.handleClick}>
         <BuyPaddockCard
           upKeepCost={this.props.paddock.upKeepCost}
           name={this.props.paddock.name}
@@ -97,7 +97,7 @@ class PaddockCard extends Component {
      )} else {
       return (
         <>
-          {this.props.paddock.owned && <div className={"paddock-card-action-" + num} onClick={this.handleClick}>
+          {this.props.paddock.owned && <div className={"paddock-card paddock-card-action-" + num} onClick={this.handleClick}>
           <h2 className="paddock-name">{this.props.paddock.name}</h2>
           <DinoList
             dinos={this.dinosForPaddock(this.props.paddock.id)}
@@ -112,7 +112,7 @@ class PaddockCard extends Component {
 
         </div>}
   
-        {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
+        {!this.props.paddock.owned && <div className={"paddock-card paddock-card-unowned-" + num} onClick={this.handleClick}>
           <BuyPaddockCard
             upKeepCost={this.props.paddock.upKeepCost}
             name={this.props.paddock.name}

@@ -15,59 +15,143 @@
   border-radius: 0; 
   background-color: white;
 }
-.paddock-card-1 {
+
+.paddock-card {
   border: 2px black solid;
-  background-color: blue;
   height: 20px;
   width: 20px;
   border-radius: 50%;
   overflow: hidden;
-  grid-area: 3/6/4/7;
+  cursor: pointer;
+}
+/* East Paddock */
+.paddock-card-1 {
+  background-color: #2929cc;
+  grid-area: 5/10/6/11;
 }
 .paddock-card-unowned-1 {
-  border: 2px black solid;
   background-color: grey;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  grid-area: 3/6/4/7;
-  cursor: pointer;
+  grid-area: 5/10/6/11;
 }
 .paddock-card-action-1 {
-  border: 2px black solid;
-  background-color: red;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  grid-area: 3/6/4/7;
+  background-color: #b83737;
+  grid-area: 5/10/6/11;
 }
+/* North Paddock */
 .paddock-card-2 {
-  border: 2px black solid;
-  background-color: blue;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  grid-area: 5/7/4/8;
+  background-color: #2929cc;
+  grid-area: 5/7/6/8;
 }
 .paddock-card-unowned-2 {
-  border: 2px black solid;
   background-color: grey;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  grid-area: 5/7/4/8;
-  cursor: pointer;
+  grid-area: 5/7/6/8;
 }
 .paddock-card-action-2 {
-  border: 2px black solid;
-  background-color: red;
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  overflow: hidden;
-  grid-area: 5/7/4/8;
+  background-color: #b83737;
+  grid-area: 5/7/6/8;
+}
+/* South Paddock */
+.paddock-card-3 {
+  background-color: #2929cc;
+  grid-area: 14/8/15/9;
+}
+.paddock-card-unowned-3 {
+  background-color: grey;
+  grid-area: 14/8/15/9;
+
+}
+.paddock-card-action-3 {
+  background-color: #b83737;
+  grid-area: 14/8/15/9;
+}
+/* North-West Paddock */
+.paddock-card-4 {
+  background-color: #2929cc;
+  grid-area: 4/5/5/6;
+}
+.paddock-card-unowned-4 {
+  background-color: grey;
+  grid-area: 4/5/5/6;
+}
+.paddock-card-action-4 {
+  background-color: #b83737;
+  grid-area: 4/5/5/6;
+}
+/* North-East Paddock */
+.paddock-card-5 {
+  background-color: #2929cc;
+  grid-area: 4/9/5/10;
+}
+.paddock-card-unowned-5 {
+  background-color: grey;
+  grid-area: 4/9/5/10;
+}
+.paddock-card-action-5 {
+  background-color: #b83737;
+  grid-area: 4/9/5/10;
+}
+/* South-West Paddock */
+.paddock-card-6 {
+  background-color: #2929cc;
+  grid-area: 12/7/13/8;
+}
+.paddock-card-unowned-6 {
+  background-color: grey;
+  grid-area: 12/7/13/8;
+}
+.paddock-card-action-6 {
+  background-color: #b83737;
+  grid-area: 12/7/13/8;
+}
+/* South-East Paddock */
+.paddock-card-7 {
+  background-color: #2929cc;
+  grid-area: 10/9/11/10;
+}
+.paddock-card-unowned-7 {
+  background-color: grey;
+  grid-area: 10/9/11/10;
+}
+.paddock-card-action-7 {
+  background-color: #b83737;
+  grid-area: 10/9/11/10;
+}
+/* Mountain Paddock */
+.paddock-card-8 {
+  background-color: #2929cc;
+  grid-area: 2/7/3/8;
+}
+.paddock-card-unowned-8 {
+  background-color: grey;
+  grid-area: 2/7/3/8;
+}
+.paddock-card-action-8 {
+  background-color: #b83737;
+  grid-area: 2/7/3/8;
+}
+/* River Paddock */
+.paddock-card-9 {
+  background-color: #2929cc;
+  grid-area: 7/8/8/9;
+}
+.paddock-card-unowned-9 {
+  background-color: grey;
+  grid-area: 7/8/8/9;
+}
+.paddock-card-action-9 {
+  background-color: #b83737;
+  grid-area: 7/8/8/9;
+}
+/* West Paddock */
+.paddock-card-10 {
+  background-color: #2929cc;
+  grid-area: 6/5/7/6;
+}
+.paddock-card-unowned-10 {
+  background-color: grey;
+  grid-area: 6/5/7/6;
+}
+.paddock-card-action-10 {
+  background-color: #b83737;
+  grid-area: 6/5/7/6;
 }
