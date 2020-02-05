@@ -1,6 +1,7 @@
 .dino {
   border: dashed black 2px;
   padding: 3px;
+  cursor: pointer;
 }
 
 .dino h3 {

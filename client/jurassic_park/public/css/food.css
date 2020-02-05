@@ -4,6 +4,12 @@
 }
 
 .food button {
-  padding: 3px;
+  padding: 10px;
   margin: 3px;
+  background-color: #cfa128;
+  border: none;  
+}
+
+.food h3 {
+  text-decoration: underline;
 }

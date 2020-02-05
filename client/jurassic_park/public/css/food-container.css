@@ -13,3 +13,9 @@
   font-family: 'jurassic_parkregular';
   letter-spacing: 3px;
 }
+
+.food-container .close-button {
+  background-color: #cfa128;
+  border: none;
+  padding: 10px;
+}
