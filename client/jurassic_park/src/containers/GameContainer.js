@@ -446,7 +446,7 @@ class GameContainer extends Component {
                                       selectedPaddock={this.state.selectedPaddock}
                                       onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
-        {this.state.gameOver && <EndGame onHandleResetGame={this.handleResetGame}></EndGame>}
+        {this.state.gameOver && <EndGame winner={this.state.isWinner} onHandleResetGame={this.handleResetGame}></EndGame>}
       </div>
      );
   }

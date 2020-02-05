@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EndGame = ({onHandleResetGame}) => {
+const EndGame = ({onHandleResetGame, winner}) => {
 
     const handleReset = (e) => {
         e.stopPropagation();
@@ -9,6 +9,8 @@ const EndGame = ({onHandleResetGame}) => {
 
     return(
         <div className="end-game-box">
+            {}
+            {}
             <button className="reset-button" onClick={handleReset}>Restart Game</button>
         </div>
     )
