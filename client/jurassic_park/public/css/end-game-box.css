@@ -1,0 +1,13 @@
+.end-game-box {
+    font-size: 2rem;
+    color: black;
+    border: solid black 2px;
+    height: 28vh;
+    width: 55%;
+    background-color: #e4ae1f;
+    transform: rotate(+2deg);
+    margin-top: 25%;
+    z-index: 10;
+    position: fixed;
+    left: 25%;
+  }
