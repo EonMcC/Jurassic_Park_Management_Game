@@ -306,7 +306,7 @@ class GameContainer extends Component {
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
           onHandleBuyPaddock={this.onHandleBuyPaddock}
           />
-        <h2>€{this.state.bankBalance} </h2>
+        <h2 className="bank">Bank €{this.state.bankBalance}</h2>
 
         <InfoBox
           paddocks={this.state.paddocks}

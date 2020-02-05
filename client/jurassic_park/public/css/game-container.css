@@ -1,6 +1,5 @@
 html {
   background-color: #262a32;
-
 }
 .game-container {
   height: 100vh;
@@ -9,9 +8,8 @@ html {
   grid-template-rows: 1000px;
   grid-template-columns: 1fr 900px 1fr;
   text-align: center;
-  font-family: avenir;
+  font-family: times;
   color: red;
-
 }
 
 .header {
@@ -28,9 +26,16 @@ html {
   transform: rotate(+1deg);
 }
 
-h2 {
+.bank {
   grid-area: 1/3/2/4;
   font-size: 5rem;
+  color: black;
+  border: solid black 2px;
+  height: 28vh;
+  width: 80%;
+  background-color: #e4ae1f;
+  transform: rotate(+2deg);
+  margin-top: 80%;
 }
 
 .start-button {

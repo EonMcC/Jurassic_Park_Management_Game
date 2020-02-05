@@ -1,3 +1,11 @@
 .info-box {
-  border: black 2px solid;
+  height: auto;
+  font-size: 2rem;
+  margin-top: 30%;
+}
+
+.info-box p {
+  border-bottom: black 3px double;
+  background-color: red;
+  color: black;
 }
