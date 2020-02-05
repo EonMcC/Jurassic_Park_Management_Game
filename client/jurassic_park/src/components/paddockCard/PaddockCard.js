@@ -17,7 +17,7 @@ class PaddockCard extends Component {
 
   handleClick(e) {
     const elementToChange = e.target;
-    elementToChange.style = "height: 50vh; width: 50vw; border-radius: 0; background-color: white;";
+    elementToChange.style = "transition-duration: 0.5s; overflow: scroll; height: 70vh; width: 50vw; border-radius: 0; background-color: #e4ae1f;";
     this.props.onHandleSelectPaddock(this.props.paddock);
   }
 
@@ -66,7 +66,7 @@ class PaddockCard extends Component {
     return (
       <>
         {this.props.paddock.owned && <div className={"paddock-card-" + num} onClick={this.handleClick}>
-        <p>{this.props.paddock.name}</p>
+        <h2>{this.props.paddock.name}</h2>
         <DinoList
           dinos={this.dinosForPaddock(this.props.paddock.id)}
           onHandleSelectDino={this.props.onHandleSelectDino}
