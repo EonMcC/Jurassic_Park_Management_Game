@@ -1,4 +1,5 @@
 package com.codeclan.example.Jurassic_Park.components;
+
 import com.codeclan.example.Jurassic_Park.models.*;
 import com.codeclan.example.Jurassic_Park.repositories.DinosaurRepository;
 import com.codeclan.example.Jurassic_Park.repositories.PaddockRepository;
@@ -60,7 +61,7 @@ public class DataLoader implements ApplicationRunner {
         foodRepository.save(food2);
         foodRepository.save(food3);
         foodRepository.save(food4);
-        
+
     }
 
 }
