@@ -24,7 +24,7 @@ class PaddockCard extends Component {
   handleClickClose(e) {
     e.stopPropagation();
     const elementToChange = e.target.parentElement;
-    elementToChange.style = "height: 15px; width: 15px;";
+    elementToChange.style = "height: 20px; width: 20px;";
   }
 
   handleClickAddDino(e) {

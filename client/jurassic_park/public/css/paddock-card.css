@@ -7,8 +7,8 @@
 .paddock-card-1 {
   border: 2px black solid;
   background-color: blue;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: 3/6/4/7;
@@ -16,8 +16,8 @@
 .paddock-card-unowned-1 {
   border: 2px black solid;
   background-color: grey;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: 3/6/4/7;
@@ -25,8 +25,8 @@
 .paddock-card-action-1 {
   border: 2px black solid;
   background-color: red;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: 3/6/4/7;
@@ -34,8 +34,8 @@
 .paddock-card-2 {
   border: 2px black solid;
   background-color: blue;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: 5/7/4/8;
@@ -43,8 +43,8 @@
 .paddock-card-unowned-2 {
   border: 2px black solid;
   background-color: grey;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: 5/7/4/8;
@@ -52,8 +52,8 @@
 .paddock-card-action-2 {
   border: 2px black solid;
   background-color: red;
-  height: 15px;
-  width: 15px;
+  height: 20px;
+  width: 20px;
   border-radius: 50%;
   overflow: hidden;
   grid-area: 5/7/4/8;
