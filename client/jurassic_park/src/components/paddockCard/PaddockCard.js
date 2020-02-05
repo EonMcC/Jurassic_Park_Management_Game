@@ -51,15 +51,15 @@ class PaddockCard extends Component {
 
     calculateTotalPaddockRevenue() {
       let dinoRevenue = 0;
-      const dinosThisPaddock = this.dinosForPaddock(this.props.id);
-      dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenue);
+      const dinosThisPaddock = this.dinosForPaddock(this.props.id); //check this return something.
+      dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenueIncrease);
       return dinoRevenue;
     }
 
     getOccupancy(){
       return this.props.paddock.dinoCapacity > this.props.paddock.dinosaurs.length ? true : false;
     }
-    
+
   render() {
     const num = this.props.classId + 1;
     if (this.props.paddock.actionRequired === false) {
@@ -90,7 +90,7 @@ class PaddockCard extends Component {
           owned={this.props.paddock.owned}
           bankBalance={this.props.bankBalance}
           onHandleBuyPaddock={this.props.onHandleBuyPaddock}
-        />           
+        />
 
         <button className="close-button" onClick={this.handleClickClose}>X</button>
       </div>}
@@ -112,7 +112,7 @@ class PaddockCard extends Component {
           <h6>Upkeep: €{this.props.paddock.upKeepCost}</h6>
           <h6>Paddock Revenue: €{this.calculateTotalPaddockRevenue()} Dinosaurs & Paddock</h6>
         </div>}
-  
+
         {!this.props.paddock.owned && <div className={"paddock-card-unowned-" + num} onClick={this.handleClick}>
           <BuyPaddockCard
             upKeepCost={this.props.paddock.upKeepCost}
