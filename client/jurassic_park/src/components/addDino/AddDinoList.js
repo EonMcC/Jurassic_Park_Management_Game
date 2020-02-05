@@ -19,7 +19,9 @@ class AddDinoList extends Component {
       )
     })
     return (
-      (splitNewDinos)
+      <div className="add-dino-list">
+        {(splitNewDinos)}
+      </div>
      );
   }
 }

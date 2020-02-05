@@ -1,0 +1,4 @@
+.add-dino-list {
+  display: flex;
+  justify-content: space-evenly;
+}
