@@ -52,7 +52,8 @@ class PaddockCard extends Component {
     calculateTotalPaddockRevenue() {
       let dinoRevenue = 0;
       const dinosThisPaddock = this.dinosForPaddock(this.props.id);
-      dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenue);
+      dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenueIncrease);
+      console.log(dinoRevenue);
       return dinoRevenue;
     }
 
