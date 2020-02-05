@@ -245,9 +245,11 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
-      .then(()=> {
+      .then(() => {
+        const result = this.state.dinos.slice(0, 2);
+
         this.setState({newDinos:
-          this.state.dinos.slice(0, 2)
+          [...result]
         })
       })
         //GetFoods
@@ -328,7 +330,8 @@ class GameContainer extends Component {
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: false});
       }
-      else if(this.state.bankBalance >= 500){
+      else if(this.state.bankBalance >= 40){
+
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: true});
 
@@ -356,8 +359,10 @@ class GameContainer extends Component {
       this.setState({dinos: data._embedded.dinosaurs})
     })
     .then(()=> {
-      this.setState({newDinos:
-        this.state.dinos.slice(0, 2)
+      const result = this.state.dinos.slice(0, 2);
+
+        this.setState({newDinos:
+          [...result]
       })
     })
       //GetFoods
@@ -441,7 +446,7 @@ class GameContainer extends Component {
                                       selectedPaddock={this.state.selectedPaddock}
                                       onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
-        {this.state.gameOver && <EndGame onHandleResetGame={this.handleResetGame}></EndGame>}
+        {this.state.gameOver && <EndGame winner={this.state.isWinner} onHandleResetGame={this.handleResetGame}></EndGame>}
       </div>
      );
   }

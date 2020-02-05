@@ -23,7 +23,7 @@ class NewDino extends Component {
   onClickAddNewDino(e) {
     const freshDino = {
       type: this.props.newDino.type,
-      foodLevel: this.props.newDino.foodLevel,
+      foodLevel: 10,
       buyValue: this.props.newDino.buyValue,
       dietaryType: this.props.newDino.dietaryType,
       revenueIncrease: this.props.newDino.revenueIncrease,
