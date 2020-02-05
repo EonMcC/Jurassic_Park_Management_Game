@@ -330,7 +330,7 @@ class GameContainer extends Component {
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: false});
       }
-      else if(this.state.bankBalance >= 500){
+      else if(this.state.bankBalance >= 40){
 
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: true});
