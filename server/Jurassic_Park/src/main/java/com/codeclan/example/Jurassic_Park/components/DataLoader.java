@@ -41,39 +41,49 @@ public class DataLoader implements ApplicationRunner {
         Game game1 = new Game(bank1);
         gameRepository.save(game1);
 
-        Paddock paddock = new Paddock("Malcolm Paddock", 1, 1, 3, 4, true, false, game1);
+        Paddock paddock = new Paddock("Malcolm Paddock", 1, 3, 6, 6, true, false, game1);
         paddockRepository.save(paddock);
-        Paddock paddock2 = new Paddock("Grant Paddock", 2, 2, 6, 8, false, false, game1);
+        Paddock paddock2 = new Paddock("Grant Paddock", 2, 3, 6, 6, false, false, game1);
         paddockRepository.save(paddock2);
-        Paddock paddock3 = new Paddock("Nedry Paddock", 3, 2, 6, 8, false, false, game1);
+        Paddock paddock3 = new Paddock("Nedry Paddock", 3, 2, 4, 4, false, false, game1);
         paddockRepository.save(paddock3);
-        Paddock paddock4 = new Paddock("Sattler Paddock", 4, 2, 6, 8, false, false, game1);
+        Paddock paddock4 = new Paddock("Sattler Paddock", 4, 4, 8, 8, false, false, game1);
         paddockRepository.save(paddock4);
-        Paddock paddock5 = new Paddock("Hammond Paddock", 5, 2, 6, 8, false, false, game1);
+        Paddock paddock5 = new Paddock("Hammond Paddock", 5, 5, 10, 10, false, false, game1);
         paddockRepository.save(paddock5);
-        Paddock paddock6 = new Paddock("Murphy Paddock", 6, 2, 6, 8, false, false, game1);
+        Paddock paddock6 = new Paddock("Murphy Paddock", 6, 5, 10, 10, false, false, game1);
         paddockRepository.save(paddock6);
-        Paddock paddock7 = new Paddock("Dodgson Paddock", 7, 2, 6, 8, false, false, game1);
+        Paddock paddock7 = new Paddock("Dodgson Paddock", 7, 3, 6, 6, true, false, game1);
         paddockRepository.save(paddock7);
-        Paddock paddock8 = new Paddock("Wu Paddock", 8, 2, 6, 8, false, false, game1);
+        Paddock paddock8 = new Paddock("Wu Paddock", 8, 2, 4, 4, false, false, game1);
         paddockRepository.save(paddock8);
-        Paddock paddock9 = new Paddock("Gennaro Paddock", 9, 2, 6, 8, false, false, game1);
+        Paddock paddock9 = new Paddock("Gennaro Paddock", 9, 4, 8, 8, true, false, game1);
         paddockRepository.save(paddock9);
-        Paddock paddock10 = new Paddock("Muldoon Paddock", 10, 2, 6, 8, false, false, game1);
+        Paddock paddock10 = new Paddock("Muldoon Paddock", 10, 2, 4, 4, false, false, game1);
         paddockRepository.save(paddock10);
 
 
-        Dinosaur tRex = new Dinosaur("T-Rex",10, 5, "Carnivore", 5, paddock);
+        Dinosaur tRex = new Dinosaur("T-Rex",10, 10, "Carnivore", 10, paddock7);
         dinosaurRepository.save(tRex);
         Dinosaur tRex2 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock);
         dinosaurRepository.save(tRex2);
-        Dinosaur dino3 = new Dinosaur("Triceratops", 10, 4, "Herbivore", 5, paddock);
+        Dinosaur dino3 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock);
         dinosaurRepository.save(dino3);
 
-        Food food1 = new Food("Beef", 10, 2, "Carnivore");
-        Food food2 = new Food("Chicken", 5, 1, "Carnivore");
-        Food food3 = new Food("Shrubbery", 10, 2, "Herbivore");
-        Food food4 = new Food("Berries", 5, 1, "Herbivore");
+        Dinosaur dino4 = new Dinosaur("T-Rex",10, 10, "Carnivore", 10, paddock7);
+        dinosaurRepository.save(dino4);
+        Dinosaur dino5 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock9);
+        dinosaurRepository.save(dino5);
+
+        Dinosaur dino7 = new Dinosaur("Triceratops", 10, 5, "Herbivore", 5, paddock9);
+        dinosaurRepository.save(dino7);
+
+
+
+        Food food1 = new Food("Beef", 4, 6, "Carnivore");
+        Food food2 = new Food("Chicken", 2, 3, "Carnivore");
+        Food food3 = new Food("Shrubbery", 4, 6, "Herbivore");
+        Food food4 = new Food("Berries", 2, 3, "Herbivore");
         foodRepository.save(food1);
         foodRepository.save(food2);
         foodRepository.save(food3);

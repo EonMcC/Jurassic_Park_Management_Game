@@ -28,7 +28,7 @@ class NewDino extends Component {
       dietaryType: this.props.newDino.dietaryType,
       revenueIncrease: this.props.newDino.revenueIncrease,
       paddock: this.props.selectedPaddock._links.self.href
-    
+
     }
     this.props.onHandleAddNewDino(freshDino);
   }
@@ -51,7 +51,7 @@ class NewDino extends Component {
         <h2>{this.props.newDino.type}</h2>
         <p>Dietary Type: {this.props.newDino.dietaryType}</p>
         <p>Cost: {this.props.newDino.buyValue}</p>
-        <p>Revenue: {this.props.newDino.revenue}</p>
+        <p>Revenue: {this.props.newDino.revenueIncrease}</p>
         {this.checkCanAffordDino() ? <button onClick={this.onClickAddNewDino}>Add this Dino!</button> : <h3>Can't Afford</h3>}
       </div>
      );

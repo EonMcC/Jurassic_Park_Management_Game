@@ -207,7 +207,7 @@ class GameContainer extends Component {
               this.setState({paddocks: data._embedded.paddocks})
               })
             })
-        } 
+        }
         if (dino.foodLevel <= 0) {
           this.endGame(this.state.timeOutID);
           this.setState({isWinner: false});
@@ -225,7 +225,7 @@ class GameContainer extends Component {
       }
       this.checkGameOver();
       if(!this.state.gameOver){
-      const start = setTimeout( () => this.timerTrigger(), 3000);
+      const start = setTimeout( () => this.timerTrigger(), 10000);
       this.setState({timeOutID: start});
       }
     }
@@ -330,7 +330,7 @@ class GameContainer extends Component {
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: false});
       }
-      else if(this.state.bankBalance >= 40){
+      else if(this.state.bankBalance >= 100){
 
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: true});
@@ -389,7 +389,7 @@ class GameContainer extends Component {
     this.timerTrigger();
   })
         console.log(response);
-      
+
       // request.get(`${url}/games/reset`)
       // .then((data) => {
       //   this.setState({gameReset: data})
@@ -400,7 +400,7 @@ class GameContainer extends Component {
       //     this.timerTrigger()}, 10000))
       //   })
     }
-  
+
 
 
 
