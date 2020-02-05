@@ -6,10 +6,25 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.paddock-card-open {
+  height: 100%; 
+  width: 100%; 
+  border-radius: 0; 
+  background-color: white;
+}
 
 .paddock-card-unowned {
   border: 2px black solid;
-  background-color: yellow;
+  background-color: grey;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.paddock-card-action {
+  border: 2px black solid;
+  background-color: red;
   height: 15px;
   width: 15px;
   border-radius: 50%;

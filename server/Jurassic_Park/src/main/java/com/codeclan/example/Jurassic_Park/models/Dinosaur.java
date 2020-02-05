@@ -32,7 +32,7 @@ public class Dinosaur {
     @JoinColumn(name = "paddock_id", nullable = false)
     private Paddock paddock;
 
-    public Dinosaur(String type, int foodLevel, int buyValue, String dietaryType, int revenueIncrease, Paddock paddock) {
+    public Dinosaur(String type, int foodLevel, int buyValue, String dietaryType, int revenueIncrease, com.codeclan.example.Jurassic_Park.models.Paddock paddock) {
         this.type = type;
         this.foodLevel = foodLevel;
         this.buyValue = buyValue;

@@ -3,8 +3,8 @@ import InfoBox from '../components/InfoBox';
 import PaddockCardList from '../components/paddockCard/PaddockCardList';
 import FoodContainer from '../components/food/FoodContainer';
 import AddDinoContainer from '../components/addDino/AddDinoContainer';
+import EndGame from  '../components/EndGame';
 import Request from '../helpers/requests';
-
 
 class GameContainer extends Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class GameContainer extends Component {
 
       request.get(`${url}/paddocks`)
       .then((data) => {
-        this.setState({paddocks: data.paddocks})
+        this.setState({paddocks: data._embedded.paddocks})
       })
 
     })
@@ -148,13 +148,11 @@ class GameContainer extends Component {
       this.setState({bankBalance: newBalance});
     }
 
-
     calculateIncome(){
       let newTotalIncome = 0;
       this.state.dinos.forEach((dino) => {
       newTotalIncome += dino.revenueIncrease;
       this.setState({totalIncome: newTotalIncome})
-
     })
   }
 
@@ -181,8 +179,24 @@ class GameContainer extends Component {
 
     decreaseFoodLevel(){
       this.state.dinos.forEach((dino) =>{
+        const request = new Request();
+        const url = 'http://localhost:8080';
+
         if(dino.foodLevel > 0){
         dino.foodLevel -= 1;
+        request.patch(`${url}/dinosaurs/${dino.id}`, dino)       
+        }
+        if(dino.foodLevel < 4) {
+          const paddockToChange = dino._embedded.paddock;
+          const paddockId = paddockToChange.id;
+          paddockToChange.actionRequired = true;
+          request.patch(`${url}/paddocks/${paddockId}`, {actionRequired: true})
+            .then(() =>{
+              request.get(`${url}/paddocks`)
+              .then((data) => {
+              this.setState({paddocks: data._embedded.paddocks})             
+              })
+            })
         }
         else{
           this.endGame(this.state.timeOutID);
@@ -229,9 +243,7 @@ class GameContainer extends Component {
       .then((data) => {
         this.setState({foods: data._embedded.foods})
       })
-
       this.timerTrigger();
-
     }
 
         //handleSelectPaddock sets the state to equal the paddock that the user selected
@@ -260,9 +272,7 @@ class GameContainer extends Component {
       this.setState({selectedFood: food});
       this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
-
     }
-
 
     handleOpenNewDinoCard(){
       this.setState({showAddDino: true});
@@ -286,8 +296,7 @@ class GameContainer extends Component {
 
       request.patch(`${url}/paddocks/${newID}`, {owned: true})
       
-      this.takePaddockCostOffBalance(changedPaddock.costToBuy)
-      
+      this.takePaddockCostOffBalance(changedPaddock.costToBuy)    
     }
 
     takePaddockCostOffBalance(cost){
@@ -319,8 +328,6 @@ class GameContainer extends Component {
 
 
   render() {
-
-
     return (
       <>
         <button className="start-button" onClick={this.handleStartClick}>Start Game: Click to Enter</button>
@@ -360,7 +367,7 @@ class GameContainer extends Component {
                                       selectedPaddock={this.state.selectedPaddock}
                                       onHandleClickCloseAddDino={this.handleClickCloseAddDino}
                                       />}
-
+        <EndGame></EndGame>
       </>
      );
   }
