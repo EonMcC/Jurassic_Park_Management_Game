@@ -32,6 +32,7 @@
   border-radius: 50%;
   overflow: hidden;
   grid-area: 3/6/4/7;
+  cursor: pointer;
 }
 .paddock-card-action-1 {
   border: 2px black solid;
@@ -59,6 +60,7 @@
   border-radius: 50%;
   overflow: hidden;
   grid-area: 5/7/4/8;
+  cursor: pointer;
 }
 .paddock-card-action-2 {
   border: 2px black solid;
