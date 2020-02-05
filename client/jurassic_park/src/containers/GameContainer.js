@@ -20,11 +20,11 @@ class GameContainer extends Component {
       selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
-      bankBalance: 1,
+      bankBalance: 50,
       totalIncome: 0,
       totalExpenditure: 0,
       net: 0,
-      gameOver: false,
+      gameOver: true,
       isWinner: null,
       timeOutID: null
      }
@@ -121,6 +121,14 @@ class GameContainer extends Component {
       const id = this.state.selectedPaddock.id;
 
       request.patch(`${url}/paddocks/${id}`, {owned: false})
+      .then(()=>{
+        const request = new Request();
+        const url = 'http://localhost:8080';
+        request.get(`${url}/paddocks`)
+        .then((data) => {
+          this.setState({paddocks: data._embedded.paddocks})
+        })
+      })
     }
 
       // THIS WILL DELETE A PADDOCK
@@ -140,7 +148,7 @@ class GameContainer extends Component {
     // startCounter() {
 
     //   setInterval( () => this.timerTrigger(), 3000);
-      
+
     // }
 
     takeDinoCostOffBalance(cost){
@@ -184,7 +192,7 @@ class GameContainer extends Component {
 
         if(dino.foodLevel > 0){
         dino.foodLevel -= 1;
-        request.patch(`${url}/dinosaurs/${dino.id}`, dino)       
+        request.patch(`${url}/dinosaurs/${dino.id}`, dino)
         }
         if(dino.foodLevel < 4) {
           const paddockToChange = dino._embedded.paddock;
@@ -194,7 +202,7 @@ class GameContainer extends Component {
             .then(() =>{
               request.get(`${url}/paddocks`)
               .then((data) => {
-              this.setState({paddocks: data._embedded.paddocks})             
+              this.setState({paddocks: data._embedded.paddocks})
               })
             })
         }
@@ -213,7 +221,7 @@ class GameContainer extends Component {
       this.decreaseFoodLevel();
       this.checkGameOver();
       if(!this.state.gameOver){
-      const start = setTimeout( () => this.timerTrigger(), 3000);
+      const start = setTimeout( () => this.timerTrigger(), 10000);
       this.setState({timeOutID: start});
       }
     }
@@ -286,7 +294,7 @@ class GameContainer extends Component {
       const changedPaddock = this.state.paddocks.find((paddock) => {
         return paddock.id === parseInt(id);
       });
-      changedPaddock.owned = true; 
+      changedPaddock.owned = true;
       this.setState({selectedPaddock: changedPaddock});
 
       // PATCH
@@ -295,8 +303,8 @@ class GameContainer extends Component {
       const newID = changedPaddock.id;
 
       request.patch(`${url}/paddocks/${newID}`, {owned: true})
-      
-      this.takePaddockCostOffBalance(changedPaddock.costToBuy)    
+
+      this.takePaddockCostOffBalance(changedPaddock.costToBuy)
     }
 
     takePaddockCostOffBalance(cost){
@@ -308,7 +316,7 @@ class GameContainer extends Component {
       this.setState({gameOver: true});
       clearTimeout(timeOutID);
       // this.setState({timeOutID: null});
-      
+
     }
     checkGameOver(){
       if(this.state.bankBalance <= 0 ){
@@ -324,7 +332,7 @@ class GameContainer extends Component {
     }
 
 
-    
+
 
 
   render() {
