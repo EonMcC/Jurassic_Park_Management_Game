@@ -8,10 +8,11 @@ button {
   border: none;
   padding: 10px;
   border: black 1px solid;
+  box-shadow: 3px 4px 2px;
 }
 
 .close-button {
-  margin: 10px;
+  margin: 15px;
   padding: 5px;
 }
 .game-container {
@@ -27,7 +28,7 @@ button {
 
 .header {
   margin: auto;
-  position: fixed;
+  position: absolute;
   width: 100vw;
   color: #e4ae1f;
   font-family: 'jurassic_parkregular';
