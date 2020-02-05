@@ -14,4 +14,10 @@
 
 .info-box h3 {
   color:#e4ae1f;
+  line-height: 5px;
+}
+
+.net {
+  font-size: 5rem;
+  transform: rotate(-3deg);
 }
