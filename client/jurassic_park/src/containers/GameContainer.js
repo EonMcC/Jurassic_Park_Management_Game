@@ -221,14 +221,14 @@ class GameContainer extends Component {
       this.decreaseFoodLevel();
       this.checkGameOver();
       if(!this.state.gameOver){
-      const start = setTimeout( () => this.timerTrigger(), 10000);
+      const start = setTimeout( () => this.timerTrigger(), 3000);
       this.setState({timeOutID: start});
       }
     }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
-      elementToChange.style = "color: green; opacity: 0; z-index: -1;";
+      elementToChange.style = "color: green; opacity: 0; z-index: -1; width: 1vw; height: 1vh;";
 
       const request = new Request();
       const url = 'http://localhost:8080';
