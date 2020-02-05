@@ -22,7 +22,7 @@ class AddDinoContainer extends Component {
         onHandleAddNewDino={this.props.onHandleAddNewDino}
         selectedPaddock={this.props.selectedPaddock}
       />
-        <button className="close-button" onClick={this.handleClickCloseAddDino}>X</button>
+        <button className="close-button" onClick={this.handleClickCloseAddDino}>Close Window</button>
       </div>
      );
   }

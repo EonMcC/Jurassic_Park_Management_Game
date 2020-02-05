@@ -52,7 +52,7 @@ class NewDino extends Component {
         <p>Dietary Type: {this.props.newDino.dietaryType}</p>
         <p>Cost: {this.props.newDino.buyValue}</p>
         <p>Revenue: {this.props.newDino.revenue}</p>
-        {this.checkCanAffordDino() && <button onClick={this.onClickAddNewDino}>Add this Dino!</button>}
+        {this.checkCanAffordDino() ? <button onClick={this.onClickAddNewDino}>Add this Dino!</button> : <h3>Can't Afford</h3>}
       </div>
      );
   }
