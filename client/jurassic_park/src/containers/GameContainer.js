@@ -57,45 +57,40 @@ class GameContainer extends Component {
      this.checkGameOver = this.checkGameOver.bind(this);
      this.handleResetGame = this.handleResetGame.bind(this);
   }
-  
+
     updateDinoFoodLevelWhenFed(replenLevel) {
       const dino = this.state.selectedDino;
       dino.foodLevel += replenLevel;    
       this.request.patch(`${this.url}/dinosaurs/${dino.id}`, {foodLevel: dino.foodLevel});
     }
 
-    handleNewDino(dino) {
-      
-      this.request.post(`${this.url}/dinosaurs`, dino)
-      .then( () => {
-      this.request.get(`${this.url}/dinosaurs`)
-      .then((data) => {
-        this.setState({dinos: data._embedded.dinosaurs})
-      })
-      this.request.get(`${this.url}/paddocks`)
-      .then((data) => {
-        this.setState({paddocks: data._embedded.paddocks})
-      })
-    })
+    handleNewDino(newDino) {     
+      this.request.post(`${this.url}/dinosaurs`, newDino)
+        .then( () => {
+        this.request.get(`${this.url}/dinosaurs`)
+          .then((data) => {
+            this.setState({dinos: data._embedded.dinosaurs})
+          })
+          this.request.get(`${this.url}/paddocks`)
+            .then((data) => {
+              this.setState({paddocks: data._embedded.paddocks})
+            })
+        })
       this.setState({showAddDino: false});
-      this.takeDinoCostOffBalance(dino.buyValue);
+      this.takeDinoCostOffBalance(newDino.buyValue);
     }
 
     handleDeletePaddock(){
-      this.state.selectedPaddock.owned = false;
-  
-      
-      const id = this.state.selectedPaddock.id;
-
+      const paddockToChange = this.state.selectedPaddock;
+      paddockToChange.owned = false;  
+      const id = paddockToChange.id;
       this.request.patch(`${this.url}/paddocks/${id}`, {owned: false})
-      .then(()=>{
-    
-        
+        .then(()=>{       
         this.request.get(`${this.url}/paddocks`)
-        .then((data) => {
+          .then((data) => {
           this.setState({paddocks: data._embedded.paddocks})
+          })
         })
-      })
     }
 
     takeDinoCostOffBalance(cost){
