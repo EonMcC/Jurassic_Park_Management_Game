@@ -11,11 +11,11 @@ class GameContainer extends Component {
     super(props);
     this.state = {
       dinos: [],
-      newDinos: [], //choices
+      newDinos: [],
       paddocks: [],
       foods: [],
       selectedPaddock: null,
-      selectedNewDino: null, //the new dinosaur
+      selectedNewDino: null,
       selectedDino: null,
       showAddDino: false,
       showFoodContainer: false,
@@ -30,7 +30,6 @@ class GameContainer extends Component {
      }
      this.url = 'http://localhost:8080';
      this.request = new Request();
-
      this.handleStartClick = this.handleStartClick.bind(this);
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
      this.handleSelectDino = this.handleSelectDino.bind(this);
@@ -43,10 +42,8 @@ class GameContainer extends Component {
      this.setBalance = this.setBalance.bind(this);
      this.decreaseFoodLevel = this.decreaseFoodLevel.bind(this);
      this.updateDinoFoodLevelWhenFed = this.updateDinoFoodLevelWhenFed.bind(this);
-
      this.handleNewDino = this.handleNewDino.bind(this);
      this.handleDeletePaddock = this.handleDeletePaddock.bind(this);
-
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
      this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
      this.handleBuyPaddock = this.handleBuyPaddock.bind(this);
@@ -94,9 +91,7 @@ class GameContainer extends Component {
           })
           .then(() => {
             this.setBalance();
-          })
-        })
-
+          })})
     }
 
     takeDinoCostOffBalance(dinoCost){
@@ -153,8 +148,7 @@ class GameContainer extends Component {
         if (dino.foodLevel <= 0) {
           this.endGame(this.state.timeOutID);
           this.setState({isWinner: false});
-        }
-      })
+        }})
     }
 
     timerTrigger() {
@@ -195,9 +189,7 @@ class GameContainer extends Component {
             })
             .then(() => {
               this.setBalance();
-            })
-          })
-        }) 
+            })})}) 
     }
 
     handleSelectPaddock(paddock) {
@@ -291,11 +283,6 @@ class GameContainer extends Component {
         })
   }
 
-
-
-
-
-
   render() {
     return (
       <div className="game-container">
@@ -312,7 +299,6 @@ class GameContainer extends Component {
           onHandleBuyPaddock={this.handleBuyPaddock}
           />
         <h2 className="bank">Bank €{this.state.bankBalance}</h2>
-
         <InfoBox
           paddocks={this.state.paddocks}
           dinos={this.state.dinos}
@@ -320,9 +306,8 @@ class GameContainer extends Component {
           totalExpenditure={this.state.totalExpenditure}
           net={this.state.net}
           bankBalance={this.bankBalance}
-                  />
+        />
          {this.state.showFoodContainer && <FoodContainer
-
                                             foods={this.state.foods}
                                             onHandleSelectFood={this.handleSelectFood}
                                             bankBalance={this.state.bankBalance}
@@ -341,5 +326,4 @@ class GameContainer extends Component {
      );
   }
 }
-
 export default GameContainer;
