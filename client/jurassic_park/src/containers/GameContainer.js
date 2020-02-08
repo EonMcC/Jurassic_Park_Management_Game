@@ -17,7 +17,6 @@ class GameContainer extends Component {
       selectedPaddock: null,
       selectedNewDino: null, //the new dinosaur
       selectedDino: null,
-      selectedFood: null,
       showAddDino: false,
       showFoodContainer: false,
       bankBalance: 10,
@@ -202,14 +201,10 @@ class GameContainer extends Component {
         }) 
     }
 
-
-
-        //handleSelectPaddock sets the state to equal the paddock that the user selected
     handleSelectPaddock(paddock) {
       this.setState({selectedPaddock: paddock});
     }
-    //handleSelectDino sets the state to equal the dino that the user selected
-    //and opens the FoodContainer.
+
     handleSelectDino(dino) {
       this.setState({selectedDino: dino});
       this.setState({showFoodContainer: true});
@@ -218,14 +213,12 @@ class GameContainer extends Component {
     handleClickCloseFeedDino(){
       this.setState({showFoodContainer: false});
     }
-    //handleSelectFood sets the state equal to the food that the user selects,
-    //closes the FoodContainer and updates the bankBalance state.
+
     handleSelectFood(food) {
       const foodPrice = food.price;
       const currentBankBalance = this.state.bankBalance;
       const newBankBalance = currentBankBalance - foodPrice;
       this.setState({bankBalance: newBankBalance});
-      this.setState({selectedFood: food});
       this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
       this.setBalance();
