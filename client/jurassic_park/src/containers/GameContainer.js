@@ -93,32 +93,31 @@ class GameContainer extends Component {
         })
     }
 
-    takeDinoCostOffBalance(cost){
-      let newBalance = this.state.bankBalance - cost;
+    takeDinoCostOffBalance(dinoCost){
+      const newBalance = this.state.bankBalance - dinoCost;
       this.setState({bankBalance: newBalance});
     }
 
     calculateIncome(){
       let newTotalIncome = 0;
       this.state.dinos.forEach((dino) => {
-      newTotalIncome += dino.revenueIncrease;
-      this.setState({totalIncome: newTotalIncome})
-    })
-  }
+        newTotalIncome += dino.revenueIncrease;
+        this.setState({totalIncome: newTotalIncome})
+      })
+    }
 
     calculateExpenditure(){
       let newTotalExpenditure = 0;
-      this.state.paddocks.forEach((paddock) =>{
-      if(paddock.owned === true){
-      newTotalExpenditure += paddock.upKeepCost;
-      }
-      this.setState({totalExpenditure: newTotalExpenditure})
-    })
-  }
+      this.state.paddocks.forEach((paddock) => {
+        if(paddock.owned === true) {
+          newTotalExpenditure += paddock.upKeepCost;
+        }
+        this.setState({totalExpenditure: newTotalExpenditure})
+      })
+    }
 
     calculateNet(){
-      let newNet = 0;
-      newNet = this.state.totalIncome - this.state.totalExpenditure;
+      const newNet = this.state.totalIncome - this.state.totalExpenditure;
       this.setState({net: newNet});
     };
 
