@@ -243,77 +243,53 @@ class GameContainer extends Component {
       })
     }
 
-    endGame(timeOutID){
+    endGame(timeOutID) {
       this.setState({gameOver: true});
       clearTimeout(timeOutID);
-
     }
-    checkGameOver(){
-      console.log(this.state.bankBalance);
-      if(this.state.bankBalance <= 0 ){
+
+    checkGameOver() {
+      if (this.state.bankBalance <= 0 ) {
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: false});
-      }
-      else if(this.state.bankBalance >= 100){
-
+      } else if (this.state.bankBalance >= 100) {
         this.endGame(this.state.timeOutID);
         this.setState({isWinner: true});
-
       }
-
     }
 
   handleResetGame(){
-
-    
-    let response = true;
-
-    this.request.get(`${this.url}/games/reset`)
-      .then((data) => {
-        response = data;
-      })
-    .then( () => {
-    const promise1 =  this.request.get(`${this.url}/paddocks`)
-    .then((data) => {
-      this.setState({paddocks: data._embedded.paddocks})
-    })
-    //GetDinos
-    this.request.get(`${this.url}/dinosaurs`)
-    .then((data) => {
-      this.setState({dinos: data._embedded.dinosaurs})
-    })
-    .then(()=> {
-      const result = this.state.dinos.slice(0, 2);
-
-        this.setState({newDinos:
-          [...result]
-      })
-    })
-      //GetFoods
-    this.request.get(`${this.url}/foods`)
-    .then((data) => {
-      this.setState({foods: data._embedded.foods})
-    });
-
-  })
-
-    .then(() => {
-    this.setState({timeOutID: null});
-    this.setState({isWinner: null});
-    this.setState({gameReset: false});
-    this.setState({bankBalance: 10});
-    this.setState({net: 0});
-    this.setState({totalIncome: 0});
-    this.setState({totalExpenditure: 0});
-    this.setState({gameOver: false});
-    console.log("mew", this.state.timeOutID);
-
-  })
-  .then(() => {
-    this.timerTrigger();
-  })
-
-    }
+      this.request.get(`${this.url}/games/reset`)
+      .then( () => {
+        this.request.get(`${this.url}/paddocks`)
+          .then((data) => {
+            this.setState({paddocks: data._embedded.paddocks})
+          })
+          this.request.get(`${this.url}/dinosaurs`)
+            .then((data) => {
+              this.setState({dinos: data._embedded.dinosaurs})
+            })
+            .then(()=> {
+              const result = this.state.dinos.slice(0, 2);
+                this.setState({newDinos: [...result]
+              })
+            })
+            this.request.get(`${this.url}/foods`)
+              .then((data) => {
+                this.setState({foods: data._embedded.foods})
+              });
+        })
+        .then(() => {
+          this.setState({timeOutID: null});
+          this.setState({isWinner: null});
+          this.setState({gameReset: false});
+          this.setState({bankBalance: 10});
+          this.setState({gameOver: false});
+        })
+        .then(() => {
+          this.timerTrigger();
+        })
+  }
 
 
 
