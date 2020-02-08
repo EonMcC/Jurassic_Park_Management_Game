@@ -29,6 +29,7 @@ class GameContainer extends Component {
       timeOutID: null,
       gameReset: false
      }
+     this.url = 'http://localhost:8080';
 
      this.handleStartClick = this.handleStartClick.bind(this);
      this.handleSelectPaddock = this.handleSelectPaddock.bind(this);
@@ -54,31 +55,26 @@ class GameContainer extends Component {
      this.endGame = this.endGame.bind(this);
      this.checkGameOver = this.checkGameOver.bind(this);
      this.handleResetGame = this.handleResetGame.bind(this);
-
-
   }
+  
 
 
     updateDinoFoodLevelWhenFed(replenLevel) {
       const dino = this.state.selectedDino;
-      // const foodReplenLevel = this.state.selectedFood.replenLevel;
       dino.foodLevel += replenLevel;
       const request = new Request();
-      const url = 'http://localhost:8080';
-      request.patch(`${url}/dinosaurs/${dino.id}`, dino)
-
+      request.patch(`${this.url}/dinosaurs/${dino.id}`, dino)
     }
 
     handleNewDino(dino) {
       const request = new Request();
-      const url = 'http://localhost:8080';
-      request.post(`${url}/dinosaurs`, dino)
+      request.post(`${this.url}/dinosaurs`, dino)
       .then( () => {
-      request.get(`${url}/dinosaurs`)
+      request.get(`${this.url}/dinosaurs`)
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
-      request.get(`${url}/paddocks`)
+      request.get(`${this.url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
       })
@@ -90,14 +86,14 @@ class GameContainer extends Component {
     handleDeletePaddock(){
       this.state.selectedPaddock.owned = false;
       const request = new Request();
-      const url = 'http://localhost:8080';
+      
       const id = this.state.selectedPaddock.id;
 
-      request.patch(`${url}/paddocks/${id}`, {owned: false})
+      request.patch(`${this.url}/paddocks/${id}`, {owned: false})
       .then(()=>{
         const request = new Request();
-        const url = 'http://localhost:8080';
-        request.get(`${url}/paddocks`)
+        
+        request.get(`${this.url}/paddocks`)
         .then((data) => {
           this.setState({paddocks: data._embedded.paddocks})
         })
@@ -141,19 +137,19 @@ class GameContainer extends Component {
     decreaseFoodLevel(){
       this.state.dinos.forEach((dino) =>{
         const request = new Request();
-        const url = 'http://localhost:8080';
+        
 
         if(dino.foodLevel > 0){
         dino.foodLevel -= 1;
-        request.patch(`${url}/dinosaurs/${dino.id}`, dino)
+        request.patch(`${this.url}/dinosaurs/${dino.id}`, dino)
         }
         if(dino.foodLevel < 4) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
           paddockToChange.actionRequired = true;
-          request.patch(`${url}/paddocks/${paddockId}`, {actionRequired: true})
+          request.patch(`${this.url}/paddocks/${paddockId}`, {actionRequired: true})
             .then(() =>{
-              request.get(`${url}/paddocks`)
+              request.get(`${this.url}/paddocks`)
               .then((data) => {
               this.setState({paddocks: data._embedded.paddocks})
               })
@@ -186,13 +182,13 @@ class GameContainer extends Component {
       elementToChange.style = "color: green; opacity: 0; z-index: -1; width: 1vw; height: 1vh;";
 
       const request = new Request();
-      const url = 'http://localhost:8080';
-      request.get(`${url}/paddocks`)
+      
+      request.get(`${this.url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
       })
       //GetDinos
-      request.get(`${url}/dinosaurs`)
+      request.get(`${this.url}/dinosaurs`)
       .then((data) => {
         this.setState({dinos: data._embedded.dinosaurs})
       })
@@ -203,7 +199,7 @@ class GameContainer extends Component {
         })
       })
         //GetFoods
-      request.get(`${url}/foods`)
+      request.get(`${this.url}/foods`)
       .then((data) => {
         this.setState({foods: data._embedded.foods})
       })
@@ -252,10 +248,10 @@ class GameContainer extends Component {
 
       // PATCH
       const request = new Request();
-      const url = 'http://localhost:8080';
+      
       const newID = changedPaddock.id;
 
-      request.patch(`${url}/paddocks/${newID}`, {owned: true})
+      request.patch(`${this.url}/paddocks/${newID}`, {owned: true})
 
       this.takePaddockCostOffBalance(changedPaddock.costToBuy)
     }
@@ -287,20 +283,20 @@ class GameContainer extends Component {
 
   handleResetGame(){
     const request = new Request();
-    const url = 'http://localhost:8080';
+    
     let response = true;
 
-    request.get(`${url}/games/reset`)
+    request.get(`${this.url}/games/reset`)
       .then((data) => {
         response = data;
       })
     .then( () => {
-    const promise1 =  request.get(`${url}/paddocks`)
+    const promise1 =  request.get(`${this.url}/paddocks`)
     .then((data) => {
       this.setState({paddocks: data._embedded.paddocks})
     })
     //GetDinos
-    request.get(`${url}/dinosaurs`)
+    request.get(`${this.url}/dinosaurs`)
     .then((data) => {
       this.setState({dinos: data._embedded.dinosaurs})
     })
@@ -312,7 +308,7 @@ class GameContainer extends Component {
       })
     })
       //GetFoods
-    request.get(`${url}/foods`)
+    request.get(`${this.url}/foods`)
     .then((data) => {
       this.setState({foods: data._embedded.foods})
     });
