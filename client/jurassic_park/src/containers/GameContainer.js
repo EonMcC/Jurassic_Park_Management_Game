@@ -75,6 +75,9 @@ class GameContainer extends Component {
             .then((data) => {
               this.setState({paddocks: data._embedded.paddocks})
             })
+            .then(() => {
+              this.setBalance();
+            })
         })
       this.setState({showAddDino: false});
       this.takeDinoCostOffBalance(newDino.buyValue);
@@ -89,8 +92,13 @@ class GameContainer extends Component {
         this.request.get(`${this.url}/paddocks`)
           .then((data) => {
           this.setState({paddocks: data._embedded.paddocks})
+          this.setBalance();
+          })
+          .then(() => {
+            this.setBalance();
           })
         })
+
     }
 
     takeDinoCostOffBalance(dinoCost){
@@ -124,6 +132,7 @@ class GameContainer extends Component {
     }
 
     setBalance(){
+      this.calculateNet();
       const value = this.state.bankBalance + this.state.net;
       this.setState({bankBalance: value});
     }
@@ -152,45 +161,49 @@ class GameContainer extends Component {
 
     timerTrigger() {
       if(this.state.timeOutID > 0) {
-        this.calculateNet();
         this.setBalance();
         this.decreaseFoodLevel();
       }
       this.checkGameOver();
       if (!this.state.gameOver) {
-        const start = setTimeout(() => this.timerTrigger(), 2000);
+        const start = setTimeout(() => this.timerTrigger(), 6000);
         this.setState({timeOutID: start});
       }
     }
 
     handleStartClick(e) {
       const elementToChange = document.querySelector('.start-button');
-      elementToChange.style = "color: green; opacity: 0; z-index: -1; width: 1vw; height: 1vh;";
-
-  
-      
+      elementToChange.style = "color: green; opacity: 0; z-index: -1; width: 1vw; height: 1vh;";  
+      this.timerTrigger();   
       this.request.get(`${this.url}/paddocks`)
       .then((data) => {
         this.setState({paddocks: data._embedded.paddocks})
       })
-      //GetDinos
-      this.request.get(`${this.url}/dinosaurs`)
-      .then((data) => {
-        this.setState({dinos: data._embedded.dinosaurs})
-      })
-      .then(() => {
-        const result = this.state.dinos.slice(0, 2);
-        this.setState({newDinos:
-          [...result]
-        })
-      })
-        //GetFoods
-      this.request.get(`${this.url}/foods`)
-      .then((data) => {
-        this.setState({foods: data._embedded.foods})
-      })
-      this.timerTrigger();
+        .then(() => {
+          this.request.get(`${this.url}/dinosaurs`)
+          .then((data) => {
+            this.setState({dinos: data._embedded.dinosaurs})
+          })
+          .then(() => {
+            const result = this.state.dinos.slice(0, 2);
+            this.setState({newDinos:
+              [...result]
+            })
+          })
+          .then(() => {
+            this.request.get(`${this.url}/foods`)
+            .then((data) => {
+              this.setState({foods: data._embedded.foods})
+            })
+            .then(() => {
+              this.setBalance();
+            })
+          })
+        }) 
     }
+
+
+
         //handleSelectPaddock sets the state to equal the paddock that the user selected
     handleSelectPaddock(paddock) {
       this.setState({selectedPaddock: paddock});
@@ -215,6 +228,7 @@ class GameContainer extends Component {
       this.setState({selectedFood: food});
       this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
+      this.setBalance();
     }
 
     handleOpenNewDinoCard(){
@@ -232,12 +246,16 @@ class GameContainer extends Component {
       changedPaddock.owned = true;
       this.setState({selectedPaddock: changedPaddock});
 
+
       // PATCH
   
       
       const newID = changedPaddock.id;
 
       this.request.patch(`${this.url}/paddocks/${newID}`, {owned: true})
+      .then(() => {
+        this.setBalance();
+      })
 
       this.takePaddockCostOffBalance(changedPaddock.costToBuy)
     }
