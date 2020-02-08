@@ -49,8 +49,7 @@ class GameContainer extends Component {
 
      this.handleClickCloseAddDino = this.handleClickCloseAddDino.bind(this);
      this.handleClickCloseFeedDino = this.handleClickCloseFeedDino.bind(this);
-     this.onHandleBuyPaddock = this.HandleBuyPaddock.bind(this);
-     this.takePaddockCostOffBalance = this.takePaddockCostOffBalance.bind(this);
+     this.handleBuyPaddock = this.handleBuyPaddock.bind(this);
      this.takeDinoCostOffBalance = this.takeDinoCostOffBalance.bind(this);
      this.endGame = this.endGame.bind(this);
      this.checkGameOver = this.checkGameOver.bind(this);
@@ -232,30 +231,16 @@ class GameContainer extends Component {
       this.setState({showAddDino: false});
     }
 
-    HandleBuyPaddock(id){
-      const changedPaddock = this.state.paddocks.find((paddock) => {
-        return paddock.id === parseInt(id);
-      });
+    handleBuyPaddock(id){
+      const changedPaddock = this.state.selectedPaddock;
       changedPaddock.owned = true;
       this.setState({selectedPaddock: changedPaddock});
-
-
-      // PATCH
-  
-      
-      const newID = changedPaddock.id;
-
-      this.request.patch(`${this.url}/paddocks/${newID}`, {owned: true})
+      this.request.patch(`${this.url}/paddocks/${id}`, {owned: true})
       .then(() => {
+        let newBalance = this.state.bankBalance - changedPaddock.costToBuy;
+        this.setState({bankBalance: newBalance});
         this.setBalance();
       })
-
-      this.takePaddockCostOffBalance(changedPaddock.costToBuy)
-    }
-
-    takePaddockCostOffBalance(cost){
-      let newBalance = this.state.bankBalance - cost;
-      this.setState({bankBalance: newBalance});
     }
 
     endGame(timeOutID){
@@ -348,7 +333,7 @@ class GameContainer extends Component {
           onHandleSelectDino={this.handleSelectDino}
           bankBalance={this.state.bankBalance}
           onHandleOpenNewDinoCard={this.handleOpenNewDinoCard}
-          onHandleBuyPaddock={this.onHandleBuyPaddock}
+          onHandleBuyPaddock={this.handleBuyPaddock}
           />
         <h2 className="bank">Bank €{this.state.bankBalance}</h2>
 
