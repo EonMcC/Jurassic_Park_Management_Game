@@ -58,13 +58,10 @@ class GameContainer extends Component {
      this.handleResetGame = this.handleResetGame.bind(this);
   }
   
-
-
     updateDinoFoodLevelWhenFed(replenLevel) {
       const dino = this.state.selectedDino;
-      dino.foodLevel += replenLevel;
-      
-      this.request.patch(`${this.url}/dinosaurs/${dino.id}`, dino)
+      dino.foodLevel += replenLevel;    
+      this.request.patch(`${this.url}/dinosaurs/${dino.id}`, {foodLevel: dino.foodLevel});
     }
 
     handleNewDino(dino) {
@@ -173,7 +170,7 @@ class GameContainer extends Component {
       }
       this.checkGameOver();
       if(!this.state.gameOver){
-      const start = setTimeout( () => this.timerTrigger(), 10000);
+      const start = setTimeout( () => this.timerTrigger(), 2000);
       this.setState({timeOutID: start});
       }
     }
