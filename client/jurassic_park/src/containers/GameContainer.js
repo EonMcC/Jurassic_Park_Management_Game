@@ -117,9 +117,11 @@ class GameContainer extends Component {
     }
 
     calculateNet(){
+      this.calculateIncome();
+      this.calculateExpenditure();
       const newNet = this.state.totalIncome - this.state.totalExpenditure;
       this.setState({net: newNet});
-    };
+    }
 
     setBalance(){
       const value = this.state.bankBalance + this.state.net;
@@ -127,23 +129,17 @@ class GameContainer extends Component {
     }
 
     decreaseFoodLevel(){
-      this.state.dinos.forEach((dino) =>{
-    
-        
-
-        if(dino.foodLevel > 0){
+      this.state.dinos.forEach((dino) => {      
         dino.foodLevel -= 1;
         this.request.patch(`${this.url}/dinosaurs/${dino.id}`, dino)
-        }
-        if(dino.foodLevel < 4) {
+        if (dino.foodLevel < 4) {
           const paddockToChange = dino._embedded.paddock;
           const paddockId = paddockToChange.id;
-          paddockToChange.actionRequired = true;
           this.request.patch(`${this.url}/paddocks/${paddockId}`, {actionRequired: true})
             .then(() =>{
               this.request.get(`${this.url}/paddocks`)
               .then((data) => {
-              this.setState({paddocks: data._embedded.paddocks})
+                this.setState({paddocks: data._embedded.paddocks})
               })
             })
         }
@@ -155,17 +151,15 @@ class GameContainer extends Component {
     }
 
     timerTrigger() {
-      if(this.state.timeOutID > 0){
-      this.calculateIncome();
-      this.calculateExpenditure();
-      this.calculateNet();
-      this.setBalance();
-      this.decreaseFoodLevel();
+      if(this.state.timeOutID > 0) {
+        this.calculateNet();
+        this.setBalance();
+        this.decreaseFoodLevel();
       }
       this.checkGameOver();
-      if(!this.state.gameOver){
-      const start = setTimeout( () => this.timerTrigger(), 2000);
-      this.setState({timeOutID: start});
+      if (!this.state.gameOver) {
+        const start = setTimeout(() => this.timerTrigger(), 2000);
+        this.setState({timeOutID: start});
       }
     }
 
