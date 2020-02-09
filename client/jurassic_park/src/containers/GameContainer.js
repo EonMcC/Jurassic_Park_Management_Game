@@ -57,6 +57,18 @@ class GameContainer extends Component {
       const dino = this.state.selectedDino;
       dino.foodLevel += replenLevel;    
       this.request.patch(`${this.url}/dinosaurs/${dino.id}`, {foodLevel: dino.foodLevel});
+      const dinosaurs = dino._embedded.paddock.dinosaurs;
+      const paddockId = dino._embedded.paddock.id;
+      let action = false;
+      dinosaurs.forEach((dinosaur) => {
+        if (dinosaur.foodLevel > 3) {
+            action = true;
+        }
+      })
+      if (action === true) {
+        const change = {actionRequired: false}
+        this.request.patch(`${this.url}/paddocks/${paddockId}`, change);
+      }
     }
 
     handleNewDino(newDino) {     

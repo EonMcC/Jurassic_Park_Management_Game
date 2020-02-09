@@ -16,8 +16,7 @@ class PaddockCard extends Component {
   }
 
   handleClick(e) {
-    const elementToChange = e.target;
-    elementToChange.style = "transition-duration: 0.5s; cursor: auto; overflow: visible; height: auto; width: 50vw; border-radius: 0; background-color: #e4ae1f; transform: rotate(+1deg)";
+    e.target.style = "transition-duration: 0.5s; cursor: auto; overflow: visible; height: auto; width: 50vw; border-radius: 0; background-color: #e4ae1f; transform: rotate(+1deg)";
     this.props.onHandleSelectPaddock(this.props.paddock);
   }
 
@@ -29,13 +28,11 @@ class PaddockCard extends Component {
 
   handleClickAddDino(e) {
     e.stopPropagation();
-    //post new dino
     this.props.onHandleOpenNewDinoCard();
   }
 
   handleRemovePaddock(e){
     e.stopPropagation();
-    console.log(5);
     this.props.onHandleDeletePaddock()
   }
 
@@ -51,7 +48,7 @@ class PaddockCard extends Component {
 
     calculateTotalPaddockRevenue() {
       let dinoRevenue = 0;
-      const dinosThisPaddock = this.dinosForPaddock(this.props.id); //check this return something.
+      const dinosThisPaddock = this.dinosForPaddock(this.props.id);
       dinosThisPaddock.forEach(dino => dinoRevenue += dino.revenueIncrease);
       return dinoRevenue;
     }
