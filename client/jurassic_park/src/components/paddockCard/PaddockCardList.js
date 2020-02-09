@@ -3,18 +3,7 @@ import PaddockCard from './PaddockCard';
 
 
 
-const PaddockCardList = ({paddocks, dinos, selectedPaddock, onHandleSelectDino, bankBalance, onHandleSelectPaddock, onHandleOpenNewDinoCard, onHandleBuyPaddock, onHandleDeletePaddock}) => {
-
-
-  // const getDinosForPaddock = (paddockId) => {
-  //   let foundDinos = dinos.map((dino) => {
-  //     if (dino.paddockId === paddockId) {
-  //       return dino;
-  //     }
-
-  //   })
-  //   return foundDinos;
-  // }
+const PaddockCardList = ({paddocks, dinos, onHandleSelectDino, bankBalance, onHandleSelectPaddock, onHandleOpenNewDinoCard, onHandleBuyPaddock, onHandleDeletePaddock}) => {
 
   const allPaddocks = paddocks.map((paddock) => {
     return (
