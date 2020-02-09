@@ -11,8 +11,6 @@ class NewDino extends Component {
   checkCanAffordDino(){
     const dinoCost = this.props.newDino.buyValue;
     const bankBalance = this.props.bankBalance;
-    console.log(dinoCost);
-    console.log(`Bank: ${bankBalance}`);
     if (dinoCost <= bankBalance) {
       return true;
     } else {

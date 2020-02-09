@@ -83,7 +83,7 @@ class GameContainer extends Component {
               this.setState({paddocks: data._embedded.paddocks})
             })
             .then(() => {
-              this.setBalance();
+              this.calculateNet();
             })
         })
       this.setState({showAddDino: false});
@@ -99,10 +99,9 @@ class GameContainer extends Component {
         this.request.get(`${this.url}/paddocks`)
           .then((data) => {
           this.setState({paddocks: data._embedded.paddocks})
-          this.setBalance();
           })
           .then(() => {
-            this.setBalance();
+            this.calculateNet();
           })})
     }
 
@@ -137,7 +136,6 @@ class GameContainer extends Component {
     }
 
     setBalance(){
-      this.calculateNet();
       const value = this.state.bankBalance + this.state.net;
       this.setState({bankBalance: value});
     }
@@ -242,7 +240,7 @@ class GameContainer extends Component {
       .then(() => {
         let newBalance = this.state.bankBalance - changedPaddock.costToBuy;
         this.setState({bankBalance: newBalance});
-        this.setBalance();
+        this.calculateNet();
       })
     }
 
