@@ -55,7 +55,7 @@ class GameContainer extends Component {
 
     updateDinoFoodLevelWhenFed(replenLevel) {
       const dino = this.state.selectedDino;
-      dino.foodLevel += replenLevel;    
+      dino.foodLevel += replenLevel; 
       this.request.patch(`${this.url}/dinosaurs/${dino.id}`, {foodLevel: dino.foodLevel});
       const dinosaurs = dino._embedded.paddock.dinosaurs;
       const paddockId = dino._embedded.paddock.id;
@@ -224,7 +224,6 @@ class GameContainer extends Component {
       this.setState({bankBalance: newBankBalance});
       this.updateDinoFoodLevelWhenFed(food.replenLevel);
       this.setState({showFoodContainer: false});
-      this.setBalance();
     }
 
     handleOpenNewDinoCard(){
