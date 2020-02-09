@@ -17,7 +17,6 @@ class FoodList extends Component {
           onHandleSelectFood={this.props.onHandleSelectFood}
           bankBalance={this.props.bankBalance}
           selectedDino={this.props.selectedDino}
-          // dinoFull={this.props.dinoFull}
           />
       );
     });

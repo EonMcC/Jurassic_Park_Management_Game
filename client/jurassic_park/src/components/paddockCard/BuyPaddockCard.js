@@ -8,8 +8,6 @@ class BuyPaddockCard extends Component {
     this.onClickChangePaddockOwned = this.onClickChangePaddockOwned.bind(this);
   }
   
-
-
   checkCanAffordPaddock(){
     const paddockPrice = this.props.costToBuy;
     const bankBalance = this.props.bankBalance;

@@ -24,7 +24,6 @@ class Food extends Component {
     }
   }
 
-  //This function ensures only the right type of food for current dino is rendered.
   checkRightTypeOfFood() {
     const dietaryType = this.props.selectedDino.dietaryType;
     const foodType = this.props.food.type;
